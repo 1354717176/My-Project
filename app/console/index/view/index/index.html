@@ -1,0 +1,136 @@
+{include file="../../common/view/header" /}
+
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+<div id="wrapper">
+    {include file="../../common/view/navigation" /} {include file="../../common/view/sidebar_left" /}
+    <!--右侧部分开始-->
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <div class="row J_mainContent" id="content-main">
+            <iframe class="J_iframe" name="iframe" width="100%" height="100%" src="{:Url('/index/index/main', '', false, true)}" frameborder="0" seamless></iframe>
+        </div>
+    </div>
+    <!--右侧部分结束-->
+</div>
+<!-- 全局js -->
+<script src="/static/js/jquery.min.js?v=2.1.4"></script>
+<script src="/static/js/bootstrap.min.js?v=3.3.6"></script>
+
+<script src="/static/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="/static/js/plugins/layer/layer.min.js"></script>
+
+<!-- 第三方插件 -->
+<script src="/static/js/plugins/pace/pace.min.js"></script>
+
+<script>
+    /**
+     * 导航菜单
+     * @author   liuke <1078151140@qq.com>
+     * @datetime 2017-02-08T11:51:31+0800
+     */
+    var MENU = {$menu};
+
+    //一级菜单展示
+    $(function() {
+        // iframe加载事件
+        var J_iframe = $(".J_iframe"),
+            contentHeight = 0;
+        $(J_iframe.document).ready(function () {
+            setHeight();
+            J_iframe.show();
+        });
+        function setHeight(){
+            contentHeight = $("body").height() - $(".navbar").height() - 2;
+            $("#page-wrapper").height(contentHeight);
+        }
+
+        // 文档窗口改变大小时触发
+        $(window).on('resize', function () {
+            setTimeout(function () {
+                setHeight();
+            }, 100);
+        });
+
+        // 导航渲染
+        var navHtml = [];
+        $.each(MENU, function(i, o) {
+            navHtml.push('<li class="hidden-xs"><a class="right-sidebar-toggle" title="' + o.name + '" data-id="' + o.id + '" aria-expanded="false">' + o.name + '</a></li>');
+        });
+        $('#J_navbar').html(navHtml.join(''));
+
+        // 导航点击
+        $('#J_navbar').on('click', 'a', function(e) {
+            e.preventDefault(); // 取消事件的默认动作
+            e.stopPropagation(); // 终止事件 不再派发事件
+            $(this).parent().addClass('active').siblings().removeClass('active');
+            var navbarId = $(this).attr('data-id'),
+                sidebarList = MENU['menu_' + navbarId],
+                sidebarHtml = [],
+                sidebarSubHtml = [],
+                sidebarIndex = 0,
+                J_sidebar = $('#J_sidebar');
+            if (J_sidebar.attr('data-id') == navbarId) {
+                return false;
+            };
+
+            // 显示左侧菜单
+            showSidebar(sidebarList['items']);
+            J_sidebar.html(sidebarHtml.join('')).attr('data-id', navbarId);
+
+            function showSidebar(data) {
+                for (var attr in data) {
+                    if (data[attr] && typeof(data[attr]) === 'object') {
+                        // 循环子对象
+                        if (!data[attr].url && attr === 'items') {
+                            // 子菜单添加识别属性
+                            $.each(data[attr], function(i, o) {
+                                sidebarIndex++;
+                                o.isChild = true;
+                                o.sidebarIndex = sidebarIndex;
+                            });
+                        }
+                        showSidebar(data[attr]); // 递归(筛选子菜单)
+                    } else {
+                        if (attr === 'name') {
+                            data.url = data.url ? data.url : 'javascript:;';
+                            icon = data.icon ? '<i class="fa fa-' + data.icon + '"></i>' : '<i class="fa fa-circle-o"></i>';
+                            if (!(data['isChild'])) {
+                                // 一级
+                                sidebarHtml.push('<li class="active"><a href="javascript:;" data-id="' + data.id + '">' + icon + '<span class="nav-label">' + data.name + '</span><span class="fa arrow"></span></a>');
+                            } else {
+                                // 二级
+                                sidebarSubHtml.push('<li><a class="J_menuItem" href="' + data.url + '" data-id="' + data.id + '" data-index="0">' + data.name + '</a></li>');
+                                // 二级全部push完毕
+                                if (data.sidebarIndex == sidebarIndex) {
+                                    sidebarHtml.push('<ul class="nav nav-second-level collapse">' + sidebarSubHtml.join('') + '</ul></li>');
+                                    sidebarSubHtml = [];
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            // MetsiMenu
+            $('#J_sidebar').metisMenu();
+        });
+        // 默认选中第一个导航
+        $('#J_navbar li:first > a').click();
+
+        $('#J_sidebar').on('click', 'a', function(e) {
+            e.preventDefault();
+            var href = $(this).attr("href");
+            if(href != 'javascript:;'){
+                J_iframe.attr("src", href);
+            }
+        });
+
+    });
+</script>
+
+<!-- 自定义js -->
+<script src="/static/js/hplus.js?v=4.1.0"></script>
+<script src="/static/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+</body>
+
+</html>

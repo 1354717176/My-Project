@@ -1,0 +1,299 @@
+{include file="../../common/view/header" /}
+<link href="/static/css/page.css" rel="stylesheet" type="text/css">
+<body class="gray-bg">
+<div class="wrapper wrapper-content">
+    <div class="col-sm-12">
+        <h3 class="pull-left">{$id?'修改':'添加'}景点</h3>
+        <ol class="breadcrumb pull-right">
+            <li>
+                <a href="index.html"><i class="fa fa-dashboard"></i> 管理中心</a>
+            </li>
+            <li>
+                景点管理
+            </li>
+            <li>
+                {$id?'修改':'增加'}景点
+            </li>
+        </ol>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <form class="form-horizontal m-t" onsubmit="return false;" method="post" id="userForm">
+                        <input type="text" name="id" style="display: none" value="{$id ?? '0'}">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">景点名称：</label>
+                            <div class="col-sm-2"><input id="user_name" value="{$lists['scenery_name'] ?? ''}" name="scenery_name" class="form-control" type="text"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">所属供应商：</label>
+                            <div class="col-sm-2">
+                                <select class="form-control" name="supplier_id" value="{$lists['supplier_id'] ?? ''}">
+                                    {volist name="list_type" id="vo"}
+                                    <option value="{$vo.id}">{$vo.type_name}</option>
+                                    {/volist}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">景点地址：</label>
+                            <div class="col-sm-3">
+                                <input id="product_one_price" name="scennery_address" value="{$lists['scennery_address'] ?? ''}" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">星&nbsp;&nbsp;&nbsp;级：</label>
+                            <div class="col-sm-5">
+                                <input  type="radio" value="4" name="leverl" {$lists["leverl"]==4 ? 'checked' : ''} style="width: 15px;vertical-align: middle;">
+                                <span style="vertical-align: middle;color: #111111">AAAA</span>
+                                <input  type="radio" value="3"  name="leverl" {$lists["leverl"]==3 ? 'checked' : ''}  style="width: 15px;vertical-align: middle; margin-left: 16px;">
+                                <span style="vertical-align: middle;color: #111111">AAA</span>
+                                <input  type="radio" value="2"  name="leverl" {$lists["leverl"]==2 ? 'checked' : ''}  style="width: 15px;vertical-align: middle; margin-left: 16px;">
+                                <span style="vertical-align: middle;color: #111111">AA</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">详细地址：</label>
+                            <div class="col-sm-4">
+                                <input  value="{$lists['detail_address'] ?? ''}" name="detail_address" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">库存：</label>
+                            <div class="col-sm-1">
+                                <input  value="{$lists['stock'] ?? ''}" name="stock" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">缩略图：</label>
+                            <div class="col-sm-4">
+                                <div class="row">
+                                    <div class="col-sm-5"> <input id="file_upload_thumbnail" name="thumbnail" type="file" multiple="true" ></div>
+                                    <div class="col-sm-3"> <a class="upload_css_a"  href="javascript:$('#file_upload_thumbnail').uploadify('upload')">预览</a></div>
+                                    <div class="col-sm-3"> <a  class="upload_css_a" href="javascript:$('#file_upload_thumbnail').uploadify('upload')">上传</a></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div id="img_thumbnail">
+                                            {if condition="isset($lists)"}
+                                            {if condition="is_array($lists['thumbnail'])"}
+                                            {foreach name="lists['thumbnail']" item="vo")}
+                                            <img src="{$vo}" alt='' height='80' style='margin:10px 0px 5px 5px;'>
+                                            {/foreach}
+                                            <input name='thumbnail' type='text' value="{$lists['thumbnail_input']}" style='display:none;'>
+                                            {/if}
+                                            {/if}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">幻灯片：</label>
+                            <div class="col-sm-4">
+                                <div class="row">
+                                    <div class="col-sm-5"> <input id="file_upload_slide" name="slide" type="file" multiple="true" ></div>
+                                    <div class="col-sm-3"> <a class="upload_css_a"  href="javascript:$('#file_upload_slide').uploadify('upload')">预览</a></div>
+                                    <div class="col-sm-3"> <a class="upload_css_a"  href="javascript:$('#file_upload_slide').uploadify('upload')">上传</a></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div id="img_slide">
+                                            {if condition="isset($lists)"}
+                                            {if condition="is_array($lists['slide'])"}
+                                            {foreach name="lists['slide']" item="vo")}
+                                            <img src="{$vo}" alt='' height='80' style='margin:10px 0px 5px 5px;'>
+                                            {/foreach}
+                                            <input name='slide' type='text' value="{$lists['slide_input']}" style='display:none;'>
+                                            {/if}
+                                            {/if}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">首页推荐景点：</label>
+                            <div class="col-sm-4">
+                                <input class="nan_c" type="radio" {$lists['index_recommend']==1 ? 'checked' : ''} value="1" name="index_recommend" style="">
+                                <span style="vertical-align: middle;color: #111111">是</span>
+                                <input  class="nv_c" type="radio" {$lists['index_recommend']==0 ? 'checked' : ''} value="0"  name="index_recommend" style="margin-left: 16px;">
+                                <span style="vertical-align: middle;color: #111111">否</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">首页banner：</label>
+                            <div class="col-sm-4">
+                                <input class="nan_c" type="radio" {$lists["index_banner"]==1 ? 'checked' : ''} value="1" name="index_banner" style="">
+                                <span style="vertical-align: middle;color: #111111">是</span>
+                                <input  class="nv_c" type="radio" {$lists["index_banner"]==0 ? 'checked' : ''} value="0"  name="index_banner" style="margin-left: 16px;">
+                                <span style="vertical-align: middle;color: #111111">否</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">景点关键词：</label>
+                            <div class="col-sm-2">
+                                <input id="" value="{$lists['key_word'] ?? ''}" name="key_word" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">开放时间：</label>
+                            <div class="col-sm-6">
+                                <input  class="sang_Calender" name="start_time" value="{$lists['start_time'] ?? ''}" style="width: 160px;" placeholder="开始时间">~~
+                                <input  class="sang_Calender" name="end_time"  value="{$lists['end_time'] ?? ''}" style="width: 160px" placeholder="结束时间" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">预定须知：</label>
+                            <div class="col-sm-4">
+                                 <textarea class="text_area_type"  name="notice">
+                                    {$lists['notice'] ?? ''}
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">景点简介：</label>
+                            <div class="col-sm-4">
+                                 <textarea class="text_area_type" name="brief_introduction">
+                                    {$lists['brief_introduction'] ?? ''}
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">景点详情：</label>
+                            <div class="col-sm-4">
+                                 <textarea class="text_area_type" name="scenery_detail">
+                                        {$lists['scenery_detail'] ?? ''}
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="form-group has-error">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <span id="server-error" class="help-block m-b-none hide"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <button class="btn btn-primary" type="submit" id="submit">提交</button>
+                                <button class="btn btn-white" type="button" id="cancel">取 消</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 全局js -->
+<script src="/static/js/jquery.min.js?v=2.1.4"></script>
+<script src="/static/js/bootstrap.min.js?v=3.3.6"></script>
+<!-- jQuery Validation plugin javascript-->
+<script src="/static/js/plugins/validate/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/extend/date/datetime.js"></script>
+<script src="/extend/upload/jquery.uploadify.min.js"></script>
+<script src="/static/js/upload.js"></script>
+<script>
+    var menuForm = $("#userForm"),
+            submitBtn = $("#submit"),
+            serverError = $("#server-error"),
+            cancel = $("#cancel");
+    // 表单验证
+    $.validator.setDefaults({
+        highlight: function (element) {
+            $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+        },
+        success: function (element) {
+            element.closest('.form-group').removeClass('has-error').addClass('has-success');
+        },
+        errorElement: "span",
+        errorClass: "help-block m-b-none",
+        validClass: ""
+    });
+    $().ready(function () {
+        var icon = "<i class='fa fa-times'></i> ";
+        menuForm.validate({
+            debug: true,
+            rules: {
+                scenery_name: {
+                    required: true,
+                    minlength: 2,
+                    maxlength: 30
+                },
+                supplier_id: {
+                    required: true
+                },
+                stock: {
+                    required: true,
+                    digits:true,
+                    minlength: 1,
+                    maxlength: 10
+            },
+                key_word: {
+                    required: true,
+                    minlength: 1,
+                    maxlength: 30
+                }
+            },
+            messages: {
+                scenery_name: {
+                    required: icon + "请输入景点名称名称",
+                    minlength: icon + "供应商名必须2个字符以上",
+                    maxlength: icon + "供应商名必须30个字符以内"
+                },
+                supplier_id: {
+                    required: icon + "请选择供应商名"
+                },
+                stock: {
+                    required:icon + "请输入库存",
+                    digits: icon + "库存只能是数字",
+                    minlength: icon + "库存至少有1件",
+                    maxlength: icon + "库存不能超过10位数"
+                },
+                key_word: {
+                    required: icon + "请输入关键字",
+                    minlength: icon + "关键字至少1位",
+                    maxlength: icon + "关键字至多30位"
+                }
+            },
+            submitHandler: function () {
+                // 禁用按钮
+                submitBtn.attr({
+                    disabled: "disabled"
+                }).html("提交中...");
+                // 提交表单
+                $.ajax({
+                    url: "{:Url('/scenery/scenery/add')}",
+                    type: "post",
+                    dataType: "json",
+                    data: menuForm.serialize(),
+                    success: function (data) {
+                        data = eval('('+data+')');
+                        if (data.code == 1) {
+                            self.location = document.referrer;
+                        } else {
+                            console.log("错误码：" + data.code);
+                            serverError.removeClass('hide').html(icon + data.msg);
+                        }
+                    },
+                    complete: function () {
+                        // 恢复按钮可用
+                        submitBtn.removeAttr("disabled").html("提交");
+                    },
+                    error: function () {
+                        serverError.removeClass('hide').html(icon + "网络错误，请检查网络后重试");
+                    }
+                });
+            }
+        });
+        cancel.click(function () {
+            self.location = document.referrer;
+        });
+    });
+
+    type_value = $('select[name="gys_type"]').val($('input[name="type_name_text"]').val());
+</script>
+</body>
+
+</html>

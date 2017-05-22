@@ -1,0 +1,287 @@
+{include file="../../common/view/header" /}
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content">
+    <div class="col-sm-12">
+        <h3 class="pull-left">菜单管理</h3>
+        <ol class="breadcrumb pull-right">
+            <li>
+                <a href="index.html"><i class="fa fa-dashboard"></i> 管理中心</a>
+            </li>
+            <li>
+                微信管理
+            </li>
+            <li>
+                微信菜单
+            </li>
+        </ol>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-12 m-b-xs form-inline">
+                            <div class="input-group">
+                                <div class="btn-group">
+                                    <a role="button" class="btn btn-primary create-menu"><i class="fa fa-plus"></i>&nbsp;创建新菜单</a>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <span class="help-block m-b-none error-parent-menu">
+                                    <i class="fa fa-info-circle"></i> 最多3个一级菜单，每个一级菜单最多5个子菜单
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <form method="post" class="form-horizontal" id="menuForm" onsubmit="return false">
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th>排序</th>
+                                    <th>菜单名称</th>
+                                    <th>菜单类型</th>
+                                    <th>菜单关键字/菜单链接</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td colspan="5" class="has-error hide text-center">
+                                        <span id="server-error" class="help-block m-b-none"></span>
+                                    </td>
+                                </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5" class="text-center menu-save" data-change="0">
+                                            没有菜单
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 全局js -->
+<script src="/static/js/jquery.min.js?v=2.1.4"></script>
+<script src="/static/js/bootstrap.min.js?v=3.3.6"></script>
+<!-- Data Tables -->
+<script src="/static/js/plugins/dataTables/jquery.dataTables.js"></script>
+<script src="/static/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+<script src="/static/js/plugins/validate/jquery.validate.min.js"></script>
+<!-- layer javascript -->
+<script src="/static/js/plugins/layer/layer.min.js"></script>
+<script>
+    $('.ibox-content').tooltip({
+        selector: "[data-toggle=tooltip]",
+        container: "body"
+    });
+
+    var menu_html = {
+        //一级菜单初始html
+        first_menu:function(index){
+            var first_menu_html = '';
+            first_menu_html +=  '<tr>';
+            first_menu_html +=      '<td width="50"><input type="text" class="form-control"></td>';
+            first_menu_html +=      '<td>';
+            first_menu_html +=          '<div class="form-inline">';
+            first_menu_html +=              '<div class="input-group">';
+            first_menu_html +=                  '<input type="text" name="parent_menu['+index+']" class="form-control weixin-menu">';
+            first_menu_html +=                  '<div class="input-group-btn">';
+            first_menu_html +=                      '<button type="button" class="remove-menu btn btn-danger parent-menu" data-toggle="tooltip" title="删除一级菜单"><i class="fa fa-minus"></i></button>';
+            first_menu_html +=                  '</div>';
+            first_menu_html +=              '</div>';
+            first_menu_html +=              '<div class="input-group">';
+            first_menu_html +=                  '<div class="form-control-static has-error error-menu"></div>';
+            first_menu_html +=              '</div>';
+            first_menu_html +=          '</div>'
+            first_menu_html +=      '</td>';
+            first_menu_html +=      '<td>';
+            first_menu_html +=          '<select name="" id="" class="form-control"><option value="">view</option><option value="">click</option></select>';
+            first_menu_html +=      '</td>';
+            first_menu_html +=      '<td><input type="text" class="form-control"></td>';
+            first_menu_html +=  '</tr>';
+            return first_menu_html;
+        },
+        sencond_menu:function(index){
+            //二级菜单初始html
+            var sencond_menu_html = '';
+            sencond_menu_html += '<tr>';
+            sencond_menu_html +=    '<td width="50"><input type="text" class="form-control"></td>';
+            sencond_menu_html +=    '<td>';
+            sencond_menu_html +=        '<div class="form-inline">';
+            sencond_menu_html +=            '<div class="input-group">-----------</div>';
+            sencond_menu_html +=            '<div class="input-group">';
+            sencond_menu_html +=                '<input type="text" name="child_menu['+index+'][]" class="form-control weixin-menu">';
+            sencond_menu_html +=                '<div class="input-group-btn">';
+            sencond_menu_html +=                    '<button type="button" class="add-menu btn btn-primary" data-toggle="tooltip" title="添加二级菜单"><i class="fa fa-plus"></i></button>';
+            sencond_menu_html +=                    '<button type="button" class="remove-menu btn btn-danger" data-toggle="tooltip" title="删除二级菜单"><i class="fa fa-minus"></i></button>';
+            sencond_menu_html +=                '</div>';
+            sencond_menu_html +=            '</div>';
+            sencond_menu_html +=        '</div>';
+            sencond_menu_html +=    '</td>';
+            sencond_menu_html +=    '<td>';
+            sencond_menu_html +=        '<select name="" id="" class="form-control"><option value="">view</option><option value="">click</option></select>';
+            sencond_menu_html +=    '</td>';
+            sencond_menu_html +=    '<td>';
+            sencond_menu_html +=        '<input type="text" class="form-control">';
+            sencond_menu_html +=    '</td>';
+            sencond_menu_html += '</tr>';
+            return sencond_menu_html;
+        }
+    };
+
+
+    var tbody_start = '<tbody class="menu">',
+        tbody_end = '</tbody>',
+        save_btn = '<button class="btn btn-primary" type="submit" id="submit">保存菜单</button>&nbsp;<button class="btn btn-white" type="button" id="cancel">取 消</button>'; //保存菜单/取消按钮
+
+    //创建新菜单（一级菜单）
+    $(".create-menu").on('click', function () {
+        var obj_parent_menu = $(".table").children('.menu'),
+                parent_menu_length = obj_parent_menu.length,
+                parent_menu = $(".table").children('thead'),
+                parent_menu_html = tbody_start + menu_html.first_menu(parent_menu_length) + menu_html.sencond_menu(parent_menu_length) + tbody_end,
+                error_parent_menu = $(".error-parent-menu"),
+                _this = $(this),
+                menu_save = $(".menu-save"),
+                disable = _this.attr('disabled');
+        if (parent_menu_length <= 2) {
+            parent_menu.after(parent_menu_html);
+            if (menu_save.data('change') == 0) {
+                menu_save.html(save_btn).data('change', 1);
+            }
+        } else {
+            if (disable != 'disabled') {
+                error_parent_menu.parent().addClass('has-error');
+                error_parent_menu.append('<i class="fa fa-times">最多添加3个一级菜单</i>')
+                _this.attr({disabled: "disabled"});
+
+                //1秒后，错误提示消失
+                setTimeout(function () {
+                    error_parent_menu.parent().removeClass('has-error');
+                    error_parent_menu.find('.fa-times').remove();
+                    _this.removeAttr("disabled").on('click');
+                }, 1000);
+            }
+        }
+    })
+
+    //添加/删除微信二级菜单
+    $(document).on('click', '.add-menu,.remove-menu', function () {
+        var cla = $(this).attr('class'),
+                obj_menu = $(this).closest('.menu'),
+                child_menu = obj_menu.children('tr').eq(1).html(),
+                child_menu_length = obj_menu.children('tr').length,
+                tips = obj_menu.find('.error-menu'),
+                menu_save = $(".menu-save"),
+                no_content = '没有内容';
+
+        if (cla.indexOf('add-menu') >= 0) {
+            if (child_menu_length <= 5) {
+                obj_menu.append('<tr>' + child_menu + '</tr>');
+            } else {
+                tips.html('<span class="help-block"><i class="fa fa-times">子菜单数量最多5个</i></span>');
+                //1秒后，错误提示消失
+                setTimeout(function () {
+                    tips.html('');
+                }, 1000);
+            }
+            $(this).tooltip('hide');
+        } else {
+            if (cla.indexOf('parent-menu') >= 0) {
+                var index = layer.confirm('此操作会删除一级菜单及下面的二级菜单，确认删除吗', {
+                    skin: 'layui-layer-molv',
+                    icon: 3,
+                    shadeClose: false,
+                }, function (index, layero) {
+
+                    obj_menu.remove();
+                    $(this).tooltip('hide');
+
+                    //保存菜单按钮显示/隐藏
+                    var obj_menu_length = $(".table").children('.menu').length;
+                    console.log(obj_menu_length);
+                    if (obj_menu_length <= 0) {
+                        menu_save.html(no_content).data('change', 0);
+                    }
+
+                    layer.close(index);
+
+                });
+            } else {
+                $(this).tooltip('hide').closest('tr').remove();
+            }
+        }
+
+    })
+
+    //保存微信菜单
+    $(document).on('click', '#submit,#cancel', function () {
+        var id = $(this).attr('id');
+        if (id == 'submit') {
+            var menuForm = $("#menuForm"),
+                    submitBtn = $("#submit"),
+                    serverError = $("#server-error"),
+                    cancel = $("#cancel"),
+                    menuFormInput = menuForm.find('.weixin-menu'),
+                    icon = "<i class='fa fa-times'></i> ";
+
+            // 禁用按钮
+            submitBtn.attr({
+                disabled: "disabled"
+            }).html("提交中...");
+            // 提交表单
+            $.ajax({
+                url: "{:Url('/weixin/menu/save','',false, true)}",
+                type: "post",
+                dataType: "json",
+                data: menuForm.serialize(),
+                beforeSend: function () {
+                    //验证微信菜单名称是否全部填写
+                    var flag = false;
+                    menuFormInput.each(function (i, j) {
+                        if ($(j).val() == '') {
+                            flag = true;
+                            return false;
+                        }
+                    })
+                    if (flag) {
+                        serverError.show().html(icon + '微信菜单为必填项');
+                        serverError.parent().removeClass('hide');
+                        submitBtn.removeAttr("disabled").html("提交");
+                        return false;
+                    }
+                },
+                success: function (data) {
+                    if (data.code === 0) {
+                        self.location = document.referrer;
+                    } else {
+                        serverError.show().html(icon + data.msg);
+                        serverError.parent().removeClass('hide');
+                    }
+                },
+                complete: function () {
+                    // 恢复按钮可用
+                    submitBtn.removeAttr("disabled").html("提交");
+                },
+                error: function () {
+                    serverError.show().html(icon + "网络错误，请检查网络后重试");
+                    serverError.parent().removeClass('hide');
+                }
+            });
+        } else {
+            self.location = '{:Url("/index/index/main","",false,true)}';
+        }
+    })
+</script>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+{include file="../../common/view/header" /}
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content">
+    <div class="col-sm-12">
+        <h3 class="pull-left">权限管理</h3>
+        <ol class="breadcrumb pull-right">
+            <li>
+                <a href="index.html"><i class="fa fa-dashboard"></i> 管理中心</a>
+            </li>
+            <li>
+                权限管理
+            </li>
+            <li>
+                角色列表
+            </li>
+        </ol>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-6 m-b-xs">
+                            <div class="input-group">
+                                <div class="btn-group">
+                                    <a href="{:Url('user/role/addrole','',false,true)}" class="btn btn-primary"><i class="fa fa-plus"></i>添加角色</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>角色编号</th>
+                                <th>角色名称</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {volist name="role" id="v"}
+                            <tr>
+                                <td>{$v.role_id}</td>
+                                <td>{$v.role_name}</td>
+                                <td>
+                                    <a href="{:Url('user/role/editrole',['roleid'=>$v.role_id],false,true)}" class="btn btn-primary btn-xs btn-circle" type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="修改角色">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                    <a href="{:Url('user/role/add',['roleid'=>$v.role_id],false,true)}" class="btn btn-primary btn-xs btn-circle" type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="为角色添加用户">
+                                        <i class="fa fa-plus"></i>
+                                    </a>
+                                    <a href="{:Url('user/role/look',['roleid'=>$v.role_id],false,true)}" class="btn btn-primary btn-xs btn-circle" type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="查看角色具有的用户">
+                                        <i class="fa fa-search"></i>
+                                    </a>
+                                    <a href="{:Url('user/privilege/lists',['roleid'=>$v.role_id],false,true)}" class="btn btn-primary btn-xs btn-circle" type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="管理角色权限">
+                                        <i class="fa fa-unlock-alt"></i>
+                                    </a>
+                                    <a class="btn delete btn-warning btn-xs btn-circle" data-roleid="{$v.role_id}" type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="删除角色">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {/volist}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 全局js -->
+<script src="/static/js/jquery.min.js?v=2.1.4"></script>
+<script src="/static/js/bootstrap.min.js?v=3.3.6"></script>
+<!-- Data Tables -->
+<script src="/static/js/plugins/dataTables/jquery.dataTables.js"></script>
+<script src="/static/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+<!-- layer javascript -->
+<script src="/static/js/plugins/layer/layer.min.js"></script>
+<script>
+    $(function(){
+        $('.ibox-content').tooltip({
+            selector: "[data-toggle=tooltip]",
+            container: "body"
+        });
+
+        // 删除
+        $('.delete').on('click', function () {
+            var roleid = $(this).data("roleid");
+            layer.confirm('确定删除该角色？', {
+                skin: 'layui-layer-molv',
+                icon: 3,
+                shadeClose: false,
+            }, function (index, layero) {
+                $.get("{:Url('/user/role/delrole', '', false, true)}?roleid=" + roleid, function (data, status) {
+                    if (data.code) {
+                        layer.msg(data.msg, {icon: 5});
+                    } else {
+                        // 删除成功
+                        window.location.reload();
+                    }
+                });
+            });
+        });
+    })
+</script>
+</body>
+
+</html>

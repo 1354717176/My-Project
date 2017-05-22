@@ -1,0 +1,244 @@
+{include file="../../common/view/header" /}
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content">
+    <div class="col-sm-12">
+        <h3 class="pull-left">{$id?'修改':'添加'}供应商</h3>
+        <ol class="breadcrumb pull-right">
+            <li>
+                <a href="index.html"><i class="fa fa-dashboard"></i> 管理中心</a>
+            </li>
+            <li>
+                供应商列表
+            </li>
+            <li>
+                {$id?'修改':'增加'}供应商
+            </li>
+        </ol>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <form class="form-horizontal m-t" onsubmit="return false;" method="post" id="userForm">
+                        <input type="text" name="id" style="display: none" value="{$id ?? '0'}">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">供应商名称：</label>
+                            <div class="col-sm-2"><input id="user_name" value="{$lists['gy_name'] ?? ''}" name="gy_name" class="form-control" type="text"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">供应商类型：</label>
+                            <div class="col-sm-2">
+                                <input type="text" name="type_name_text" style="display: none;" value="{$lists['gys_type'] ?? ''}">
+                                <select class="form-control" name="gys_type" value="{$lists['gys_type'] ?? ''}">
+                                    {volist name="list_type" id="vo"}
+                                    <option value="{$vo.id}">{$vo.type_name}</option>
+                                    {/volist}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">负责人姓名：</label>
+                            <div class="col-sm-2">
+                                <input id="product_one_price" name="fz_name" value="{$lists['fz_name'] ?? ''}" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">性别：</label>
+                            <div class="col-sm-5">
+                                <input class="nan_c" type="radio" {$lists["sex"]==1 ? 'checked' : ''}
+                                value="1" name="sex" style="">
+                                <span style="vertical-align: middle;color: #111111">男</span>
+                                <input  class="nv_c" type="radio" {$lists["sex"]==2 ? 'checked' : ''} value="2"  name="sex" style="margin-left: 16px;">
+                                <span style="vertical-align: middle;color: #111111">女</span>
+                                <input  class="no_c" {$lists["sex"]==3 ? 'checked' : ''} type="radio"  value="3"  name="sex" style=" margin-left: 16px;">
+                                <span style="vertical-align: middle;color: #111111">保密</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">联系电话：</label>
+                            <div class="col-sm-2">
+                                <input  value="{$lists['tel'] ?? ''}" name="tel" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">联系qq：</label>
+                            <div class="col-sm-2">
+                                <input id="" value="{$lists['qq'] ?? ''}" name="qq" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">微信号：</label>
+                            <div class="col-sm-2">
+                                <input id="" value="{$lists['wchat_nu'] ?? ''}" name="wchat_nu" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">详细地址：</label>
+                            <div class="col-sm-2">
+                                <input  value="{$lists['detail_address'] ?? ''}" name="detail_address" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">营业执照：</label>
+                            <div class="col-sm-2">
+                                <input id="file_upload1" name="file_upload" type="file" multiple="true" style="width: 185px; height: 25px;opacity:0;position: absolute;margin-top:12px;vertical-align: middle;" >
+                                <div id="img_yulan1">
+                                    {if condition="isset($lists)"}
+                                    {if condition="is_array($lists['yy_url'])"}
+                                    {foreach name="lists['yy_url']" item="vo")}
+                                    <img src="{$vo}" alt='' height='80' style='margin:10px 0px 5px 5px;'>
+                                    {/foreach}
+                                    <input name='yy_url' type='text' value="{$lists['input_url']}" style='display:none;'>
+                                    {/if}
+                                    {/if}
+                            </div>
+                        </div>
+                        <div class="form-group has-error">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <span id="server-error" class="help-block m-b-none hide"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <button class="btn btn-primary" type="submit" id="submit">提交</button>
+                                <button class="btn btn-white" type="button" id="cancel">取 消</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 全局js -->
+<script src="/static/js/jquery.min.js?v=2.1.4"></script>
+<script src="/static/js/bootstrap.min.js?v=3.3.6"></script>
+<!-- jQuery Validation plugin javascript-->
+<script src="/static/js/plugins/validate/jquery.validate.min.js"></script>
+<script src="/extend/upload/jquery.uploadify.min.js"></script>
+<script src="/static/js/upload.js"></script>
+<script>
+    var menuForm = $("#userForm"),
+            submitBtn = $("#submit"),
+            serverError = $("#server-error"),
+            cancel = $("#cancel");
+    // 表单验证
+    $.validator.setDefaults({
+        highlight: function (element) {
+            $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+        },
+        success: function (element) {
+            element.closest('.form-group').removeClass('has-error').addClass('has-success');
+        },
+        errorElement: "span",
+        errorClass: "help-block m-b-none",
+        validClass: ""
+    });
+    $().ready(function () {
+        var icon = "<i class='fa fa-times'></i> ";
+        menuForm.validate({
+            debug: true,
+            rules: {
+                gy_name: {
+                    required: true,
+                    minlength: 2,
+                    maxlength: 15
+                },
+                fz_name: {
+                    required: true,
+                    minlength: 2,
+                    maxlength: 15
+                },
+                tel: {
+                    required: true,
+                    digits:true,
+                    minlength: 11,
+                    maxlength: 11
+            },
+                qq: {
+                    required: true,
+                    digits:true,
+                    minlength: 6,
+                    maxlength: 12
+                },
+                detail_address: {
+                    required: true,
+                },
+                wchat_nu: {
+                    required: true,
+                    minlength: 5,
+                    maxlength: 30
+                },
+            },
+            messages: {
+                gy_name: {
+                    required: icon + "请输供应商名称",
+                    minlength: icon + "供应商名必须2个字符以上",
+                    maxlength: icon + "供应商名必须15个字符以内"
+                },
+                fz_name: {
+                    required: icon + "请输入负责人姓名",
+                },
+                tel: {
+                    required:icon + "请输 入电话号码",
+                    digits: icon + "电话号码只能是数字",
+                    minlength: icon + "电话号码输入有误",
+                    maxlength: icon + "电话号码输入有误"
+                },
+                qq: {
+                    required: icon + "请输入qq号",
+                    digits: icon + "qq号码只能是数字",
+                    minlength: icon + "qq号码输入有误",
+                    maxlength: icon + "qq号码输入有误"
+                },
+                wchat_nu: {
+                    required: icon + "请输入微信号",
+                    minlength: icon + "微信号码输入有误",
+                    maxlength: icon + "微信号码输入有误"
+                },
+                detail_address: {
+                    required: icon + "请输入详细地址",
+                },
+            },
+            submitHandler: function () {
+                // 禁用按钮
+                submitBtn.attr({
+                    disabled: "disabled"
+                }).html("提交中...");
+                // 提交表单
+                $.ajax({
+                    url: "{:Url('/supplier/supplier/add')}",
+                    type: "post",
+                    dataType: "json",
+                    data: menuForm.serialize(),
+                    success: function (data) {
+                        data = eval('('+data+')');
+                        if (data.code == 1) {
+                            self.location = document.referrer;
+                        } else {
+                            console.log("错误码：" + data.code);
+                            serverError.removeClass('hide').html(icon + data.msg);
+                        }
+                    },
+                    complete: function () {
+                        // 恢复按钮可用
+                        submitBtn.removeAttr("disabled").html("提交");
+                    },
+                    error: function () {
+                        serverError.removeClass('hide').html(icon + "网络错误，请检查网络后重试");
+                    }
+                });
+            }
+        });
+        cancel.click(function () {
+            self.location = document.referrer;
+        });
+    });
+
+    type_value = $('select[name="gys_type"]').val($('input[name="type_name_text"]').val());
+</script>
+</body>
+
+</html>

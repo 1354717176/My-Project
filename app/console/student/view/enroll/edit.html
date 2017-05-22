@@ -1,0 +1,176 @@
+{include file="../../common/view/header" /}
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content">
+    <div class="col-sm-12">
+        <h3 class="pull-left">修改学员</h3>
+        <ol class="breadcrumb pull-right">
+            <li>
+                <a href="index.html"><i class="fa fa-dashboard"></i> 管理中心</a>
+            </li>
+            <li>
+                会员列表
+            </li>
+            <li>
+                修改学员
+            </li>
+        </ol>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <form class="form-horizontal m-t" onsubmit="return false;" method="post" id="userForm">
+                        <input id="" name="id" class="form-control" type="hidden" value="{$enroll.stu_id}">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">学生姓名：</label>
+                            <div class="col-sm-2"><input id="stu_name" name="stu_name" class="form-control" type="text" value="{$enroll.stu_name}"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">学生手机号：</label>
+                            <div class="col-sm-2"><input id="stu_phone" name="stu_phone" class="form-control" type="text" value="{$enroll.stu_phone}"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">学生qq号：</label>
+                            <div class="col-sm-2"><input id="stu_qq" name="stu_qq" class="form-control" type="text" value="{$enroll.stu_qq}"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">学生年龄：</label>
+                            <div class="col-sm-2"><input id="stu_age" name="stu_age" class="form-control" type="text" value="{$enroll.stu_age}"></div>
+                        </div>
+                        <div class="form-group">
+	                        <label class="col-sm-2 control-label">学生性别：</label>
+		                        <div class="col-sm-4">
+		                            <div class="radio radio-success radio-inline">
+		                                <input type="radio" id="redio-show" value="0" name="stu_sex"{eq name="enroll.stu_sex" value="0"} checked{/eq}>
+		                                <label for="redio-show"> 男</label>
+		                            </div>
+		                            <div class="radio radio-success radio-inline">
+		                                <input type="radio" id="redio-show" value="1" name="stu_sex"{eq name="enroll.stu_sex" value="1"} checked{/eq}>
+		                                <label for="redio-show"> 女</label>
+		                            </div>
+		                        </div>
+                     	</div>
+                     	<div class="form-group">
+                            <label class="col-sm-2 control-label">学历：</label>
+                            <div class="col-sm-2">
+                                <select class="form-control" name="stu_xueli">
+                                    <option value="0" {eq name="enroll.stu_xueli" value="0"}selected{/eq} >本科</option>
+                                    <option value="1" {eq name="enroll.stu_xueli" value="1"}selected{/eq} >大专</option>
+                                    <option value="2" {eq name="enroll.stu_xueli" value="2"}selected{/eq} >中专</option>
+                                    <option value="3" {eq name="enroll.stu_xueli" value="3"}selected{/eq} >高中</option>
+                                    <option value="4" {eq name="enroll.stu_xueli" value="4"}selected{/eq} >初中</option>
+                                    <option value="5" {eq name="enroll.stu_xueli" value="5"}selected{/eq} >初中以下</option>
+                                    <option value="6" {eq name="enroll.stu_xueli" value="6"}selected{/eq} >社会人士</option>
+                                </select>
+                            </div>
+                        </div>
+                       <div class="form-group">
+                            <label class="col-sm-2 control-label">意向专业：</label>
+                            <div class="col-sm-2">
+                                <select class="form-control" name="stu_zhuanye">
+                                    <option value="0" {eq name="enroll.stu_zhuanye" value="0"}selected{/eq} >普通话技能班</option>
+                                    <option value="1" {eq name="enroll.stu_zhuanye" value="1"}selected{/eq} >办公技能班</option>
+                                    <option value="2" {eq name="enroll.stu_zhuanye" value="2"}selected{/eq} >网络推广电商就业班</option>
+                                    <option value="3" {eq name="enroll.stu_zhuanye" value="3"}selected{/eq} >UI设计师就业班</option>
+                                    <option value="4" {eq name="enroll.stu_zhuanye" value="4"}selected{/eq} >Web前端工程师就业班</option>
+                                    <option value="5" {eq name="enroll.stu_zhuanye" value="5"}selected{/eq} >PHP软件工程师就业班</option>
+                                    <option value="6" {eq name="enroll.stu_zhuanye" value="6"}selected{/eq} >JAVA软件工程师就业班</option>
+                                    <option value="7" {eq name="enroll.stu_zhuanye" value="7"}selected{/eq} >Android软件工程师就业班</option>
+                                    <option value="8" {eq name="enroll.stu_zhuanye" value="8"}selected{/eq} >大数据工程师就业班</option>
+                                    <option value="9" {eq name="enroll.stu_zhuanye" value="9"}selected{/eq} >教师资格证</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group has-error">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <span id="server-error" class="help-block m-b-none"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <button class="btn btn-primary" type="submit" id="submit">提交</button>
+                                <button class="btn btn-white" type="button" id="cancel">取 消</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 全局js -->
+<script src="/static/js/jquery.min.js?v=2.1.4"></script>
+<script src="/static/js/bootstrap.min.js?v=3.3.6"></script>
+<!-- jQuery Validation plugin javascript-->
+<script src="/static/js/plugins/validate/jquery.validate.min.js"></script>
+
+<script>
+    var menuForm = $("#userForm"),
+            submitBtn = $("#submit"),
+            serverError = $("#server-error"),
+            cancel = $("#cancel");
+    // 表单验证
+    $.validator.setDefaults({
+        highlight: function (element) {
+            $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+        },
+        success: function (element) {
+            element.closest('.form-group').removeClass('has-error').addClass('has-success');
+        },
+        errorElement: "span",
+        errorClass: "help-block m-b-none",
+        validClass: ""
+    });
+    $().ready(function () {
+        var icon = "<i class='fa fa-times'></i> ";
+        menuForm.validate({
+            debug: true,
+            rules: {
+                password_confirm: {
+                    equalTo: "#password"
+                },
+            },
+            messages: {
+                password_confirm: {
+                    equalTo: icon + "两次输入密码不一致",
+                },
+            },
+            submitHandler: function () {
+                // 禁用按钮
+                submitBtn.attr({
+                    disabled: "disabled"
+                }).html("提交中...");
+                // 提交表单
+                $.ajax({
+                    url: "{:Url('/user/lists/edit','',false, true)}",
+                    type: "post",
+                    dataType: "json",
+                    data: menuForm.serialize(),
+                    success: function (data) {
+                        if (data.code === 0) {
+                            self.location = document.referrer;
+                        } else {
+                            serverError.show().html(icon + data.msg);
+                        }
+                    },
+                    complete: function () {
+                        // 恢复按钮可用
+                        submitBtn.removeAttr("disabled").html("提交");
+                    },
+                    error: function () {
+                        serverError.show().html(icon + "网络错误，请检查网络后重试");
+                    }
+                });
+            }
+        });
+        cancel.click(function () {
+            self.location = document.referrer;
+        });
+    });
+</script>
+</body>
+
+</html>

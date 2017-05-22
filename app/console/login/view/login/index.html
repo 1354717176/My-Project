@@ -1,0 +1,136 @@
+{extend name="../../common/view/base" /}
+{block name="body"}
+<body class="signin">
+<div class="signinpanel">
+    <div class="row">
+        <div class="col-sm-7">
+            <div class="signin-info">
+                <div class="logopanel m-b">
+                    <h1>[ Fei ]</h1>
+                </div>
+                <div class="m-b"></div>
+                <h4>欢迎使用 <strong>飞猫旅行网后台管理系统</strong></h4>
+                <ul class="m-b">
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势一</li>
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势二</li>
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势三</li>
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势四</li>
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势五</li>
+                </ul>
+                <strong>还没有账号？ <a href="#">立即注册&raquo;</a></strong>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <form method="post" id="loginForm" onsubmit="return false">
+                <h4 class="no-margins">登录：</h4>
+                <p class="m-t-md">登录到飞猫旅行网后台</p>
+                <div class="form-group">
+                    <input type="text" class="form-control uname" name="username" placeholder="用户名"/>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control pword m-b" name="password" placeholder="密码"/>
+                </div>
+                <a href="">忘记密码了？</a>
+                <div class="form-group has-error">
+                    <span class="help-block m-b-none server-error"></span>
+                    <button class="btn btn-success btn-block" id="submit">登录</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="signup-footer">
+        <div class="pull-left">
+            &copy; 2015 All Rights Reserved. H+
+        </div>
+    </div>
+</div>
+{/block}
+{block name="style"}
+<link href="/static/css/login.css" rel="stylesheet">
+{/block}
+{block name="js"}
+<script src="/static/js/plugins/validate/jquery.validate.min.js"></script>
+<script>
+    var login = {
+        form: '',
+        submitBtn: '',
+        serverError: '',
+        icon: '',
+        validateDefault: function () {
+            $.validator.setDefaults({
+                highlight: function (element) {
+                    $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+                },
+                success: function (element) {
+                    element.closest('.form-group').removeClass('has-error').addClass('has-success');
+                },
+                errorPlacement: function (error, element) {
+                    element.before(error);
+                },
+                errorElement: "span",
+                errorClass: "help-block m-b-none",
+                validClass: ""
+            });
+        },
+        validate: function () {
+            login.form.validate({
+                debug: true,
+                rules: {
+                    username: {
+                        required: true,
+                    },
+                    password: {
+                        required: true,
+                    },
+                },
+                messages: {
+                    username: {
+                        required: login.icon + "请输入用户名",
+                    },
+                    password: {
+                        required: login.icon + "请输入密码",
+                    }
+                },
+                submitHandler: function () {
+                    // 禁用按钮
+                    login.submitBtn.attr({
+                        disabled: "disabled"
+                    }).html("登录中...");
+                    // 提交表单
+                    $.ajax({
+                        url: "{:Url('/login/login/login','',false,true)}",
+                        type: "post",
+                        dataType: "json",
+                        data: login.form.serialize(),
+                        success: function (data) {
+                            if (data.code === 0) {
+                                self.location = data.url;
+                            } else {
+                                login.serverError.show().html(login.icon + data.msg);
+                            }
+                        },
+                        complete: function () {
+                            // 恢复按钮可用
+                            login.submitBtn.removeAttr("disabled").html("登录");
+                        },
+                        error: function () {
+                            login.serverError.show().html(login.icon + "帐号或密码不正确");
+                        }
+                    });
+                }
+            })
+        },
+        init: function () {
+            login.validateDefault();
+            login.validate();
+        }
+    }
+    $(function () {
+        login.form = $("#loginForm");
+        login.submitBtn = $("#submit");
+        login.serverError = $(".server-error");
+        login.icon = "<i class='fa fa-times'></i> ";
+        login.init();
+    })
+</script>
+{/block}
