@@ -1,6 +1,7 @@
 <?php
 namespace app\api\common\controller;
 
+use think\Config;
 use think\Controller;
 use think\Session;
 use think\Db;
@@ -20,7 +21,7 @@ class Base extends Controller
 
     protected function _initialize()
     {
-        define('CONTROLLER', strtoupper(Request::instance()->controller()));
+        /*define('CONTROLLER', strtoupper(Request::instance()->controller()));
         define('MODULE', strtoupper(Request::instance()->module()));
         define('ACTION', strtoupper(Request::instance()->action()));
 
@@ -41,7 +42,7 @@ class Base extends Controller
             if (!Session::has('adminUser')) {
                 $this->redirect(Url('login/login/', '', false, true));
             }
-        }
+        }*/
     }
 
     /**

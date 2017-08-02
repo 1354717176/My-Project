@@ -236,4 +236,9 @@ return [
         'var_page'  => 'page',
         'list_rows' => 10,
     ],
+
+    //域名配置
+    'domain'=>[
+        'static'=>'http://static.yanghuan.com'
+    ],
 ];

@@ -1,20 +1,63 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
+    <title>Admui 在线演示系统</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>飞猫旅行网 - 后台登录</title>
-    <meta name="keywords" content="飞猫旅行网">
-    <meta name="description" content="飞猫旅行网">
-    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/static/css/font-awesome.css?v=4.4.0" rel="stylesheet">
-    <link href="/static/css/animate.css" rel="stylesheet">
-    <link href="/static/css/style.css" rel="stylesheet">
-	{block name="style"}{/block}
+    <meta name="keywords" content="admui,admui官网,admui下载,admui框架,通用后台管理系统,后台框架,ui框架"/>
+    <meta name="description" content="Admui在线演示系统，Admui是一个基于最新Web技术的企业级通用管理系统快速开发框架，可以帮助企业极大的提高工作效率，节省开发成本，提升品牌形象。"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 移动设备 viewport -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+    <meta name="author" content="admui.com">
+    <!-- 360浏览器默认使用Webkit内核 -->
+    <meta name="renderer" content="webkit">
+    <!-- 禁止百度SiteAPP转码 -->
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <!-- Chrome浏览器添加桌面快捷方式（安卓） -->
+    <link rel="icon" type="image/png" href="{$domain.static}/img/favicon.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- Safari浏览器添加到主屏幕（IOS） -->
+    <link rel="icon" sizes="192x192" href="{$domain.static}/img/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Admui">
+    <!-- Win8标题栏及ICON图标 -->
+    <link rel="apple-touch-icon-precomposed" href="{$domain.static}/img/apple-touch-icon.png">
+    <meta name="msapplication-TileImage" content="{$domain.static}/img/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#62a8ea">
+    <!-- 样式 -->
+    <link rel="stylesheet" href="{$domain.static}/css/site.css" id="siteStyle">
+    <!--[if lte IE 9]>
+    <meta http-equiv="refresh" content="0; url='http://www.admui.com/ie/'"/>
+    <![endif]-->
+    <!--[if lt IE 10]>
+    <script src="{$domain.static}/js/media.match.min.js"></script>
+    <script src="{$domain.static}/js/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- 自定义 -->
+    <link rel="stylesheet" href="{$domain.static}/css/login.css">
+    <!-- 插件 -->
+    <link rel="stylesheet" href="{$domain.static}/css/animsition.css">
+    <!-- 图标 -->
+    <link rel="stylesheet" href="{$domain.static}/css/web-icons.css">
+    <link rel="stylesheet" href="{$domain.static}/css/font-awesome.css">
+    <!-- 插件 -->
+    <link rel="stylesheet" href="{$domain.static}/css/bootstrap-select.css">
+    <link rel="stylesheet" href="{$domain.static}/css/formValidation.css">
+
+    {block name="style"}{/block}
 </head>
 {block name="body"}{/block}
-<script src="/static/js/jquery.min.js?v=2.1.4"></script>
-<script src="/static/js/bootstrap.min.js?v=3.3.6"></script>
+
+<!--<script src="{$domain.static}/js/jquery.js"></script>
+<script src="{$domain.static}/js/bootstrap.js"></script>
+<script src="{$domain.static}/js/bootstrap-select.min.js"></script>
+<script src="{$domain.static}/js/formValidation.min.js" data-name="formValidation"></script>
+<script src="{$domain.static}/js/bootstrap.min.js" data-deps="formValidation"></script>-->
+<!--<script src="{$domain.static}/js/login.js"></script>-->
+
 {block name="js"}{/block}
 </body>
 </html>

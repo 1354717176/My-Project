@@ -19,7 +19,7 @@ class Index extends Base
      */
     public function index()
     {
-        $menu = new menuApi();
+        /*$menu = new menuApi();
         $fields = 'id,name,listorder,icon,parent_id,status,module,controller,action,parameter';
         $map = [
             'status' => ['in', '1,2'],
@@ -33,7 +33,10 @@ class Index extends Base
 
         // 模板赋值
         $this->assign('result', $result);
-        $this->assign('menu', $menuTree);
+        $this->assign('menu', $menuTree);*/
+        dump(1);
+        exit;
+        $this->assign('menu', '');
         return $this->fetch();
     }
 
