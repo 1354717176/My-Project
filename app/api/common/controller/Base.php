@@ -1,4 +1,5 @@
 <?php
+
 namespace app\api\common\controller;
 
 use think\Config;
@@ -16,8 +17,9 @@ use think\Request;
  */
 class Base extends Controller
 {
-    protected $userInfo = '';
-    protected $auth = '';
+    protected $userInfo;
+    protected $auth;
+    protected $config;
 
     protected function _initialize()
     {
@@ -43,6 +45,19 @@ class Base extends Controller
                 $this->redirect(Url('login/login/', '', false, true));
             }
         }*/
+       $this->config =  self::getConfig();
+    }
+
+    /**
+     * 获取配置文件
+     * @param $value 配置参数
+     * author:yanghuan
+     * date: 2017/8/3 20:45
+     */
+    protected function getConfig($value = '')
+    {
+        $config = Config::get($value);
+        return $config;
     }
 
     /**

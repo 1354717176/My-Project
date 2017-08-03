@@ -3,10 +3,10 @@
 namespace app\console\login\controller;
 
 use app\api\login\validate\Login as loginValidate;
+use app\api\common\controller\Base;
 use app\api\user\logic\User;
 use think\Url;
 use think\Session;
-use think\Controller;
 
 /**
  * 后台-登录类
@@ -15,14 +15,14 @@ use think\Controller;
  * Date: 2017/3/8
  * Time: 11:23
  */
-class Index extends Controller
+class Index extends Base
 {
-    private $config;
 
-    public function __construct()
+    protected $config;
+
+    public function _initialize()
     {
-        $this->config = config('domain');
-        parent::__construct();
+        $this->config = parent::getConfig('domain');
     }
 
     public function index()
