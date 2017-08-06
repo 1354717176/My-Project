@@ -75,7 +75,7 @@
                             <div class="input-group">
                                 <input type="text" class="form-control" name="validCode" placeholder="请输入验证码">
                                 <a class="input-group-addon padding-0 reload-vify" href="javascript:;">
-                                    <img src="" height="40">
+                                    <img src="{$captcha}" height="40" alt="点击刷新验证码" data-id="0" class="captcha">
                                 </a>
                             </div>
                         </div>
@@ -109,4 +109,32 @@
         </div>
     </div>
 </div>
+{/block}
+{block name="js"}
+<!--<script src="{$domain.static}/js/login.js"></script>-->
+<script>
+    $(function(){
+        var operate={
+            captcha:function(obj,id){
+                console.log(id);
+                $.ajax({
+                    type:'post',
+                    url:'{:Url("/captcha","",false,true)}',
+                    data:{id:id},
+                    success:function(data){
+                        if(data.code == 0){
+                            $(obj).attr('src',data.data).data('id',++id);
+                        }else{
+
+                        }
+                    }
+                })
+            }
+        }
+
+        $(".captcha").on('click',function () {
+            operate.captcha(this,$(this).data('id'))
+        })
+    })
+</script>
 {/block}

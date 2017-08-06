@@ -3,7 +3,7 @@
 namespace app\console\login\controller;
 
 use app\api\login\validate\Login as loginValidate;
-use app\api\common\controller\Base;
+use app\api\common\logic\Base;
 use app\api\user\logic\User;
 use think\Url;
 use think\Session;
@@ -28,6 +28,7 @@ class Index extends Base
     public function index()
     {
         $this->assign('domain', $this->config);
+        $this->assign('captcha',captcha_src());
         return $this->fetch();
     }
 
