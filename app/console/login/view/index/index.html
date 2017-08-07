@@ -47,21 +47,7 @@
                     </div>
                     <h3 class="hidden-xs">登录 Admui</h3>
                     <p class="hidden-xs">Admui 在线演示系统</p>
-                    <form action="/system/loginValidate" class="login-form" method="post" id="loginForm">
-                        <div class="form-group">
-                            <label class="sr-only" for="identity">选择身份</label>
-                            <select class="form-control" id="identity">
-                                <option value="">我自己</option>
-                                <option data-divider="true"></option>
-                                <option value="xiaxuan@admui_demo" data-password="123456">夏瑄</option>
-                                <option value="zhangzhiyuan@admui_demo" data-password="123456">张致远</option>
-                                <option value="wangshiqi@admui_demo" data-password="123456">王诗琪</option>
-                                <option value="lixin@admui_demo" data-password="123456">李欣</option>
-                                <option value="qinshouren@admui_demo" data-password="123456">秦守仁</option>
-                                <option value="liuyiming@admui_demo" data-password="123456">刘一鸣</option>
-                                <option value="wangjiaqi@admui_demo" data-password="123456">王佳琪</option>
-                            </select>
-                        </div>
+                    <form class="login-form" method="post" id="loginForm" onsubmit="return false">
                         <div class="form-group">
                             <label class="sr-only" for="username">用户名</label>
                             <input type="text" class="form-control" id="username" name="loginName" placeholder="请输入用户名">
@@ -75,7 +61,7 @@
                             <div class="input-group">
                                 <input type="text" class="form-control" name="validCode" placeholder="请输入验证码">
                                 <a class="input-group-addon padding-0 reload-vify" href="javascript:;">
-                                    <img src="{$captcha}" height="40" alt="点击刷新验证码" data-id="0" class="captcha">
+                                    <img src="{$captcha}" height="40" alt="点击刷新验证码" data-id="0" class="captcha" data-url='{:Url("/captcha","",false,true)}'>
                                 </a>
                             </div>
                         </div>
@@ -97,7 +83,7 @@
                                 请返回官网点击登录按钮找回密码
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block margin-top-30">立即登录</button>
+                        <button type="button" class="submit btn btn-primary btn-block margin-top-30">立即登录</button>
                     </form>
                 </div>
             </div>
@@ -111,30 +97,5 @@
 </div>
 {/block}
 {block name="js"}
-<!--<script src="{$domain.static}/js/login.js"></script>-->
-<script>
-    $(function(){
-        var operate={
-            captcha:function(obj,id){
-                console.log(id);
-                $.ajax({
-                    type:'post',
-                    url:'{:Url("/captcha","",false,true)}',
-                    data:{id:id},
-                    success:function(data){
-                        if(data.code == 0){
-                            $(obj).attr('src',data.data).data('id',++id);
-                        }else{
-
-                        }
-                    }
-                })
-            }
-        }
-
-        $(".captcha").on('click',function () {
-            operate.captcha(this,$(this).data('id'))
-        })
-    })
-</script>
+<script src="{$domain.static}/js/login.js"></script>
 {/block}
