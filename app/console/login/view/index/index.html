@@ -59,9 +59,9 @@
                         <div class="form-group">
                             <label class="sr-only" for="password">验证码</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" name="validCode" placeholder="请输入验证码">
+                                <input type="text" class="form-control code" name="validCode" placeholder="请输入验证码">
                                 <a class="input-group-addon padding-0 reload-vify" href="javascript:;">
-                                    <img src="{$captcha}" height="40" alt="点击刷新验证码" data-id="0" class="captcha" data-url='{:Url("/captcha","",false,true)}'>
+                                    <img src="{$captcha}" height="40" alt="点击刷新验证码" data-id="1" class="captcha" data-url='{:Url("/verifica/captcha","",false,true)}'>
                                 </a>
                             </div>
                         </div>
@@ -83,7 +83,7 @@
                                 请返回官网点击登录按钮找回密码
                             </div>
                         </div>
-                        <button type="button" class="submit btn btn-primary btn-block margin-top-30">立即登录</button>
+                        <button type="button" class="submit btn btn-primary btn-block margin-top-30" data-captcha-url='{:Url("/verifica/captcha/check","",false,true)}'>立即登录</button>
                     </form>
                 </div>
             </div>

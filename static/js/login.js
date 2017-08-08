@@ -8,7 +8,7 @@ $(function () {
                 data: {id: id},
                 success: function (data) {
                     if (data.code == 0) {
-                        $(obj).attr('src', data.data).data('id', ++id);
+                        $(obj).attr('src', data.data.url).data('id', data.data.id);
                     } else {
 
                     }
@@ -50,6 +50,17 @@ $(function () {
                     }
                 }
             });
+        },
+        checkCaptcha: function (url, id, code) {
+            //验证码验证
+            $.ajax({
+                type: 'post',
+                url: url,
+                data: {id: id, code: code},
+                success: function (data) {
+                    console.log(data);
+                }
+            })
         }
     }
 
@@ -75,7 +86,10 @@ $(function () {
 
         //表单验证是否通过
         if (status != false) {
-            console.log(1);
+            var url = $(this).data('captcha-url'),
+                id = $(".captcha").data('id'),
+                code = $(".code").val();
+            operate.checkCaptcha(url, id, code);
         } else {
             return false;
         }

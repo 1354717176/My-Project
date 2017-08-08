@@ -20,7 +20,7 @@
 
 /**
  * @param string $id
- * @param array  $config
+ * @param array $config
  * @return \think\Response
  */
 function captcha($id = "", $config = [])
@@ -36,7 +36,7 @@ function captcha($id = "", $config = [])
  */
 function captcha_src($id = "")
 {
-    return \think\Url::build('/captcha',($id ? "/{$id}" : ''),false,true);
+    return \think\Url::build('/captcha/' . ($id ? $id : ''), "", false, true);
 }
 
 
@@ -53,7 +53,7 @@ function captcha_img($id = "")
 /**
  * @param        $value
  * @param string $id
- * @param array  $config
+ * @param array $config
  * @return bool
  */
 function captcha_check($value, $id = "", $config = [])

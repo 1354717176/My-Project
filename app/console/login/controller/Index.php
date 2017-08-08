@@ -28,7 +28,7 @@ class Index extends Base
     public function index()
     {
         $this->assign('domain', $this->config);
-        $this->assign('captcha',captcha_src());
+        $this->assign('captcha',captcha_src(1));
         return $this->fetch();
     }
 
