@@ -2,11 +2,8 @@
 
 namespace app\console\login\controller;
 
-use app\api\login\validate\Login as loginValidate;
 use app\api\common\logic\Base;
-use app\api\user\logic\User;
-use think\Url;
-use think\Session;
+use app\api\common\logic\Captcha;
 
 /**
  * 后台-登录类
@@ -27,8 +24,14 @@ class Index extends Base
 
     public function index()
     {
+        //显示验证码
+        $captcha = new Captcha();
+        $captchaSrc = $captcha->captcha();
+        $this->assign('captcha', $captchaSrc);
+
+        //域名配置
         $this->assign('domain', $this->config);
-        $this->assign('captcha',captcha_src(1));
+
         return $this->fetch();
     }
 
@@ -39,7 +42,7 @@ class Index extends Base
      */
     public function login()
     {
-        if ($this->request->isPost()) {
+        /*if ($this->request->isPost()) {
             $data['username'] = $this->request->post('username');
             $data['password'] = $this->request->post('password');
 
@@ -67,7 +70,7 @@ class Index extends Base
                 return ['code' => 50002, 'msg' => '用户名或密码不正确'];
             }
             return ['code' => 50001, 'msg' => '会员不存在'];
-        }
+        }*/
     }
 
     /**
@@ -77,7 +80,7 @@ class Index extends Base
      */
     public function out()
     {
-        Session::delete('adminUser');
-        $this->redirect(Url('/login/login/', '', false, true));
+        /* Session::delete('adminUser');
+         $this->redirect(Url('/login/login/', '', false, true));*/
     }
 }

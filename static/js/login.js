@@ -45,22 +45,23 @@ $(function () {
                         validators: {
                             notEmpty: {
                                 message: '验证码不能为空'
-                            }
+                            },
+                            threshold: 5,
+                            remote: {
+                                url: $(".submit").data('captcha-url'),
+                                message: '验证码错误',
+                                delay: 500,
+                                type: 'POST',
+                                data: function (validator) {
+                                    return {
+                                        id: $(".captcha").data('id'),
+                                    };
+                                }
+                            },
                         }
                     }
                 }
             });
-        },
-        checkCaptcha: function (url, id, code) {
-            //验证码验证
-            $.ajax({
-                type: 'post',
-                url: url,
-                data: {id: id, code: code},
-                success: function (data) {
-                    console.log(data);
-                }
-            })
         }
     }
 
@@ -86,10 +87,7 @@ $(function () {
 
         //表单验证是否通过
         if (status != false) {
-            var url = $(this).data('captcha-url'),
-                id = $(".captcha").data('id'),
-                code = $(".code").val();
-            operate.checkCaptcha(url, id, code);
+            window.location.href='/';
         } else {
             return false;
         }

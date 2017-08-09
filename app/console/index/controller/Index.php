@@ -1,15 +1,12 @@
 <?php
 namespace app\console\index\controller;
-
-use app\api\common\controller\Base;
-use app\api\menu\logic\Menu as menuApi;
-
+use think\Controller;
 /**
  * 后台首页类
  * Class Index
  * @package app\console\index\controller
  */
-class Index extends Base
+class Index extends Controller
 {
     /**
      * 后台首页
@@ -34,8 +31,6 @@ class Index extends Base
         // 模板赋值
         $this->assign('result', $result);
         $this->assign('menu', $menuTree);*/
-        dump(1);
-        exit;
         $this->assign('menu', '');
         return $this->fetch();
     }
