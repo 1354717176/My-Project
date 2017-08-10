@@ -1,13 +1,22 @@
 <?php
 namespace app\console\index\controller;
 use think\Controller;
+use app\api\common\logic\Base;
 /**
  * 后台首页类
  * Class Index
  * @package app\console\index\controller
  */
-class Index extends Controller
+class Index extends Base
 {
+
+    protected $config;
+
+    public function _initialize()
+    {
+        $this->config = parent::getConfig('domain');
+    }
+
     /**
      * 后台首页
      * @author:yanghuna
@@ -31,6 +40,10 @@ class Index extends Controller
         // 模板赋值
         $this->assign('result', $result);
         $this->assign('menu', $menuTree);*/
+
+        //域名配置
+        $this->assign('domain', $this->config);
+
         $this->assign('menu', '');
         return $this->fetch();
     }
