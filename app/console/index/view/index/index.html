@@ -1,5 +1,95 @@
-{extend name="../../common/view/base" /}
-{block name="body"}
+
+
+
+
+<!DOCTYPE html>
+<html class="no-js css-menubar" lang="zh-cn">
+
+<head>
+    <title>主页</title>
+
+
+
+
+
+
+
+    <meta charset="utf-8">
+    <meta name="keywords" content="admui,admui官网,admui下载,admui框架,通用后台管理系统,后台框架,ui框架" />
+    <meta name="description" content="Admui在线演示系统，Admui是一个基于最新Web技术的企业级通用管理系统快速开发框架，可以帮助企业极大的提高工作效率，节省开发成本，提升品牌形象。" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 移动设备 viewport -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+    <meta name="author" content="admui.com">
+    <!-- 360浏览器默认使用Webkit内核 -->
+    <meta name="renderer" content="webkit">
+    <!-- 禁止百度SiteAPP转码 -->
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <!-- Chrome浏览器添加桌面快捷方式（安卓） -->
+    <link rel="icon" type="image/png" href="http://cdn.admui.com/demo/1.1.0/images/favicon.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- Safari浏览器添加到主屏幕（IOS） -->
+    <link rel="icon" sizes="192x192" href="http://cdn.admui.com/demo/1.1.0/images/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Admui">
+    <!-- Win8标题栏及ICON图标 -->
+    <link rel="apple-touch-icon-precomposed" href="http://cdn.admui.com/demo/1.1.0/images/apple-touch-icon.png">
+    <meta name="msapplication-TileImage" content="http://cdn.admui.com/demo/1.1.0/images/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#62a8ea">
+    <!-- 样式 -->
+    <link rel="stylesheet" href="http://cdn.admui.com/demo/1.1.0/themes/classic/base/css/site.css" id="siteStyle">
+    <!--[if lte IE 9]>
+    <meta http-equiv="refresh" content="0; url='http://www.admui.com/ie/'" />
+    <![endif]-->
+    <!--[if lt IE 10]>
+    <script src="http://cdn.admui.com/demo/1.1.0/vendor/media-match/media.match.min.js"></script>
+    <script src="http://cdn.admui.com/demo/1.1.0/vendor/respond/respond.min.js"></script>
+    <![endif]-->
+
+
+
+
+
+    <!-- 图标 CSS-->
+    <link rel="stylesheet" href="http://cdn.admui.com/demo/1.1.0/fonts/font-awesome/font-awesome.css">
+    <link rel="stylesheet" href="http://cdn.admui.com/demo/1.1.0/fonts/web-icons/web-icons.css">
+
+    <!-- 插件 CSS -->
+    <link rel="stylesheet" href="http://cdn.admui.com/demo/1.1.0/vendor/animsition/animsition.css">
+    <link rel="stylesheet" href="http://cdn.admui.com/demo/1.1.0/vendor/toastr/toastr.css">
+    <link rel="stylesheet" href="http://cdn.admui.com/demo/1.1.0/css/demo.css">
+
+    <!-- 插件 -->
+    <script src="http://cdn.admui.com/demo/1.1.0/vendor/jquery/jquery.min.js"></script>
+    <script src="http://cdn.admui.com/demo/1.1.0/vendor/bootstrap/bootstrap.min.js"></script>
+    <script src="http://cdn.admui.com/demo/1.1.0/vendor/modernizr/modernizr.min.js"></script>
+    <script src="http://cdn.admui.com/demo/1.1.0/vendor/breakpoints/breakpoints.min.js"></script>
+    <script src="http://cdn.admui.com/demo/1.1.0/vendor/artTemplate/template.min.js"></script>
+    <script src="http://cdn.admui.com/demo/1.1.0/vendor/toastr/toastr.min.js"></script>
+    <script src="http://cdn.admui.com/demo/1.1.0/vendor/bootbox/bootbox.min.js"></script>
+
+    <!-- 核心  -->
+    <script src="http://cdn.admui.com/demo/1.1.0/themes/classic/global/js/core.js"></script>
+    <script src="http://cdn.admui.com/demo/1.1.0/themes/classic/base/js/site.js"></script>
+    <script src="http://cdn.admui.com/demo/1.1.0/themes/classic/global/js/configs/site-configs.js"></script>
+    <script src="http://cdn.admui.com/demo/1.1.0/themes/classic/global/js/components.js"></script>
+
+    <!-- 百度统计 -->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?c9dd85291ea88dcf64671a7dfa65e0ef";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+    <script>
+        Breakpoints();
+    </script>
+</head>
 
 <body class="site-contabs-open site-menubar-unfold ">
 
@@ -12,8 +102,8 @@
             <i class="icon wb-more-horizontal" aria-hidden="true"></i>
         </button>
         <div class="navbar-brand navbar-brand-center site-gridmenu-toggle" data-toggle="gridmenu">
-            <img class="navbar-brand-logo visible-lg visible-xs navbar-logo" src="{$domain.static}/img/logo-white.svg" title="Admui">
-            <img class="navbar-brand-logo hidden-xs hidden-lg navbar-logo-mini" src="{$domain.static}/img/logo-white-min.svg" title="Admui">
+            <img class="navbar-brand-logo visible-lg visible-xs navbar-logo" src="http://cdn.admui.com/demo/1.1.0/images/logo-white.svg" title="Admui">
+            <img class="navbar-brand-logo hidden-xs hidden-lg navbar-logo-mini" src="http://cdn.admui.com/demo/1.1.0/images/logo-white-min.svg" title="Admui">
         </div>
     </div>
     <div class="navbar-container container-fluid">
@@ -106,6 +196,9 @@
                         </li>
                         <li class="list-group" role="presentation">
                             <div class="navbar-message-content" id="admui-messageContent" data-height="220px" data-plugin="slimScroll"></div>
+                                <p class="text-center height-200 vertical-align">
+                                    <small class="vertical-align-middle opacity-four">没有新消息</small>
+                                </p>
                         </li>
                         <li class="dropdown-menu-footer" role="presentation">
                             <a href="/system/account/message" target="_blank" data-pjax>
@@ -1780,17 +1873,26 @@
 
 <main class="site-page">
     <div class="page-container" id="admui-pageContent">
+
+
+
+
+
+
+
+
+
         <title>首页</title>
 
-        <link rel="stylesheet" href="{$domain.static}/css/themify.css">
-        <link rel="stylesheet" href="{$domain.static}/css/home.css">
+        <link rel="stylesheet" href="http://cdn.admui.com/demo/1.1.0/fonts/themify/themify.css">
+        <link rel="stylesheet" href="http://cdn.admui.com/demo/1.1.0/css/home.css">
 
         <div class="page animation-fade page-index">
             <div class="page-content">
                 <div class="media account-info">
                     <div class="media-left">
                         <div class="avatar avatar-online">
-                            <img src="{$domain.static}/img/avatar.svg" alt="xiaxuan@admui_demo">
+                            <img src="http://cdn.admui.com/demo/1.1.0/images/avatar.svg" alt="xiaxuan@admui_demo">
                             <i class="avatar avatar-busy"></i>
                         </div>
                     </div>
@@ -1804,7 +1906,7 @@
                             </small>
                         </h4>
                         <p>
-                            <i class="icon icon-color wb-bell" aria-hidden="true"></i> 这是您第 46330 次登录，上次登录日期：2017-8-10 20:05:32，详细信息请查看
+                            <i class="icon icon-color wb-bell" aria-hidden="true"></i> 这是您第 46821 次登录，上次登录日期：2017-8-11 21:06:18，详细信息请查看
                             <a data-pjax href="/account/log" target="_blank">日志</a>
                             ，如果不是您本人登录，请及时
                             <a data-pjax href="/account/password" target="_blank">修改密码</a>
@@ -1830,7 +1932,7 @@
                                 <div class="media">
                                     <div class="media-left">
                                         <a href="javascript:;">
-                                            <img class="media-object" src="{$domain.static}/img/admui-desktop.svg" alt="...">
+                                            <img class="media-object" src="http://cdn.admui.com/demo/1.1.0/images/admui-desktop.svg" alt="...">
                                         </a>
 
                                     </div>
@@ -2068,6 +2170,11 @@
             </div>
         </div>
 
+        <script src="http://cdn.admui.com/demo/1.1.0/vendor/matchheight/jquery.matchHeight.min.js"></script>
+
+
+
+
     </div>
     <div class="page-loading vertical-align text-center">
         <div class="page-loader loader-default loader vertical-align-middle" data-type="default"></div>
@@ -2106,37 +2213,23 @@
     </div>
 </div>
 
-{/block}
-
-{block name="js"}
-
 <!-- 布局 -->
-<script src="{$domain.static}/js/menu.js"></script>
-<script src="{$domain.static}/js/media-menu.js"></script>
-<script src="{$domain.static}/js/content-tabs.js"></script>
+<script src="http://cdn.admui.com/demo/1.1.0/themes/classic/base/js/sections/menu.js"></script>
+<script src="http://cdn.admui.com/demo/1.1.0/themes/classic/base/js/sections/media-menu.js"></script>
+<script src="http://cdn.admui.com/demo/1.1.0/themes/classic/base/js/sections/content-tabs.js"></script>
 
 <!-- 插件 -->
-<script src="{$domain.static}/js/jquery.pjax.min.js"></script>
-<script src="{$domain.static}/js/responsive-tabs.js"></script>
-<script src="{$domain.static}/js/jquery-asHoverScroll.min.js"></script>
-<script src="{$domain.static}/js/jquery.slimscroll.min.js"></script>
-<script src="{$domain.static}/js/screenfull.min.js"></script>
+<script src="http://cdn.admui.com/demo/1.1.0/vendor/jquery-pjax/jquery.pjax.min.js"></script>
+<script src="http://cdn.admui.com/demo/1.1.0/themes/classic/global/js/plugins/responsive-tabs.js"></script>
+<script src="http://cdn.admui.com/demo/1.1.0/vendor/ashoverscroll/jquery-asHoverScroll.min.js"></script>
+<script src="http://cdn.admui.com/demo/1.1.0/vendor/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="http://cdn.admui.com/demo/1.1.0/vendor/screenfull/screenfull.min.js"></script>
 
-<!-- 插件 -->
-<script src="{$domain.static}/js/jquery.min.js"></script>
-<script src="{$domain.static}/js/bootstrap.min.js"></script>
-<script src="{$domain.static}/js/modernizr.min.js"></script>
-<script src="{$domain.static}/js/breakpoints.min.js"></script>
-<script src="{$domain.static}/js/template.min.js"></script>
-<script src="{$domain.static}/js/toastr.min.js"></script>
-<script src="{$domain.static}/js/bootbox.min.js"></script>
+<!-- 客服组件 -->
+<script src="//assets-cdn.kf5.com/supportbox/main.js?2&_=1502458325877" id="kf5-provide-supportBox" kf5-domain="admui.kf5.com"></script>
 
-<!-- 核心  -->
-<script src="{$domain.static}/js/core.js"></script>
-<script src="{$domain.static}/js/site.js"></script>
-<script src="{$domain.static}/js/site-configs.js"></script>
-<script src="{$domain.static}/js/components.js"></script>
-<script src="{$domain.static}/js/jquery.matchHeight.min.js"></script>
-
-{/block}
+<!-- 消息通知 -->
+<script src="http://cdn.admui.com/demo/1.1.0/js/notify-msg.js"></script>
+</body>
+</html>
 

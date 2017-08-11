@@ -96,6 +96,17 @@
     </div>
 </div>
 {/block}
+{block name="style"}
+<link rel="stylesheet" href="{$domain.static}/css/login.css">
+<link rel="stylesheet" href="{$domain.static}/css/animsition.css">
+<link rel="stylesheet" href="{$domain.static}/css/bootstrap-select.css">
+<link rel="stylesheet" href="{$domain.static}/css/formValidation.css">
+{/block}
 {block name="js"}
-<script src="{$domain.static}/js/login.js"></script>
+<script src="{$domain.static}/js/login/jquery.js"></script>
+<script src="{$domain.static}/js/login/bootstrap.js"></script>
+<script src="{$domain.static}/js/login/bootstrap-select.min.js"></script>
+<script src="{$domain.static}/js/login/formValidation.min.js" data-name="formValidation"></script>
+<script src="{$domain.static}/js/login/bootstrap.min.js" data-deps="formValidation"></script>
+<script src="{$domain.static}/js/login/login.js"></script>
 {/block}
