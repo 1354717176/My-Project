@@ -31,7 +31,7 @@ class Captcha extends Base
         if ($this->request->isPost()) {
             $id = $this->request->post('id');
             $this->captcha->id = ++$id;
-            return json(['code' => 0, 'data' => ['url' => $this->captcha->captcha(), 'id' => $this->captcha->id], 'msg' => '请求成功111']);
+            return json(['code' => 0, 'data' => ['url' => $this->captcha->captcha(), 'id' => $this->captcha->id], 'msg' => '请求成功']);
         }
         return json(['code' => 10000, 'data' => [], 'msg' => '请求错误']);
     }

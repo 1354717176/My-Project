@@ -46,11 +46,11 @@ $(function () {
                             notEmpty: {
                                 message: '验证码不能为空'
                             },
-                            threshold: 5,
+                            threshold: 1,
                             remote: {
                                 url: $(".submit").data('captcha-url'),
                                 message: '验证码错误',
-                                delay: 500,
+                                delay: 200,
                                 type: 'POST',
                                 data: function (validator) {
                                     return {
@@ -65,6 +65,9 @@ $(function () {
         }
     }
 
+    //初始化表单验证
+    operate.check();
+
     //验证码刷新
     $(".captcha").on('click', function () {
         operate.captcha(this, $(this).data('id'), $(this).data('url'))
@@ -72,9 +75,6 @@ $(function () {
 
     //表单提交时验证
     $(".submit").on('click', function () {
-
-        //初始化表单验证
-        operate.check();
 
         //获得表单验证对象
         var formValidate = $("#loginForm").data('formValidation');

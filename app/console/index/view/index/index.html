@@ -1,116 +1,28 @@
-
-
-
-
-<!DOCTYPE html>
-<html class="no-js css-menubar" lang="zh-cn">
-
-<head>
-    <title>主页</title>
-
-
-
-
-
-
-
-    <meta charset="utf-8">
-    <meta name="keywords" content="admui,admui官网,admui下载,admui框架,通用后台管理系统,后台框架,ui框架" />
-    <meta name="description" content="Admui在线演示系统，Admui是一个基于最新Web技术的企业级通用管理系统快速开发框架，可以帮助企业极大的提高工作效率，节省开发成本，提升品牌形象。" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- 移动设备 viewport -->
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
-    <meta name="author" content="admui.com">
-    <!-- 360浏览器默认使用Webkit内核 -->
-    <meta name="renderer" content="webkit">
-    <!-- 禁止百度SiteAPP转码 -->
-    <meta http-equiv="Cache-Control" content="no-siteapp">
-    <!-- Chrome浏览器添加桌面快捷方式（安卓） -->
-    <link rel="icon" type="image/png" href="http://cdn.admui.com/demo/1.1.0/images/favicon.png">
-    <meta name="mobile-web-app-capable" content="yes">
-    <!-- Safari浏览器添加到主屏幕（IOS） -->
-    <link rel="icon" sizes="192x192" href="http://cdn.admui.com/demo/1.1.0/images/apple-touch-icon.png">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Admui">
-    <!-- Win8标题栏及ICON图标 -->
-    <link rel="apple-touch-icon-precomposed" href="http://cdn.admui.com/demo/1.1.0/images/apple-touch-icon.png">
-    <meta name="msapplication-TileImage" content="http://cdn.admui.com/demo/1.1.0/images/app-icon72x72@2x.png">
-    <meta name="msapplication-TileColor" content="#62a8ea">
-    <!-- 样式 -->
-    <link rel="stylesheet" href="http://cdn.admui.com/demo/1.1.0/themes/classic/base/css/site.css" id="siteStyle">
-    <!--[if lte IE 9]>
-    <meta http-equiv="refresh" content="0; url='http://www.admui.com/ie/'" />
-    <![endif]-->
-    <!--[if lt IE 10]>
-    <script src="http://cdn.admui.com/demo/1.1.0/vendor/media-match/media.match.min.js"></script>
-    <script src="http://cdn.admui.com/demo/1.1.0/vendor/respond/respond.min.js"></script>
-    <![endif]-->
-
-
-
-
-
-    <!-- 图标 CSS-->
-    <link rel="stylesheet" href="http://cdn.admui.com/demo/1.1.0/fonts/font-awesome/font-awesome.css">
-    <link rel="stylesheet" href="http://cdn.admui.com/demo/1.1.0/fonts/web-icons/web-icons.css">
-
-    <!-- 插件 CSS -->
-    <link rel="stylesheet" href="http://cdn.admui.com/demo/1.1.0/vendor/animsition/animsition.css">
-    <link rel="stylesheet" href="http://cdn.admui.com/demo/1.1.0/vendor/toastr/toastr.css">
-    <link rel="stylesheet" href="http://cdn.admui.com/demo/1.1.0/css/demo.css">
-
-    <!-- 插件 -->
-    <script src="http://cdn.admui.com/demo/1.1.0/vendor/jquery/jquery.min.js"></script>
-    <script src="http://cdn.admui.com/demo/1.1.0/vendor/bootstrap/bootstrap.min.js"></script>
-    <script src="http://cdn.admui.com/demo/1.1.0/vendor/modernizr/modernizr.min.js"></script>
-    <script src="http://cdn.admui.com/demo/1.1.0/vendor/breakpoints/breakpoints.min.js"></script>
-    <script src="http://cdn.admui.com/demo/1.1.0/vendor/artTemplate/template.min.js"></script>
-    <script src="http://cdn.admui.com/demo/1.1.0/vendor/toastr/toastr.min.js"></script>
-    <script src="http://cdn.admui.com/demo/1.1.0/vendor/bootbox/bootbox.min.js"></script>
-
-    <!-- 核心  -->
-    <script src="http://cdn.admui.com/demo/1.1.0/themes/classic/global/js/core.js"></script>
-    <script src="http://cdn.admui.com/demo/1.1.0/themes/classic/base/js/site.js"></script>
-    <script src="http://cdn.admui.com/demo/1.1.0/themes/classic/global/js/configs/site-configs.js"></script>
-    <script src="http://cdn.admui.com/demo/1.1.0/themes/classic/global/js/components.js"></script>
-
-    <!-- 百度统计 -->
-    <script>
-        var _hmt = _hmt || [];
-        (function() {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?c9dd85291ea88dcf64671a7dfa65e0ef";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
-
-    <script>
-        Breakpoints();
-    </script>
-</head>
-
-<body class="site-contabs-open site-menubar-unfold ">
-
+{extend name="../../common/view/base" /}
+{block name="body"}
 <nav class="site-navbar navbar navbar-default navbar-fixed-top navbar-inverse " role="navigation">
     <div class="navbar-header">
-        <button type="button" class="navbar-toggle hamburger hamburger-close navbar-toggle-left hided" data-toggle="menubar">
+        <button type="button" class="navbar-toggle hamburger hamburger-close navbar-toggle-left hided"
+                data-toggle="menubar">
             <span class="sr-only">切换菜单</span> <span class="hamburger-bar"></span>
         </button>
-        <button type="button" class="navbar-toggle collapsed" data-target="#admui-navbarCollapse" data-toggle="collapse">
+        <button type="button" class="navbar-toggle collapsed" data-target="#admui-navbarCollapse"
+                data-toggle="collapse">
             <i class="icon wb-more-horizontal" aria-hidden="true"></i>
         </button>
         <div class="navbar-brand navbar-brand-center site-gridmenu-toggle" data-toggle="gridmenu">
-            <img class="navbar-brand-logo visible-lg visible-xs navbar-logo" src="http://cdn.admui.com/demo/1.1.0/images/logo-white.svg" title="Admui">
-            <img class="navbar-brand-logo hidden-xs hidden-lg navbar-logo-mini" src="http://cdn.admui.com/demo/1.1.0/images/logo-white-min.svg" title="Admui">
+            <img class="navbar-brand-logo visible-lg visible-xs navbar-logo"
+                 src="{$domain.static}/img/logo-white.svg" title="Admui">
+            <img class="navbar-brand-logo hidden-xs hidden-lg navbar-logo-mini"
+                 src="{$domain.static}/img/logo-white-min.svg" title="Admui">
         </div>
     </div>
     <div class="navbar-container container-fluid">
         <div class="collapse navbar-collapse navbar-collapse-toolbar" id="admui-navbarCollapse">
             <ul class="nav navbar-toolbar navbar-left">
                 <li class="hidden-float">
-                    <a data-toggle="menubar" class="hidden-float" href="javascript:;" role="button" id="admui-toggleMenubar">
+                    <a data-toggle="menubar" class="hidden-float" href="javascript:;" role="button"
+                       id="admui-toggleMenubar">
                         <i class="icon hamburger hamburger-arrow-left">
                             <span class="sr-only">切换目录</span>
                             <span class="hamburger-bar"></span>
@@ -122,49 +34,57 @@
                         <!-- 顶部菜单 -->
 
                         <li role="presentation" class="active">
-                            <a data-toggle="tab" href="#admui-navTabsItem-1" aria-controls="admui-navTabsItem-1" role="tab" aria-expanded="false">
+                            <a data-toggle="tab" href="#admui-navTabsItem-1" aria-controls="admui-navTabsItem-1"
+                               role="tab" aria-expanded="false">
                                 <i class="icon wb-library"></i> <span>UI 示例</span>
                             </a>
                         </li>
 
                         <li role="presentation" class="">
-                            <a data-toggle="tab" href="#admui-navTabsItem-2" aria-controls="admui-navTabsItem-2" role="tab" aria-expanded="false">
+                            <a data-toggle="tab" href="#admui-navTabsItem-2" aria-controls="admui-navTabsItem-2"
+                               role="tab" aria-expanded="false">
                                 <i class="icon wb-desktop"></i> <span>页面示例</span>
                             </a>
                         </li>
 
                         <li role="presentation" class="">
-                            <a data-toggle="tab" href="#admui-navTabsItem-3" aria-controls="admui-navTabsItem-3" role="tab" aria-expanded="false">
+                            <a data-toggle="tab" href="#admui-navTabsItem-3" aria-controls="admui-navTabsItem-3"
+                               role="tab" aria-expanded="false">
                                 <i class="icon wb-table"></i> <span>表格示例</span>
                             </a>
                         </li>
 
                         <li role="presentation" class="">
-                            <a data-toggle="tab" href="#admui-navTabsItem-4" aria-controls="admui-navTabsItem-4" role="tab" aria-expanded="false">
+                            <a data-toggle="tab" href="#admui-navTabsItem-4" aria-controls="admui-navTabsItem-4"
+                               role="tab" aria-expanded="false">
                                 <i class="icon wb-order"></i> <span>表单示例</span>
                             </a>
                         </li>
 
                         <li role="presentation" class="">
-                            <a data-toggle="tab" href="#admui-navTabsItem-5" aria-controls="admui-navTabsItem-5" role="tab" aria-expanded="false">
+                            <a data-toggle="tab" href="#admui-navTabsItem-5" aria-controls="admui-navTabsItem-5"
+                               role="tab" aria-expanded="false">
                                 <i class="icon wb-pie-chart"></i> <span>统计图表</span>
                             </a>
                         </li>
 
                         <li role="presentation" class="">
-                            <a data-toggle="tab" href="#admui-navTabsItem-6" aria-controls="admui-navTabsItem-6" role="tab" aria-expanded="false">
+                            <a data-toggle="tab" href="#admui-navTabsItem-6" aria-controls="admui-navTabsItem-6"
+                               role="tab" aria-expanded="false">
                                 <i class="icon fa-bars"></i> <span>菜单示例</span>
                             </a>
                         </li>
 
                         <li role="presentation" class="">
-                            <a data-toggle="tab" href="#admui-navTabsItem-7" aria-controls="admui-navTabsItem-7" role="tab" aria-expanded="false">
+                            <a data-toggle="tab" href="#admui-navTabsItem-7" aria-controls="admui-navTabsItem-7"
+                               role="tab" aria-expanded="false">
                                 <i class="icon wb-settings"></i> <span>系统管理</span>
                             </a>
                         </li>
 
                         <li class="dropdown" id="admui-navbarSubMenu">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" data-animation="slide-bottom" aria-expanded="true" role="button">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" data-animation="slide-bottom"
+                               aria-expanded="true" role="button">
                                 <i class="icon wb-more-vertical"></i>
                             </a>
                             <ul class="dropdown-menu" role="menu">
@@ -185,7 +105,8 @@
             </ul>
             <ul class="nav navbar-toolbar navbar-right navbar-toolbar-right">
                 <li class="dropdown" id="admui-navbarMessage">
-                    <a data-toggle="dropdown" href="javascript:;" class="msg-btn" aria-expanded="false" data-animation="scale-up" role="button">
+                    <a data-toggle="dropdown" href="javascript:;" class="msg-btn" aria-expanded="false"
+                       data-animation="scale-up" role="button">
                         <i class="icon wb-bell" aria-hidden="true"></i>
                         <span class="badge badge-danger up msg-num"></span>
                     </a>
@@ -195,10 +116,8 @@
                             <span class="label label-round label-danger"></span>
                         </li>
                         <li class="list-group" role="presentation">
-                            <div class="navbar-message-content" id="admui-messageContent" data-height="220px" data-plugin="slimScroll"></div>
-                                <p class="text-center height-200 vertical-align">
-                                    <small class="vertical-align-middle opacity-four">没有新消息</small>
-                                </p>
+                            <div class="navbar-message-content" id="admui-messageContent" data-height="220px"
+                                 data-plugin="slimScroll"></div>
                         </li>
                         <li class="dropdown-menu-footer" role="presentation">
                             <a href="/system/account/message" target="_blank" data-pjax>
@@ -207,7 +126,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="hidden-xs" id="admui-navbarDisplay" data-toggle="tooltip" data-placement="bottom" title="设置主题与布局等">
+                <li class="hidden-xs" id="admui-navbarDisplay" data-toggle="tooltip" data-placement="bottom"
+                    title="设置主题与布局等">
                     <a class="icon wb-layout" href="/system/settings/display" target="_blank" data-pjax>
                         <span class="sr-only">主题与布局</span>
                     </a>
@@ -217,28 +137,35 @@
                         <span class="sr-only">在手机上预览</span></a>
                 </li>
                 <li class="hidden-xs" id="admui-demo-app" data-toggle="tooltip" data-placement="bottom" title="下载桌面版">
-                    <a class="icon wb-download dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false" role="button">
+                    <a class="icon wb-download dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"
+                       role="button">
                         <span class="sr-only">下载桌面版</span></a>
-                    <ul class="dropdown-menu dropdown-menu-success bullet dropdown-menu-right" aria-labelledby="demoApp" role="menu">
+                    <ul class="dropdown-menu dropdown-menu-success bullet dropdown-menu-right" aria-labelledby="demoApp"
+                        role="menu">
                         <li role="presentation">
-                            <a href="http://dl.admui.com/app/win/admui-demo.zip" role="menuitem"><i class="icon fa-windows"></i> Windows 版</a>
+                            <a href="http://dl.admui.com/app/win/admui-demo.zip" role="menuitem"><i
+                                    class="icon fa-windows"></i> Windows 版</a>
                         </li>
                         <li role="presentation">
-                            <a href="http://dl.admui.com/app/mac/admui-demo.zip" role="menuitem"><i class="icon fa-apple"></i> MacOS 版</a>
+                            <a href="http://dl.admui.com/app/mac/admui-demo.zip" role="menuitem"><i
+                                    class="icon fa-apple"></i> MacOS 版</a>
                         </li>
                     </ul>
                 </li>
-                <li class="open-kf" id="admui-service" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="在线咨询">
+                <li class="open-kf" id="admui-service" data-toggle="tooltip" data-placement="bottom" title=""
+                    data-original-title="在线咨询">
                     <a class="icon wb-user" href="#" role="button">
                         <span class="sr-only">在线咨询</span></a>
                 </li>
-                <li class="hidden-xs" id="admui-navbarFullscreen" data-toggle="tooltip" data-placement="bottom" title="全屏">
+                <li class="hidden-xs" id="admui-navbarFullscreen" data-toggle="tooltip" data-placement="bottom"
+                    title="全屏">
                     <a class="icon icon-fullscreen" data-toggle="fullscreen" href="#" role="button">
                         <span class="sr-only">全屏</span>
                     </a>
                 </li>
                 <li>
-                    <a class="icon fa-sign-out" id="admui-signOut" data-ctx="" data-user="9" href="/system/logout" role="button">
+                    <a class="icon fa-sign-out" id="admui-signOut" data-ctx="" data-user="9" href="/system/logout"
+                       role="button">
                         <span class="sr-only">退出</span>
                     </a>
                 </li>
@@ -262,13 +189,11 @@
                         <!-- 三级菜单 -->
 
 
-
-
                         <li class="site-menu-item has-sub ">
-                            <a href="javascript:;"><i class="site-menu-icon fa-laptop" aria-hidden="true"></i><span class="site-menu-title">布局</span><span class="site-menu-arrow"></span></a>
+                            <a href="javascript:;"><i class="site-menu-icon fa-laptop" aria-hidden="true"></i><span
+                                    class="site-menu-title">布局</span><span class="site-menu-arrow"></span></a>
                             <ul class="site-menu-sub">
                                 <!-- 四级菜单 -->
-
 
 
                                 <li class="site-menu-item has-sub ">
@@ -294,11 +219,10 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item has-sub ">
                                     <a href="javascript:;">
-                                        <span class="site-menu-title">标题栏</span><span class="site-menu-arrow"></span></a>
+                                        <span class="site-menu-title">标题栏</span><span
+                                            class="site-menu-arrow"></span></a>
                                     <ul class="site-menu-sub">
                                         <!-- 五级菜单 -->
 
@@ -319,14 +243,11 @@
                                 </li>
 
 
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/components/layouts/panel-transition" target="_blank">
                                         <span class="site-menu-title">面板动画</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -336,15 +257,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/components/layouts/page-aside" target="_blank">
                                         <span class="site-menu-title">侧边栏</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -354,19 +271,16 @@
                                 </li>
 
 
-
                                 <!-- 四级菜单 -->
                             </ul>
                         </li>
 
 
-
-
                         <li class="site-menu-item has-sub ">
-                            <a href="javascript:;"><i class="site-menu-icon fa-cube" aria-hidden="true"></i><span class="site-menu-title">基本</span><span class="site-menu-arrow"></span></a>
+                            <a href="javascript:;"><i class="site-menu-icon fa-cube" aria-hidden="true"></i><span
+                                    class="site-menu-title">基本</span><span class="site-menu-arrow"></span></a>
                             <ul class="site-menu-sub">
                                 <!-- 四级菜单 -->
-
 
 
                                 <li class="site-menu-item has-sub ">
@@ -398,14 +312,11 @@
                                 </li>
 
 
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/components/basic/buttons" target="_blank">
                                         <span class="site-menu-title">按钮</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -415,15 +326,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/components/basic/dropdowns" target="_blank">
                                         <span class="site-menu-title">下拉菜单</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -433,15 +340,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/components/basic/tooltip-popover" target="_blank">
                                         <span class="site-menu-title">气泡提示 & 弹出框</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -451,15 +354,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/components/basic/tabs-accordions" target="_blank">
                                         <span class="site-menu-title">选项卡 & 折叠面板</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -469,15 +368,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/components/basic/badges-labels" target="_blank">
                                         <span class="site-menu-title">徽章 & 标签</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -487,15 +382,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/components/basic/typography" target="_blank">
                                         <span class="site-menu-title">排版</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -505,15 +396,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/components/basic/colors" target="_blank">
                                         <span class="site-menu-title">配色方案</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -523,16 +410,14 @@
                                 </li>
 
 
-
                                 <!-- 四级菜单 -->
                             </ul>
                         </li>
 
 
-
-
                         <li class="site-menu-item has-sub ">
-                            <a href="javascript:;"><i class="site-menu-icon fa-cubes" aria-hidden="true"></i><span class="site-menu-title">进阶</span><span class="site-menu-arrow"></span></a>
+                            <a href="javascript:;"><i class="site-menu-icon fa-cubes" aria-hidden="true"></i><span
+                                    class="site-menu-title">进阶</span><span class="site-menu-arrow"></span></a>
                             <ul class="site-menu-sub">
                                 <!-- 四级菜单 -->
 
@@ -544,15 +429,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/components/advanced/animation" target="_blank">
                                         <span class="site-menu-title">动画</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -562,15 +443,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/components/advanced/lightbox" target="_blank">
                                         <span class="site-menu-title">灯箱</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -580,15 +457,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/components/advanced/rating" target="_blank">
                                         <span class="site-menu-title">评分</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -598,15 +471,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/components/advanced/alertify" target="_blank">
                                         <span class="site-menu-title">Alertify弹框</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -616,12 +485,10 @@
                                 </li>
 
 
-
-
-
                                 <li class="site-menu-item has-sub ">
                                     <a href="javascript:;">
-                                        <span class="site-menu-title">树形控件</span><span class="site-menu-arrow"></span></a>
+                                        <span class="site-menu-title">树形控件</span><span
+                                            class="site-menu-arrow"></span></a>
                                     <ul class="site-menu-sub">
                                         <!-- 五级菜单 -->
 
@@ -642,14 +509,11 @@
                                 </li>
 
 
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/components/advanced/toastr" target="_blank">
                                         <span class="site-menu-title">Toaster 通知</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -659,8 +523,6 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/components/advanced/bootbox-sweetalert" target="_blank">
                                         <span class="site-menu-title">弹层组件</span>
@@ -668,16 +530,14 @@
                                 </li>
 
 
-
                                 <!-- 四级菜单 -->
                             </ul>
                         </li>
 
 
-
-
                         <li class="site-menu-item has-sub ">
-                            <a href="javascript:;"><i class="site-menu-icon fa-plug" aria-hidden="true"></i><span class="site-menu-title">组件</span><span class="site-menu-arrow"></span></a>
+                            <a href="javascript:;"><i class="site-menu-icon fa-plug" aria-hidden="true"></i><span
+                                    class="site-menu-title">组件</span><span class="site-menu-arrow"></span></a>
                             <ul class="site-menu-sub">
                                 <!-- 四级菜单 -->
 
@@ -689,15 +549,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/components/structure/ribbon" target="_blank">
                                         <span class="site-menu-title">彩带</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -707,15 +563,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/components/structure/overlay" target="_blank">
                                         <span class="site-menu-title">遮罩</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -725,12 +577,10 @@
                                 </li>
 
 
-
-
-
                                 <li class="site-menu-item has-sub ">
                                     <a href="javascript:;">
-                                        <span class="site-menu-title">时间轴</span><span class="site-menu-arrow"></span></a>
+                                        <span class="site-menu-title">时间轴</span><span
+                                            class="site-menu-arrow"></span></a>
                                     <ul class="site-menu-sub">
                                         <!-- 五级菜单 -->
 
@@ -751,14 +601,11 @@
                                 </li>
 
 
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/components/structure/step" target="_blank">
                                         <span class="site-menu-title">步骤条</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -768,15 +615,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/components/structure/media" target="_blank">
                                         <span class="site-menu-title">媒体</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -786,15 +629,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/components/structure/testimonials" target="_blank">
                                         <span class="site-menu-title">客户评价</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -804,15 +643,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/components/structure/navbars" target="_blank">
                                         <span class="site-menu-title">导航条</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -822,15 +657,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/components/structure/pagination" target="_blank">
                                         <span class="site-menu-title">分页</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -840,16 +671,15 @@
                                 </li>
 
 
-
                                 <!-- 四级菜单 -->
                             </ul>
                         </li>
 
 
-
-
                         <li class="site-menu-item has-sub ">
-                            <a href="javascript:;"><i class="site-menu-icon fa-puzzle-piece" aria-hidden="true"></i><span class="site-menu-title">小工具</span><span class="site-menu-arrow"></span></a>
+                            <a href="javascript:;"><i class="site-menu-icon fa-puzzle-piece"
+                                                      aria-hidden="true"></i><span
+                                    class="site-menu-title">小工具</span><span class="site-menu-arrow"></span></a>
                             <ul class="site-menu-sub">
                                 <!-- 四级菜单 -->
 
@@ -861,15 +691,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/components/widgets/data" target="_blank">
                                         <span class="site-menu-title">数据</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -879,15 +705,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/components/widgets/chart" target="_blank">
                                         <span class="site-menu-title">图表</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -897,8 +719,6 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/components/widgets/weather" target="_blank">
                                         <span class="site-menu-title">天气</span>
@@ -906,11 +726,9 @@
                                 </li>
 
 
-
                                 <!-- 四级菜单 -->
                             </ul>
                         </li>
-
 
 
                         <!-- 三级菜单 -->
@@ -931,10 +749,9 @@
                         <!-- 三级菜单 -->
 
 
-
-
                         <li class="site-menu-item has-sub ">
-                            <a href="javascript:;"><i class="site-menu-icon fa-home" aria-hidden="true"></i><span class="site-menu-title">首页示例</span><span class="site-menu-arrow"></span></a>
+                            <a href="javascript:;"><i class="site-menu-icon fa-home" aria-hidden="true"></i><span
+                                    class="site-menu-title">首页示例</span><span class="site-menu-arrow"></span></a>
                             <ul class="site-menu-sub">
                                 <!-- 四级菜单 -->
 
@@ -946,15 +763,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/pages/home/index-v2" target="_blank">
                                         <span class="site-menu-title">首页示例 02</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -964,15 +777,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/pages/home/analytics" target="_blank">
                                         <span class="site-menu-title">数据统计型</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -982,16 +791,14 @@
                                 </li>
 
 
-
                                 <!-- 四级菜单 -->
                             </ul>
                         </li>
 
 
-
-
                         <li class="site-menu-item has-sub ">
-                            <a href="javascript:;"><i class="site-menu-icon fa-files-o" aria-hidden="true"></i><span class="site-menu-title">常用页面</span><span class="site-menu-arrow"></span></a>
+                            <a href="javascript:;"><i class="site-menu-icon fa-files-o" aria-hidden="true"></i><span
+                                    class="site-menu-title">常用页面</span><span class="site-menu-arrow"></span></a>
                             <ul class="site-menu-sub">
                                 <!-- 四级菜单 -->
 
@@ -1003,15 +810,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/pages/general/faq" target="_blank">
                                         <span class="site-menu-title">帮助文档</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -1021,15 +824,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/pages/general/search-result" target="_blank">
                                         <span class="site-menu-title">搜索</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -1039,15 +838,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/pages/general/email" target="_blank">
                                         <span class="site-menu-title">邮件模板</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -1057,15 +852,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/error" target="_blank">
                                         <span class="site-menu-title">错误页面</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -1075,15 +866,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/maintenance" target="_blank">
                                         <span class="site-menu-title">网站维护中</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -1093,16 +880,14 @@
                                 </li>
 
 
-
                                 <!-- 四级菜单 -->
                             </ul>
                         </li>
 
 
-
-
                         <li class="site-menu-item has-sub ">
-                            <a href="javascript:;"><i class="site-menu-icon fa-group" aria-hidden="true"></i><span class="site-menu-title">团队协作</span><span class="site-menu-arrow"></span></a>
+                            <a href="javascript:;"><i class="site-menu-icon fa-group" aria-hidden="true"></i><span
+                                    class="site-menu-title">团队协作</span><span class="site-menu-arrow"></span></a>
                             <ul class="site-menu-sub">
                                 <!-- 四级菜单 -->
 
@@ -1114,15 +899,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/pages/team/notebook" target="_blank">
                                         <span class="site-menu-title">笔记</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -1132,12 +913,10 @@
                                 </li>
 
 
-
-
-
                                 <li class="site-menu-item has-sub ">
                                     <a href="javascript:;">
-                                        <span class="site-menu-title">知识库</span><span class="site-menu-arrow"></span></a>
+                                        <span class="site-menu-title">知识库</span><span
+                                            class="site-menu-arrow"></span></a>
                                     <ul class="site-menu-sub">
                                         <!-- 五级菜单 -->
 
@@ -1164,14 +943,11 @@
                                 </li>
 
 
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/pages/team/forum" target="_blank">
                                         <span class="site-menu-title">论坛</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -1181,8 +957,6 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/pages/team/mailbox" target="_blank">
                                         <span class="site-menu-title">邮箱</span>
@@ -1190,16 +964,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/pages/team/media" target="_blank">
                                         <span class="site-menu-title">文件管理</span>
                                     </a>
                                 </li>
-
-
-
 
 
                                 <li class="site-menu-item has-sub ">
@@ -1230,7 +999,6 @@
                         </li>
 
 
-
                         <!-- 三级菜单 -->
 
                         <!-- 二级菜单 -->
@@ -1249,14 +1017,11 @@
                         <!-- 三级菜单 -->
 
 
-
                         <li class="site-menu-item ">
                             <a data-pjax href="/tables/basic/index" target="_blank">
                                 <i class="site-menu-icon fa-table" aria-hidden="true"></i><span class="site-menu-title">基本表格</span>
                             </a>
                         </li>
-
-
 
 
                         <li class="site-menu-item ">
@@ -1266,11 +1031,9 @@
                         </li>
 
 
-
-
-
                         <li class="site-menu-item has-sub ">
-                            <a href="javascript:;"><i class="site-menu-icon fa-list-alt" aria-hidden="true"></i><span class="site-menu-title">DataTables</span><span class="site-menu-arrow"></span></a>
+                            <a href="javascript:;"><i class="site-menu-icon fa-list-alt" aria-hidden="true"></i><span
+                                    class="site-menu-title">DataTables</span><span class="site-menu-arrow"></span></a>
                             <ul class="site-menu-sub">
                                 <!-- 四级菜单 -->
 
@@ -1282,15 +1045,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/tables/data-tables/advanced-init/index" target="_blank">
                                         <span class="site-menu-title">高级初始化</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -1300,15 +1059,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/tables/data-tables/api/index" target="_blank">
                                         <span class="site-menu-title">API</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -1318,15 +1073,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/tables/data-tables/server-side/index" target="_blank">
                                         <span class="site-menu-title">服务器模式</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -1336,8 +1087,6 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/tables/data-tables/others/index" target="_blank">
                                         <span class="site-menu-title">其他</span>
@@ -1345,11 +1094,9 @@
                                 </li>
 
 
-
                                 <!-- 四级菜单 -->
                             </ul>
                         </li>
-
 
 
                         <!-- 三级菜单 -->
@@ -1370,59 +1117,52 @@
                         <!-- 三级菜单 -->
 
 
-
                         <li class="site-menu-item ">
                             <a data-pjax href="/forms/general" target="_blank">
-                                <i class="site-menu-icon fa-circle-o" aria-hidden="true"></i><span class="site-menu-title">基本表单</span>
+                                <i class="site-menu-icon fa-circle-o" aria-hidden="true"></i><span
+                                    class="site-menu-title">基本表单</span>
                             </a>
                         </li>
-
-
 
 
                         <li class="site-menu-item ">
                             <a data-pjax href="/forms/material" target="_blank">
-                                <i class="site-menu-icon fa-google" aria-hidden="true"></i><span class="site-menu-title">质感风格</span>
+                                <i class="site-menu-icon fa-google" aria-hidden="true"></i><span
+                                    class="site-menu-title">质感风格</span>
                             </a>
                         </li>
-
-
 
 
                         <li class="site-menu-item ">
                             <a data-pjax href="/forms/advanced" target="_blank">
-                                <i class="site-menu-icon fa-toggle-off" aria-hidden="true"></i><span class="site-menu-title">高级表单</span>
+                                <i class="site-menu-icon fa-toggle-off" aria-hidden="true"></i><span
+                                    class="site-menu-title">高级表单</span>
                             </a>
                         </li>
-
-
 
 
                         <li class="site-menu-item ">
                             <a data-pjax href="/forms/layouts" target="_blank">
-                                <i class="site-menu-icon fa-indent" aria-hidden="true"></i><span class="site-menu-title">表单布局</span>
+                                <i class="site-menu-icon fa-indent" aria-hidden="true"></i><span
+                                    class="site-menu-title">表单布局</span>
                             </a>
                         </li>
-
-
 
 
                         <li class="site-menu-item ">
                             <a data-pjax href="/forms/wizard" target="_blank">
-                                <i class="site-menu-icon fa-arrow-right" aria-hidden="true"></i><span class="site-menu-title">表单向导</span>
+                                <i class="site-menu-icon fa-arrow-right" aria-hidden="true"></i><span
+                                    class="site-menu-title">表单向导</span>
                             </a>
                         </li>
-
-
 
 
                         <li class="site-menu-item ">
                             <a data-pjax href="/forms/validation" target="_blank">
-                                <i class="site-menu-icon fa-check-square-o" aria-hidden="true"></i><span class="site-menu-title">表单验证</span>
+                                <i class="site-menu-icon fa-check-square-o" aria-hidden="true"></i><span
+                                    class="site-menu-title">表单验证</span>
                             </a>
                         </li>
-
-
 
 
                         <li class="site-menu-item ">
@@ -1432,8 +1172,6 @@
                         </li>
 
 
-
-
                         <li class="site-menu-item ">
                             <a data-pjax href="/forms/editable" target="_blank">
                                 <i class="site-menu-icon fa-edit" aria-hidden="true"></i><span class="site-menu-title">表单编辑</span>
@@ -1441,11 +1179,9 @@
                         </li>
 
 
-
-
-
                         <li class="site-menu-item has-sub ">
-                            <a href="javascript:;"><i class="site-menu-icon fa-list-alt" aria-hidden="true"></i><span class="site-menu-title">编辑器</span><span class="site-menu-arrow"></span></a>
+                            <a href="javascript:;"><i class="site-menu-icon fa-list-alt" aria-hidden="true"></i><span
+                                    class="site-menu-title">编辑器</span><span class="site-menu-arrow"></span></a>
                             <ul class="site-menu-sub">
                                 <!-- 四级菜单 -->
 
@@ -1457,15 +1193,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/forms/editor/markdown" target="_blank">
                                         <span class="site-menu-title">Markdown编辑器</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -1475,11 +1207,9 @@
                                 </li>
 
 
-
                                 <!-- 四级菜单 -->
                             </ul>
                         </li>
-
 
 
                         <li class="site-menu-item ">
@@ -1489,15 +1219,12 @@
                         </li>
 
 
-
-
                         <li class="site-menu-item ">
                             <a data-pjax href="/forms/dropify" target="_blank">
-                                <i class="site-menu-icon fa-cloud-upload" aria-hidden="true"></i><span class="site-menu-title">文件上传</span>
+                                <i class="site-menu-icon fa-cloud-upload" aria-hidden="true"></i><span
+                                    class="site-menu-title">文件上传</span>
                             </a>
                         </li>
-
-
 
 
                         <!-- 三级菜单 -->
@@ -1518,10 +1245,9 @@
                         <!-- 三级菜单 -->
 
 
-
-
                         <li class="site-menu-item has-sub ">
-                            <a href="javascript:;"><i class="site-menu-icon fa-pie-chart" aria-hidden="true"></i><span class="site-menu-title">简单图表</span><span class="site-menu-arrow"></span></a>
+                            <a href="javascript:;"><i class="site-menu-icon fa-pie-chart" aria-hidden="true"></i><span
+                                    class="site-menu-title">简单图表</span><span class="site-menu-arrow"></span></a>
                             <ul class="site-menu-sub">
                                 <!-- 四级菜单 -->
 
@@ -1533,15 +1259,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/charts/gauges" target="_blank">
                                         <span class="site-menu-title">Gauges</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -1551,15 +1273,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/charts/peity" target="_blank">
                                         <span class="site-menu-title">Peity</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -1569,15 +1287,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/charts/morris" target="_blank">
                                         <span class="site-menu-title">Morris</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -1587,15 +1301,11 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/charts/rickshaw" target="_blank">
                                         <span class="site-menu-title">Rickshaw</span>
                                     </a>
                                 </li>
-
-
 
 
                                 <li class="site-menu-item ">
@@ -1605,20 +1315,17 @@
                                 </li>
 
 
-
                                 <!-- 四级菜单 -->
                             </ul>
                         </li>
 
 
-
                         <li class="site-menu-item ">
                             <a data-pjax href="/charts/echarts" target="_blank">
-                                <i class="site-menu-icon fa-area-chart" aria-hidden="true"></i><span class="site-menu-title">百度 Echarts</span>
+                                <i class="site-menu-icon fa-area-chart" aria-hidden="true"></i><span
+                                    class="site-menu-title">百度 Echarts</span>
                             </a>
                         </li>
-
-
 
 
                         <!-- 三级菜单 -->
@@ -1639,10 +1346,9 @@
                         <!-- 三级菜单 -->
 
 
-
-
                         <li class="site-menu-item has-sub ">
-                            <a href="javascript:;"><i class="site-menu-icon fa-bars" aria-hidden="true"></i><span class="site-menu-title">一级菜单</span><span class="site-menu-arrow"></span></a>
+                            <a href="javascript:;"><i class="site-menu-icon fa-bars" aria-hidden="true"></i><span
+                                    class="site-menu-title">一级菜单</span><span class="site-menu-arrow"></span></a>
                             <ul class="site-menu-sub">
                                 <!-- 四级菜单 -->
 
@@ -1654,8 +1360,6 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/menu" target="_blank">
                                         <span class="site-menu-title">二级菜单 02</span>
@@ -1663,12 +1367,10 @@
                                 </li>
 
 
-
-
-
                                 <li class="site-menu-item has-sub ">
                                     <a href="javascript:;">
-                                        <span class="site-menu-title">二级菜单 03</span><span class="site-menu-arrow"></span></a>
+                                        <span class="site-menu-title">二级菜单 03</span><span
+                                            class="site-menu-arrow"></span></a>
                                     <ul class="site-menu-sub">
                                         <!-- 五级菜单 -->
 
@@ -1700,14 +1402,11 @@
                         </li>
 
 
-
                         <li class="site-menu-item ">
                             <a data-pjax href="#" target="_blank">
                                 <i class="site-menu-icon fa-bars" aria-hidden="true"></i><span class="site-menu-title">独立菜单</span>
                             </a>
                         </li>
-
-
 
 
                         <!-- 三级菜单 -->
@@ -1716,14 +1415,11 @@
                         <!-- 三级菜单 -->
 
 
-
                         <li class="site-menu-item ">
                             <a data-pjax href="/menu" target="_blank">
                                 <i class="site-menu-icon fa-bars" aria-hidden="true"></i><span class="site-menu-title">独立菜单</span>
                             </a>
                         </li>
-
-
 
 
                         <!-- 三级菜单 -->
@@ -1744,7 +1440,6 @@
                         <!-- 三级菜单 -->
 
 
-
                         <li class="site-menu-item ">
                             <a data-pjax href="/system/menu" target="_blank">
                                 <i class="site-menu-icon fa-bars" aria-hidden="true"></i><span class="site-menu-title">菜单管理</span>
@@ -1752,38 +1447,33 @@
                         </li>
 
 
-
-
                         <li class="site-menu-item ">
                             <a data-pjax href="/system/user" target="_blank">
-                                <i class="site-menu-icon fa-street-view" aria-hidden="true"></i><span class="site-menu-title">用户管理</span>
+                                <i class="site-menu-icon fa-street-view" aria-hidden="true"></i><span
+                                    class="site-menu-title">用户管理</span>
                             </a>
                         </li>
-
-
 
 
                         <li class="site-menu-item ">
                             <a data-pjax href="/system/log" target="_blank">
-                                <i class="site-menu-icon fa-file-text-o" aria-hidden="true"></i><span class="site-menu-title">日志信息</span>
+                                <i class="site-menu-icon fa-file-text-o" aria-hidden="true"></i><span
+                                    class="site-menu-title">日志信息</span>
                             </a>
                         </li>
-
-
 
 
                         <li class="site-menu-item ">
                             <a data-pjax href="/system/blacklist" target="_blank">
-                                <i class="site-menu-icon fa-shield" aria-hidden="true"></i><span class="site-menu-title">黑名单</span>
+                                <i class="site-menu-icon fa-shield" aria-hidden="true"></i><span
+                                    class="site-menu-title">黑名单</span>
                             </a>
                         </li>
 
 
-
-
-
                         <li class="site-menu-item has-sub ">
-                            <a href="javascript:;"><i class="site-menu-icon fa-gear" aria-hidden="true"></i><span class="site-menu-title">系统设置</span><span class="site-menu-arrow"></span></a>
+                            <a href="javascript:;"><i class="site-menu-icon fa-gear" aria-hidden="true"></i><span
+                                    class="site-menu-title">系统设置</span><span class="site-menu-arrow"></span></a>
                             <ul class="site-menu-sub">
                                 <!-- 四级菜单 -->
 
@@ -1795,8 +1485,6 @@
                                 </li>
 
 
-
-
                                 <li class="site-menu-item ">
                                     <a data-pjax href="/system/settings/log" target="_blank">
                                         <span class="site-menu-title">日志设置</span>
@@ -1804,11 +1492,9 @@
                                 </li>
 
 
-
                                 <!-- 四级菜单 -->
                             </ul>
                         </li>
-
 
 
                         <!-- 三级菜单 -->
@@ -1817,14 +1503,11 @@
                         <!-- 三级菜单 -->
 
 
-
                         <li class="site-menu-item ">
                             <a data-pjax href="/system/account" target="_blank">
                                 <i class="site-menu-icon fa-key" aria-hidden="true"></i><span class="site-menu-title">账户信息</span>
                             </a>
                         </li>
-
-
 
 
                         <!-- 三级菜单 -->
@@ -1854,7 +1537,8 @@
         <button type="button" class="btn btn-icon btn-default hide">
             <i class="icon fa-angle-double-right"></i>
         </button>
-        <button type="button" class="btn btn-default dropdown-toggle btn-outline" data-toggle="dropdown" aria-expanded="false">
+        <button type="button" class="btn btn-default dropdown-toggle btn-outline" data-toggle="dropdown"
+                aria-expanded="false">
             <span class="caret"></span> <span class="sr-only">切换菜单</span>
         </button>
         <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="conTabsDropdown" role="menu">
@@ -1875,24 +1559,17 @@
     <div class="page-container" id="admui-pageContent">
 
 
-
-
-
-
-
-
-
         <title>首页</title>
 
-        <link rel="stylesheet" href="http://cdn.admui.com/demo/1.1.0/fonts/themify/themify.css">
-        <link rel="stylesheet" href="http://cdn.admui.com/demo/1.1.0/css/home.css">
+        <link rel="stylesheet" href="{$domain.static}/css/themify.css">
+        <link rel="stylesheet" href="{$domain.static}/css/home.css">
 
         <div class="page animation-fade page-index">
             <div class="page-content">
                 <div class="media account-info">
                     <div class="media-left">
                         <div class="avatar avatar-online">
-                            <img src="http://cdn.admui.com/demo/1.1.0/images/avatar.svg" alt="xiaxuan@admui_demo">
+                            <img src="{$domain.static}/img/avatar.svg" alt="xiaxuan@admui_demo">
                             <i class="avatar avatar-busy"></i>
                         </div>
                     </div>
@@ -1906,7 +1583,8 @@
                             </small>
                         </h4>
                         <p>
-                            <i class="icon icon-color wb-bell" aria-hidden="true"></i> 这是您第 46821 次登录，上次登录日期：2017-8-11 21:06:18，详细信息请查看
+                            <i class="icon icon-color wb-bell" aria-hidden="true"></i> 这是您第 47545 次登录，上次登录日期：2017-8-14
+                            20:13:52，详细信息请查看
                             <a data-pjax href="/account/log" target="_blank">日志</a>
                             ，如果不是您本人登录，请及时
                             <a data-pjax href="/account/password" target="_blank">修改密码</a>
@@ -1914,7 +1592,8 @@
                         </p>
                     </div>
                     <div class="media-right">
-                        <a href="/system/account" data-pjax target="_blank" class="btn btn-outline btn-success btn-outline btn-sm">账户管理</a>
+                        <a href="/system/account" data-pjax target="_blank"
+                           class="btn btn-outline btn-success btn-outline btn-sm">账户管理</a>
                     </div>
                 </div>
                 <div class="row margin-top-10" data-plugin="matchHeight" data-by-row="true">
@@ -1932,7 +1611,9 @@
                                 <div class="media">
                                     <div class="media-left">
                                         <a href="javascript:;">
-                                            <img class="media-object" src="http://cdn.admui.com/demo/1.1.0/images/admui-desktop.svg" alt="...">
+                                            <img class="media-object"
+                                                 src="{$domain.static}/img/admui-desktop.svg"
+                                                 alt="...">
                                         </a>
 
                                     </div>
@@ -1942,24 +1623,33 @@
                                             <li class="list-group-item">Admui 是一个基于最新 Web
                                                 技术的企业级通用管理系统快速开发框架，可以帮助企业极大的提高工作效率，节省开发成本，提升品牌形象。
                                             </li>
-                                            <li class="list-group-item">您可以 Admui 为基础，快速开发各种MIS系统，如CMS、OA、CRM、ERP、POS等。</li>
-                                            <li class="list-group-item">Admui 紧贴业务特性，涵盖了大量的常用组件和基础功能，最大程度上帮助企业节省时间成本和费用开支。</li>
+                                            <li class="list-group-item">您可以 Admui
+                                                为基础，快速开发各种MIS系统，如CMS、OA、CRM、ERP、POS等。
+                                            </li>
+                                            <li class="list-group-item">Admui
+                                                紧贴业务特性，涵盖了大量的常用组件和基础功能，最大程度上帮助企业节省时间成本和费用开支。
+                                            </li>
                                         </ul>
 
                                         <div>
-                                            <a href="http://www.admui.com/" class="btn btn-success btn-sm btn-outline btn-round" target="_blank">
+                                            <a href="http://www.admui.com/"
+                                               class="btn btn-success btn-sm btn-outline btn-round" target="_blank">
                                                 返回官网
                                             </a>
-                                            <a href="#" class="btn btn-warning btn-sm btn-outline btn-round" data-toggle="modal" data-target="#admui-mobileView">
+                                            <a href="#" class="btn btn-warning btn-sm btn-outline btn-round"
+                                               data-toggle="modal" data-target="#admui-mobileView">
                                                 手机体验
                                             </a>
-                                            <a href="#" class="btn btn-primary btn-sm btn-outline btn-round open-kf" data-toggle="modal">
+                                            <a href="#" class="btn btn-primary btn-sm btn-outline btn-round open-kf"
+                                               data-toggle="modal">
                                                 咨询客服
                                             </a>
-                                            <a href="http://docs.admui.com/" class="btn btn-danger btn-sm btn-outline btn-round" target="_blank">
+                                            <a href="http://docs.admui.com/"
+                                               class="btn btn-danger btn-sm btn-outline btn-round" target="_blank">
                                                 开发文档
                                             </a>
-                                            <a href="http://www.admui.com/about.html" class="btn btn-dark btn-sm btn-outline btn-round" target="_blank">
+                                            <a href="http://www.admui.com/about.html"
+                                               class="btn btn-dark btn-sm btn-outline btn-round" target="_blank">
                                                 服务协议
                                             </a>
                                         </div>
@@ -1983,19 +1673,22 @@
                                     <li>
                                         <time datatime="2017-06-26">2017-06-26</time>
                                         <h5>
-                                            <a href="http://docs.admui.com/version/v1.1.0/" target="_blank">Admui v1.1.0 版发布</a>
+                                            <a href="http://docs.admui.com/version/v1.1.0/" target="_blank">Admui v1.1.0
+                                                版发布</a>
                                         </h5>
                                     </li>
                                     <li>
                                         <time datatime="2017-06-13">2017-06-13</time>
                                         <h5>
-                                            <a href="http://docs.admui.com/version/v1.0.1/" target="_blank">Admui v1.0.1 维护版发布</a>
+                                            <a href="http://docs.admui.com/version/v1.0.1/" target="_blank">Admui v1.0.1
+                                                维护版发布</a>
                                         </h5>
                                     </li>
                                     <li>
                                         <time datatime="2017-04-25">2017-04-25</time>
                                         <h5>
-                                            <a href="http://docs.admui.com/version/v1.0.0/" target="_blank">Admui v1.0.0 正式发布</a>
+                                            <a href="http://docs.admui.com/version/v1.0.0/" target="_blank">Admui v1.0.0
+                                                正式发布</a>
                                         </h5>
                                     </li>
                                     <li>
@@ -2169,12 +1862,6 @@
                 </div>
             </div>
         </div>
-
-        <script src="http://cdn.admui.com/demo/1.1.0/vendor/matchheight/jquery.matchHeight.min.js"></script>
-
-
-
-
     </div>
     <div class="page-loading vertical-align text-center">
         <div class="page-loader loader-default loader vertical-align-middle" data-type="default"></div>
@@ -2193,7 +1880,8 @@
     </div>
 </footer>
 
-<div class="modal fade" id="admui-mobileView" aria-hidden="true" aria-labelledby="admui-mobileView" role="dialog" tabindex="-1">
+<div class="modal fade" id="admui-mobileView" aria-hidden="true" aria-labelledby="admui-mobileView" role="dialog"
+     tabindex="-1">
     <div class="modal-dialog modal-sidebar modal-sm">
         <div class="modal-content">
             <div class="modal-header">
@@ -2213,23 +1901,45 @@
     </div>
 </div>
 
+{/block}
+{block name="style"}
+<link rel="stylesheet" href="{$domain.static}/css/animsition.css">
+<link rel="stylesheet" href="{$domain.static}/css/toastr.css">
+<link rel="stylesheet" href="{$domain.static}/css/demo.css">
+<link rel="stylesheet" href="{$domain.static}/css/home.css">
+<link rel="stylesheet" href="{$domain.static}/css/themify.css">
+{/block}
+
+{block name="js"}
+<!-- 插件 -->
+<script src="{$domain.static}/js/jquery.min.js"></script>
+<script src="{$domain.static}/js/bootstrap.min.js"></script>
+<script src="{$domain.static}/js/modernizr.min.js"></script>
+<script src="{$domain.static}/js/breakpoints.min.js"></script>
+<script src="{$domain.static}/js/template.min.js"></script>
+<script src="{$domain.static}/js/toastr.min.js"></script>
+<script src="{$domain.static}/js/bootbox.min.js"></script>
+
+<!-- 核心  -->
+<script src="{$domain.static}/js/core.js"></script>
+<script src="{$domain.static}/js/site.js"></script>
+<script src="{$domain.static}/js/site-configs.js"></script>
+<script src="{$domain.static}/js/components.js"></script>
+
 <!-- 布局 -->
-<script src="http://cdn.admui.com/demo/1.1.0/themes/classic/base/js/sections/menu.js"></script>
-<script src="http://cdn.admui.com/demo/1.1.0/themes/classic/base/js/sections/media-menu.js"></script>
-<script src="http://cdn.admui.com/demo/1.1.0/themes/classic/base/js/sections/content-tabs.js"></script>
+<script src="{$domain.static}/js/menu.js"></script>
+<script src="{$domain.static}/js/media-menu.js"></script>
+<script src="{$domain.static}/js/content-tabs.js"></script>
 
 <!-- 插件 -->
-<script src="http://cdn.admui.com/demo/1.1.0/vendor/jquery-pjax/jquery.pjax.min.js"></script>
-<script src="http://cdn.admui.com/demo/1.1.0/themes/classic/global/js/plugins/responsive-tabs.js"></script>
-<script src="http://cdn.admui.com/demo/1.1.0/vendor/ashoverscroll/jquery-asHoverScroll.min.js"></script>
-<script src="http://cdn.admui.com/demo/1.1.0/vendor/slimscroll/jquery.slimscroll.min.js"></script>
-<script src="http://cdn.admui.com/demo/1.1.0/vendor/screenfull/screenfull.min.js"></script>
-
-<!-- 客服组件 -->
-<script src="//assets-cdn.kf5.com/supportbox/main.js?2&_=1502458325877" id="kf5-provide-supportBox" kf5-domain="admui.kf5.com"></script>
-
-<!-- 消息通知 -->
-<script src="http://cdn.admui.com/demo/1.1.0/js/notify-msg.js"></script>
+<script src="{$domain.static}/js/jquery.pjax.min.js"></script>
+<script src="{$domain.static}/js/responsive-tabs.js"></script>
+<script src="{$domain.static}/js/jquery-asHoverScroll.min.js"></script>
+<script src="{$domain.static}/js/jquery.slimscroll.min.js"></script>
+<script src="{$domain.static}/js/screenfull.min.js"></script>
+<script src="{$domain.static}/js/jquery.matchHeight.min.js"></script>
+<script>Breakpoints();</script>
+{/block}
 </body>
 </html>
 
