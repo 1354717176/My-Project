@@ -1,5 +1,6 @@
 {extend name="../../common/view/base" /}
 {block name="body"}
+<body class="site-contabs-open">
 <nav class="site-navbar navbar navbar-default navbar-fixed-top navbar-inverse " role="navigation">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle hamburger hamburger-close navbar-toggle-left hided"
@@ -203,7 +204,7 @@
                                         <!-- 五级菜单 -->
 
                                         <li class="site-menu-item ">
-                                            <a data-pjax href="/components/layouts/grids" target="_blank">
+                                            <a data-pjax href='{:Url("main")}' target="_blank">
                                                 <span class="site-menu-title">基本栅格</span>
                                             </a>
                                         </li>
@@ -1529,7 +1530,7 @@
     <div class="contabs-scroll pull-left">
         <ul class="nav con-tabs">
             <li class="active">
-                <a data-pjax href="/home" rel="contents"><span>首页</span></a>
+                <a data-pjax="" href="/" rel="contents"><span>首页</span></a>
             </li>
         </ul>
     </div>
@@ -1537,8 +1538,7 @@
         <button type="button" class="btn btn-icon btn-default hide">
             <i class="icon fa-angle-double-right"></i>
         </button>
-        <button type="button" class="btn btn-default dropdown-toggle btn-outline" data-toggle="dropdown"
-                aria-expanded="false">
+        <button type="button" class="btn btn-default dropdown-toggle btn-outline" data-toggle="dropdown" aria-expanded="false">
             <span class="caret"></span> <span class="sr-only">切换菜单</span>
         </button>
         <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="conTabsDropdown" role="menu">
