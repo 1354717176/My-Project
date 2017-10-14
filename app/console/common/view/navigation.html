@@ -1,102 +1,31 @@
-<nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0; border-bottom: 1px solid #2f4050;">
-    <div class="navbar-header">
-        <div class="nav navbar-left" style="text-align: center; background-color: #2f4050;">
-            <div class="profile-element pull-left" style="width: 220px; line-height: 60px;"><img src="/static/img/logo.png"></div>
-            <div class="logo-element">H+</div>
-        </div>
-        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary pull-left" href="#"><i class="fa fa-bars"></i></a>
-        <ul class="nav navbar-top-links navbar-left" id="J_navbar">
-            <!-- <li class="hidden-xs">
-                <a class="right-sidebar-toggle" aria-expanded="false">导航示例</a>
-            </li> -->
+<nav class="site-contabs" id="admui-siteConTabs">
+    <button type="button" class="btn btn-icon btn-default pull-left hide">
+        <i class="icon fa-angle-double-left"></i>
+    </button>
+    <div class="contabs-scroll pull-left">
+        <ul class="nav con-tabs">
+            <li class="active">
+                <a data-pjax="" href="/" rel="contents"><span>首页</span></a>
+            </li>
         </ul>
     </div>
-    <ul class="nav navbar-top-links navbar-right">
-        <li class="dropdown">
-            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                <i class="fa fa-envelope"></i> <span class="label label-warning">16</span>
-            </a>
-            <ul class="dropdown-menu dropdown-messages">
-                <li class="m-t-xs">
-                    <div class="dropdown-messages-box">
-                        <a href="profile.html" class="pull-left">
-                            <img alt="image" class="img-circle" src="/static/img/a7.jpg">
-                        </a>
-                        <div class="media-body">
-                            <small class="pull-right">46小时前</small>
-                            <strong>小四</strong> 这个在日本投降书上签字的军官，建国后一定是个不小的干部吧？
-                            <br>
-                            <small class="text-muted">3天前 2014.11.8</small>
-                        </div>
-                    </div>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <div class="dropdown-messages-box">
-                        <a href="profile.html" class="pull-left">
-                            <img alt="image" class="img-circle" src="/static/img/a4.jpg">
-                        </a>
-                        <div class="media-body ">
-                            <small class="pull-right text-navy">25小时前</small>
-                            <strong>国民岳父</strong> 如何看待“男子不满自己爱犬被称为狗，刺伤路人”？——这人比犬还凶
-                            <br>
-                            <small class="text-muted">昨天</small>
-                        </div>
-                    </div>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <div class="text-center link-block">
-                        <a class="J_menuItem" href="mailbox.html">
-                            <i class="fa fa-envelope"></i> <strong> 查看所有消息</strong>
-                        </a>
-                    </div>
-                </li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                <i class="fa fa-bell"></i> <span class="label label-primary">8</span>
-            </a>
-            <ul class="dropdown-menu dropdown-alerts">
-                <li>
-                    <a href="mailbox.html">
-                        <div>
-                            <i class="fa fa-envelope fa-fw"></i> 您有16条未读消息
-                            <span class="pull-right text-muted small">4分钟前</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a href="profile.html">
-                        <div>
-                            <i class="fa fa-qq fa-fw"></i> 3条新回复
-                            <span class="pull-right text-muted small">12分钟钱</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <div class="text-center link-block">
-                        <a class="J_menuItem" href="notifications.html">
-                            <strong>查看所有 </strong>
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </div>
-                </li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a aria-expanded="false" role="button" href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-user"></i> {:session('admin_user.nickname')}
-                <span class="caret"></span>
-            </a>
-            <ul role="menu" class="dropdown-menu">
-                <li><a href=""><i class="fa fa fa-question-circle"></i> 帮助中心</a></li>
-                <li><a href=""><i class="fa fa fa-gear"></i> 账号设置</a></li>
-                <li><a href="{:Url('login/login/out','',false,true)}"><i class="fa fa fa-sign-out"></i> 安全退出</a></li>
-            </ul>
-        </li>
-    </ul>
+    <div class="btn-group pull-right">
+        <button type="button" class="btn btn-icon btn-default hide">
+            <i class="icon fa-angle-double-right"></i>
+        </button>
+        <button type="button" class="btn btn-default dropdown-toggle btn-outline" data-toggle="dropdown" aria-expanded="false">
+            <span class="caret"></span> <span class="sr-only">切换菜单</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="conTabsDropdown" role="menu">
+            <li class="reload-page" role="presentation">
+                <a href="javascript:;" role="menuitem"><i class="icon wb-reload"></i> 刷新当前</a>
+            </li>
+            <li class="close-other" role="presentation">
+                <a href="javascript:;" role="menuitem"><i class="icon wb-close"></i> 关闭其他</a>
+            </li>
+            <li class="close-all" role="presentation">
+                <a href="javascript:;" role="menuitem"><i class="icon wb-power"></i> 关闭所有</a>
+            </li>
+        </ul>
+    </div>
 </nav>
