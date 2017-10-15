@@ -45,6 +45,9 @@ class Base extends Controller
             }
         }*/
        $this->config =  self::getConfig();
+
+        //域名配置
+        $this->assign('domain', $this->config['domain']);
     }
 
     /**

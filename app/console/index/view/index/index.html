@@ -2,7 +2,6 @@
 {block name="body"}
 <main class="site-page">
     <div class="page-container" id="admui-pageContent">
-        <title>首页</title>
         <div class="page animation-fade page-index">
             <div class="page-content">
                 <div class="media account-info">
@@ -304,5 +303,26 @@
         <div class="page-loader loader-default loader vertical-align-middle" data-type="default"></div>
     </div>
 </main>
+{/block}
+{block name="js"}
+<script>
+    $(function(){
+        $(".site-menu-sub").on('click','a',function (e) {
+            $.ajax({
+                type:'post',
+                url:$(this).attr('href'),
+                data:{},
+                success:function(data){
+                    $(".site-page").html(data);
+                }
+            })
+            e.preventDefault();
+        })
+
+        $(".site-gridmenu-toggle").on('click',function () {
+            window.location.href='/';
+        })
+    })
+</script>
 {/block}
 
