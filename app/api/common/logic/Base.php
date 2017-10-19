@@ -4,6 +4,7 @@ namespace app\api\common\logic;
 
 use think\Config;
 use think\Controller;
+use think\Request;
 use think\Session;
 use think\Db;
 
@@ -22,32 +23,13 @@ class Base extends Controller
 
     protected function _initialize()
     {
-        /*define('CONTROLLER', strtoupper(Request::instance()->controller()));
-        define('MODULE', strtoupper(Request::instance()->module()));
-        define('ACTION', strtoupper(Request::instance()->action()));
-
-        if (APP_NAME == 'business') {
-            if (Session::has('businessUser')) {
-                $this->userInfo = Session::get('businessUser');
-                //非系统管理员，需要验证权限
-                if (!in_array($this->userInfo['type'], [0])) {
-                    $this->auth = $this->queryPrivilege();
-                    if (!in_array(CONTROLLER, $this->auth) || !in_array(CONTROLLER . '_' . MODULE, $this->auth) || !in_array(CONTROLLER . '_' . MODULE . '_' . ACTION, $this->auth)) {
-                        $this->redirect(Url('error/error/', '', false, true));
-                    }
-                }
-            } else {
-                $this->redirect(Url('login/login/', '', false, true));
-            }
-        } else if (APP_NAME == 'console') {
-            if (!Session::has('adminUser')) {
-                $this->redirect(Url('login/login/', '', false, true));
-            }
-        }*/
        $this->config =  self::getConfig();
 
         //域名配置
         $this->assign('domain', $this->config['domain']);
+
+        //pjax加载模版
+        $this->setPjax();
     }
 
     /**
@@ -70,7 +52,7 @@ class Base extends Controller
      * author: yanghuan
      * date:2017/3/12 18:01
      */
-    public static function random($length, $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz')
+    protected static function random($length, $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz')
     {
         $hash = '';
         $max = strlen($chars) - 1;
@@ -81,28 +63,13 @@ class Base extends Controller
     }
 
     /**
-     * 查询登录帐号具有的权限
-     * author: yanghuan
-     * date:2017/3/22 21:04
+     * 配合前端进行的pjax请求而进行的模版加载设置
+     * author:yanghuan
+     * date:2017/10/19 22:47
      */
-    public function queryPrivilege()
-    {
-        //默认具有的权限
-        $auth = ['INDEX', 'INDEX_INDEX', 'INDEX_INDEX_MAIN', 'INDEX_INDEX_INDEX'];
-
-        $userId = $this->userInfo['id'];
-        $result = Db::name('user_role')
-            ->alias('ur')
-            ->field('pri_code')
-            ->join('__USER_PRIVILEGE__ up', 'ur.role_code=up.role_code', 'LEFT')
-            ->where('ur.status', 0)
-            ->where('user_id', $userId)
-            ->select();
-        if ($result) {
-            foreach ($result as $item) {
-                $auth[] = $item['pri_code'];
-            }
-        }
-        return $auth;
+    protected function setPjax(){
+        $this->view->config('tpl_cache', false);
+        $layout = $this->request->isPjax() ? false : '../../common/view/layout';
+        $this->view->engine->layout($layout);
     }
 }

@@ -45,27 +45,39 @@
     <link rel="stylesheet" href="{$domain.static}/css/themify.css">
     <link rel="stylesheet" href="{$domain.static}/plugin/layui/css/layui.css">
 
+    <!-- 插件 -->
+    <script src="{$domain.static}/js/jquery.min.js"></script>
+    <script src="{$domain.static}/js/bootstrap.min.js"></script>
+    <script src="{$domain.static}/js/modernizr.min.js"></script>
+    <script src="{$domain.static}/js/breakpoints.min.js"></script>
+    <script src="{$domain.static}/js/template.min.js"></script>
+    <script src="{$domain.static}/js/toastr.min.js"></script>
+    <script src="{$domain.static}/js/bootbox.min.js"></script>
+
+    <!-- 核心  -->
+    <script src="{$domain.static}/js/core.js"></script>
+    <script src="{$domain.static}/js/site.js"></script>
+    <script src="{$domain.static}/js/site-configs.js"></script>
+    <script src="{$domain.static}/js/components.js"></script>
+    <script>Breakpoints();</script>
+
     {block name="style"}{/block}
 </head>
 <body class="site-contabs-open">
 {include file="../../common/view/header" /}
 {include file="../../common/view/sidebar_left" /}
-{block name="body"}{/block}
-{include file="../../common/view/footer" /}
-<!-- 插件 -->
-<script src="{$domain.static}/js/jquery.min.js"></script>
-<script src="{$domain.static}/js/bootstrap.min.js"></script>
-<script src="{$domain.static}/js/modernizr.min.js"></script>
-<script src="{$domain.static}/js/breakpoints.min.js"></script>
-<script src="{$domain.static}/js/template.min.js"></script>
-<script src="{$domain.static}/js/toastr.min.js"></script>
-<script src="{$domain.static}/js/bootbox.min.js"></script>
+{include file="../../common/view/navigation" /}
 
-<!-- 核心  -->
-<script src="{$domain.static}/js/core.js"></script>
-<script src="{$domain.static}/js/site.js"></script>
-<script src="{$domain.static}/js/site-configs.js"></script>
-<script src="{$domain.static}/js/components.js"></script>
+<main class="site-page">
+<div class="page-container" id="admui-pageContent">
+{block name="body"}{/block}
+<div class="page-loading vertical-align text-center">
+    <div class="page-loader loader-default loader vertical-align-middle" data-type="default"></div>
+</div>
+</main>
+{include file="../../common/view/footer" /}
+
+
 
 <!-- 布局 -->
 <script src="{$domain.static}/js/menu.js"></script>
@@ -79,9 +91,10 @@
 <script src="{$domain.static}/js/jquery.slimscroll.min.js"></script>
 <script src="{$domain.static}/js/screenfull.min.js"></script>
 <script src="{$domain.static}/js/jquery.matchHeight.min.js"></script>
-<script>Breakpoints();</script>
+
 
 <script src="{$domain.static}/plugin/layui/layui.js"></script>
+<script src="{$domain.static}/js/app.js"></script>
 {block name="js"}{/block}
 </body>
 </html>

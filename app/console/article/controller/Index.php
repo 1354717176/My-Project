@@ -1,6 +1,7 @@
 <?php
 
 namespace app\console\article\controller;
+
 use app\api\common\logic\Base;
 
 /**
@@ -10,7 +11,13 @@ use app\api\common\logic\Base;
  */
 class Index extends Base
 {
-    public function index(){
+    public function index()
+    {
+        return $this->fetch();
+    }
+
+    public function main()
+    {
         return $this->fetch();
     }
 }

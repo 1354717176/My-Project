@@ -1,6 +1,5 @@
 <?php
 namespace app\console\index\controller;
-use think\Controller;
 use app\api\common\logic\Base;
 /**
  * 后台首页类
