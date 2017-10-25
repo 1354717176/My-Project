@@ -20,6 +20,7 @@ class Base extends Controller
     protected $userInfo;
     protected $auth;
     protected $config;
+    protected $file;
 
     protected function _initialize()
     {
@@ -71,5 +72,26 @@ class Base extends Controller
         $this->view->config('tpl_cache', false);
         $layout = $this->request->isPjax() ? false : '../../common/view/layout';
         $this->view->engine->layout($layout);
+    }
+
+    /**
+     * 上传文件
+     * author:yanghuan
+     * date:2017/10/25 20:55
+     */
+    protected function upload(){
+        if ($this->file) {
+            $image = \think\Image::open($this->file);
+            $info = $this->file->move(ROOT_PATH . 'static' . DS . 'upload');
+            if ($info) {
+                $imgInfo = $info->getFilename();
+                $imgName = explode('.',$imgInfo);
+                $image->thumb(150, 150)->save(ROOT_PATH . 'static' . DS . 'upload/'.date('Ymd').'/'.$imgName[0].'.thumb.png');
+
+            } else {
+                // 上传失败获取错误信息
+                echo $this->getError();
+            }
+        }
     }
 }

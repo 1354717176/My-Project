@@ -64,7 +64,22 @@
 
     {block name="style"}{/block}
 </head>
+<body class="site-contabs-open">
+{include file="../../common/view/header" /}
+{include file="../../common/view/sidebar_left" /}
+{include file="../../common/view/navigation" /}
+
+<main class="site-page">
+<div class="page-container" id="admui-pageContent">
 {block name="body"}{/block}
+<div class="page-loading vertical-align text-center">
+    <div class="page-loader loader-default loader vertical-align-middle" data-type="default"></div>
+</div>
+</main>
+{include file="../../common/view/footer" /}
+
+
+
 <!-- 布局 -->
 <script src="{$domain.static}/js/menu.js"></script>
 <script src="{$domain.static}/js/media-menu.js"></script>
@@ -79,4 +94,5 @@
 <script src="{$domain.static}/js/jquery.matchHeight.min.js"></script>
 <script src="{$domain.static}/js/app.js"></script>
 {block name="js"}{/block}
+</body>
 </html>

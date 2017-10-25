@@ -20,4 +20,10 @@ class Index extends Base
     {
         return $this->fetch();
     }
+
+    public function save()
+    {
+        $this->file = $this->request->file('img');
+        $this->upload();
+    }
 }
