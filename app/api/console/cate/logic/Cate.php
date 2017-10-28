@@ -1,19 +1,24 @@
 <?php
-namespace app\api\menu\logic;
+namespace app\api\console\cate\logic;
 
 use think\Db;
 use Tree\Tree;
 use think\Url;
+use app\api\console\cate\model\Cate AS modelCate;
 
 /**
- * 后台-菜单设置
- * Created by PhpStorm.
- * User: yanghuan
- * Date: 2017/3/9
- * Time: 9:51
+ * 分类管理
+ * Class Cate
+ * @package app\api\console\cate\logic
  */
-class Menu
+class Cate
 {
+    public $cate;
+    public function __construct()
+    {
+        $this->cate = new modelCate;
+    }
+
     /**
      * 获取列表
      * @author   yanghuan
@@ -137,25 +142,15 @@ class Menu
     }
 
     /**
-     * 创建数据
+     * 创建/编辑分类
      * @author   yanghuan
-     * @datetime 2017/3/9 18:50
+     * @datetime 2017/10/28 15:55
      * @param    array $info 信息
      * @return   bool                保存状态
      */
-    public function insertInfo($info = [])
+    public function save($info = [])
     {
-        // 补全数据
-        $info['create_time'] = date('Y-m-d H:i:s');
-        $info['code'] = strtoupper($info['module'] . ($info['controller'] ? '_' . $info['controller'] : '') . ($info['action'] ? '_' . $info['action'] : ''));
-
-        // 保存菜单信息
-        $insertNum = Db::name('menu')->insert($info);
-        if (!$insertNum) {
-            $this->error('数据保存失败');
-            return false;
-        }
-        return true;
+        return $this->cate->save($info);
     }
 
     /**

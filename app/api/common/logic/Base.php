@@ -45,23 +45,7 @@ class Base extends Controller
         return $config;
     }
 
-    /**
-     * 随机字符串
-     * @param $length
-     * @param string $chars
-     * @return string
-     * author: yanghuan
-     * date:2017/3/12 18:01
-     */
-    protected static function random($length, $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz')
-    {
-        $hash = '';
-        $max = strlen($chars) - 1;
-        for ($i = 0; $i < $length; $i++) {
-            $hash .= $chars[mt_rand(0, $max)];
-        }
-        return $hash;
-    }
+
 
     /**
      * 配合前端进行的pjax请求而进行的模版加载设置
@@ -72,26 +56,5 @@ class Base extends Controller
         $this->view->config('tpl_cache', false);
         $layout = $this->request->isPjax() ? false : '../../common/view/layout';
         $this->view->engine->layout($layout);
-    }
-
-    /**
-     * 上传文件
-     * author:yanghuan
-     * date:2017/10/25 20:55
-     */
-    protected function upload(){
-        if ($this->file) {
-            $image = \think\Image::open($this->file);
-            $info = $this->file->move(ROOT_PATH . 'static' . DS . 'upload');
-            if ($info) {
-                $imgInfo = $info->getFilename();
-                $imgName = explode('.',$imgInfo);
-                $image->thumb(150, 150)->save(ROOT_PATH . 'static' . DS . 'upload/'.date('Ymd').'/'.$imgName[0].'.thumb.png');
-
-            } else {
-                // 上传失败获取错误信息
-                echo $this->getError();
-            }
-        }
     }
 }

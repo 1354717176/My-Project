@@ -9,21 +9,10 @@ use app\api\common\logic\Base;
  * Class Index
  * @package app\console\article\controller
  */
-class Index extends Base
+class Lists extends Base
 {
     public function index()
     {
         return $this->fetch();
-    }
-
-    public function main()
-    {
-        return $this->fetch();
-    }
-
-    public function save()
-    {
-        $this->file = $this->request->file('img');
-        $this->upload();
     }
 }

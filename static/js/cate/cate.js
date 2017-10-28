@@ -3,6 +3,7 @@
  */
 $(function () {
     var operate = {
+        errorHtml:'<label class="col-sm-3 col-md-2 control-label"></label><p class="col-sm-9 col-md-6 help-block"><i class="icon wb-close" aria-hidden="true" style="font-size:12px"></i>%s</p>',
         check: function () {
             //表单验证
             $('#articleForm').formValidation({
@@ -15,17 +16,10 @@ $(function () {
 
                 // List of fields and their validation rules
                 fields: {
-                    cate: {
+                    name: {
                         validators: {
                             notEmpty: {
-                                message: '分类必选'
-                            }
-                        }
-                    },
-                    title: {
-                        validators: {
-                            notEmpty: {
-                                message: '文章标题不能为空'
+                                message: '分类名称不能为空'
                             }
                         }
                     }
@@ -38,6 +32,11 @@ $(function () {
                     type:'post',
                     dataType: 'json',
                     success: function(responseText, statusText, xhr, $form) {
+                        if(responseText.code == 0){
+                            $(".article-list").trigger('click');
+                        }else{
+                            $(".has-error").html(operate.errorHtml.replace('%s',responseText.msg));
+                        }
                     }
                 });
                 return false;

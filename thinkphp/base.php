@@ -3,7 +3,7 @@ define('THINK_VERSION', '5.0.3');
 define('THINK_START_TIME', microtime(true));
 define('THINK_START_MEM', memory_get_usage());
 define('EXT', '.php');
-define('DS', DIRECTORY_SEPARATOR);
+define('DS', '/');
 
 // 定义路径
 define('ROOT_PATH', dirname(__DIR__) . DS);
