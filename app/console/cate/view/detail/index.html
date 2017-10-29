@@ -1,4 +1,4 @@
-<title>分类添加</title>
+<title>{empty name="id"}分类添加{else}分类编辑{/empty}</title>
 <link rel="stylesheet" href="{$domain.static}/css/formValidation.css">
 <div class="page animation-fade page-forms">
     <div class="page-header">
@@ -21,18 +21,20 @@
                         <div class="example-wrap">
                             <div class="example">
                                 <form class="form-horizontal" action="{:Url('/cate/detail/save',[],false,false)}" id="articleForm">
+                                    <input type="hidden" name="id" value="{$id}">
                                     <div class="form-group">
                                         <label class="col-sm-3 col-md-2 control-label">上级分类：</label>
                                         <div class="col-sm-9 col-md-6">
                                             <select name="parent_id" class="form-control">
                                                 <option value="0">选择分类</option>
+                                                {$cate}
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 col-md-2 control-label"><span class="required">*</span>分类名称：</label>
                                         <div class="col-sm-9 col-md-6">
-                                            <input type="text" class="form-control" name="name" placeholder="" autocomplete="off">
+                                            <input type="text" class="form-control" name="name" placeholder="" autocomplete="off" value='{notempty name="info"}{$info.name}{/notempty}'>
                                         </div>
                                     </div>
                                     <div class="form-group has-error has-feedback"></div>
