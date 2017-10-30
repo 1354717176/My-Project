@@ -1,5 +1,6 @@
 $(function () {
     var operate = {
+        errorHtml:'<p class="col-sm-9 col-md-6 help-block" style="padding:0"><i class="icon wb-close" aria-hidden="true" style="font-size:12px"></i>%s</p>',
         captcha: function (obj, id, url) {
             //刷新验证码
             $.ajax({
@@ -46,22 +47,28 @@ $(function () {
                             notEmpty: {
                                 message: '验证码不能为空'
                             },
-                            threshold: 1,
-                            remote: {
-                                url: $(".submit").data('captcha-url'),
-                                message: '验证码错误',
-                                delay: 200,
-                                type: 'POST',
-                                data: function (validator) {
-                                    return {
-                                        id: $(".captcha").data('id'),
-                                    };
-                                }
-                            },
                         }
                     }
                 }
-            });
+            }).on('success.form.fv', function(e) {
+                var $form = $(e.target);
+                $form.ajaxSubmit({
+                    url: $form.attr('action'),
+                    type:'post',
+                    data: {
+                        'id': $form.find('.captcha').data('id'),
+                    },
+                    dataType: 'json',
+                    success: function(responseText, statusText, xhr, $form) {
+                        if(responseText.code == 0){
+                            window.location.href='/';
+                        }else{
+                            $(".has-error").html(operate.errorHtml.replace('%s',responseText.msg));
+                        }
+                    }
+                });
+                return false;
+            })
         }
     }
 
@@ -73,7 +80,7 @@ $(function () {
         operate.captcha(this, $(this).data('id'), $(this).data('url'))
     })
 
-    //表单提交时验证
+    /*//表单提交时验证
     $(".submit").on('click', function () {
 
         //获得表单验证对象
@@ -91,6 +98,6 @@ $(function () {
         } else {
             return false;
         }
-    })
+    })*/
 
 })

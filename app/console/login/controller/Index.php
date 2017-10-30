@@ -3,7 +3,9 @@
 namespace app\console\login\controller;
 
 use app\api\common\logic\Base;
-use app\api\common\logic\Captcha;
+use app\api\common\logic\Captcha AS logicCaptcha;
+use app\api\console\member\logic\Member AS logicMember;
+use app\api\console\member\service\Member AS serviceMember;
 
 /**
  * 后台-登录类
@@ -15,22 +17,12 @@ use app\api\common\logic\Captcha;
 class Index extends Base
 {
 
-    protected $config;
-
-    public function _initialize()
-    {
-        $this->config = parent::getConfig('domain');
-    }
-
     public function index()
     {
         //显示验证码
-        $captcha = new Captcha();
+        $captcha = new logicCaptcha();
         $captchaSrc = $captcha->captcha();
         $this->assign('captcha', $captchaSrc);
-
-        //域名配置
-        $this->assign('domain', $this->config);
 
         return $this->fetch();
     }
@@ -42,35 +34,21 @@ class Index extends Base
      */
     public function login()
     {
-        /*if ($this->request->isPost()) {
-            $data['username'] = $this->request->post('username');
-            $data['password'] = $this->request->post('password');
+        if ($this->request->isPost()) {
 
-            $loginValidate = new loginValidate();
-            if (!$loginValidate->scene('login')->check($data)) {
-                return ['code' => 50000, 'msg' => $loginValidate->getError()];
+            $serviceMember = new serviceMember;
+
+            $code = $this->request->post('validCode', '');
+            $id = $this->request->post('id', 0);
+            $result = $serviceMember->checkCaptcha($code, $id);
+            if(!$result){
+                return json(['code'=>1,'msg'=>'验证码错误','data'=>[]]);
             }
 
-            $user = new User();
-            $userInfo = $user->userInfoByUserName($data['username']);
-            if ($userInfo) {
+            $data['user_name'] = $this->request->post('user_name');
+            $data['pass_word'] = $this->request->post('pass_word');
 
-                //目前只有超级管理员才能登录这里
-                if (!in_array($userInfo['type'], [0])) {
-                    return ['code' => 50003, 'msg' => '当前用户不能登录这里'];
-                }
-
-                $userName = $data['username'];
-                $password = md5($data['password'] . $userInfo['passalt']);
-                $result = $user->userInfoByPassword($userName, $password);
-                if ($result) {
-                    Session::set('adminUser', $userInfo);
-                    return ['code' => 0, 'url' => Url::build(DS, '', false, true)];
-                }
-                return ['code' => 50002, 'msg' => '用户名或密码不正确'];
-            }
-            return ['code' => 50001, 'msg' => '会员不存在'];
-        }*/
+        }
     }
 
     /**

@@ -47,7 +47,7 @@
                     </div>
                     <h3 class="hidden-xs">登录 Admui</h3>
                     <p class="hidden-xs">Admui 在线演示系统</p>
-                    <form class="login-form" method="post" id="loginForm" onsubmit="return false">
+                    <form class="login-form" method="post" id="loginForm" action='{:Url("login",[],false,false)}'>
                         <div class="form-group">
                             <label class="sr-only" for="username">用户名</label>
                             <input type="text" class="form-control" id="username" name="loginName" placeholder="请输入用户名">
@@ -65,7 +65,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="form-group clearfix">
+                        <!--<div class="form-group clearfix">
                             <div class="checkbox-custom checkbox-inline checkbox-primary pull-left">
                                 <input type="checkbox" id="remember" name="remember">
                                 <label for="remember">自动登录</label>
@@ -82,8 +82,9 @@
                             <div class="alert alert-warning alert-dismissible" role="alert">
                                 请返回官网点击登录按钮找回密码
                             </div>
-                        </div>
-                        <button type="button" class="submit btn btn-primary btn-block margin-top-30" data-captcha-url='{:Url("/verifica/captcha/check","",false,true)}'>立即登录</button>
+                        </div>-->
+                        <div class="form-group has-error has-feedback"></div>
+                        <button type="submit" class="btn btn-primary btn-block" data-captcha-url='{:Url("/verifica/captcha/check","",false,true)}'>立即登录</button>
                     </form>
                 </div>
             </div>
@@ -108,5 +109,6 @@
 <script src="{$domain.static}/js/login/bootstrap-select.min.js"></script>
 <script src="{$domain.static}/js/login/formValidation.min.js" data-name="formValidation"></script>
 <script src="{$domain.static}/js/login/bootstrap.min.js" data-deps="formValidation"></script>
+<script src="{$domain.static}/js/jquery-form.js"></script>
 <script src="{$domain.static}/js/login/login.js"></script>
 {/block}

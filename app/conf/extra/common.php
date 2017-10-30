@@ -41,3 +41,28 @@ function upload($file)
     }
     return ['code' => 1, 'msg' => '文件资源为空', 'data' => []];
 }
+
+function timetodate($time = 0, $type = 6) {
+    if(!$time) $time = time();
+    $types = array('Y-m-d', 'Y', 'm-d', 'Y-m-d', 'm-d H:i', 'Y-m-d H:i', 'Y-m-d H:i:s');
+    if(isset($types[$type])) $type = $types[$type];
+    $date = '';
+    if($time > 2147212800) {
+        if(class_exists('DateTime')) {
+            $D = new DateTime('@'.($time - 3600 * intval(str_replace('Etc/GMT', '', $GLOBALS['CFG']['timezone']))));
+            $date = $D->format($type);
+        }
+    }
+    return $date ? $date : date($type, $time);
+}
+
+function datetotime($date) {
+    $time = strtotime($date);
+    if($time === false) {
+        if(class_exists('DateTime')) {
+            $D = new DateTime($date);
+            $time = $D->format('U');
+        }
+    }
+    return $time;
+}

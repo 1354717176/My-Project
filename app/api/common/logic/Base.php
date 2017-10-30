@@ -29,8 +29,15 @@ class Base extends Controller
         //域名配置
         $this->assign('domain', $this->config['domain']);
 
-        //pjax加载模版
-        $this->setPjax();
+        if($this->request->module() != 'login'){
+            if(!Session::has('token')){
+                $this->redirect('/login');
+                exit;
+            }
+
+            //pjax加载模版
+            $this->setPjax();
+        }
     }
 
     /**
