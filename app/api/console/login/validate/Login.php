@@ -1,5 +1,5 @@
 <?php
-namespace app\api\login\validate;
+namespace app\api\console\login\validate;
 
 use think\Validate;
 
@@ -11,16 +11,16 @@ use think\Validate;
 class Login extends Validate
 {
     protected $rule = [
-        'username' => 'require',
-        'password' => 'require',
+        'user_name' => 'require',
+        'pass_word' => 'require',
     ];
 
     protected $message = [
-        'username.require' => '请输入用户名',
-        'password.require' => '请输入密码',
+        'user_name.require' => '请输入用户名',
+        'pass_word.require' => '请输入密码',
     ];
 
     protected $scene = [
-        'login' => ['username', 'password'], //登录
+        'login' => ['user_name', 'pass_word'], //登录
     ];
 }

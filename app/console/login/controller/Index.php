@@ -5,7 +5,7 @@ namespace app\console\login\controller;
 use app\api\common\logic\Base;
 use app\api\common\logic\Captcha AS logicCaptcha;
 use app\api\console\member\logic\Member AS logicMember;
-use app\api\console\member\service\Member AS serviceMember;
+use think\Exception;
 
 /**
  * 后台-登录类
@@ -35,19 +35,17 @@ class Index extends Base
     public function login()
     {
         if ($this->request->isPost()) {
-
-            $serviceMember = new serviceMember;
-
-            $code = $this->request->post('validCode', '');
-            $id = $this->request->post('id', 0);
-            $result = $serviceMember->checkCaptcha($code, $id);
-            if(!$result){
-                return json(['code'=>1,'msg'=>'验证码错误','data'=>[]]);
+            $data['code'] = $this->request->post('validCode', '');
+            $data['code_id'] = $this->request->post('id', 0);
+            $data['user_name'] = $this->request->post('loginName');
+            $data['pass_word'] = $this->request->post('password');
+            try {
+                $logicMember = new logicMember;
+                $logicMember->login($data);
+                return json(['code' => 0, 'msg' => '登录成功', 'data' => []]);
+            } catch (Exception $e) {
+                return json(['code' => 1, 'msg' => $e->getMessage(), 'data' => []]);
             }
-
-            $data['user_name'] = $this->request->post('user_name');
-            $data['pass_word'] = $this->request->post('pass_word');
-
         }
     }
 
@@ -58,7 +56,8 @@ class Index extends Base
      */
     public function out()
     {
-        /* Session::delete('adminUser');
-         $this->redirect(Url('/login/login/', '', false, true));*/
+        session('token', null);
+        $this->redirect('/login');
+        exit;
     }
 }

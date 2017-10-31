@@ -4,10 +4,8 @@ namespace app\api\common\logic;
 
 use think\Config;
 use think\Controller;
-use think\Request;
 use think\Session;
-use think\Db;
-
+use app\api\console\member\service\Member AS serviceMember;
 /**
  * 后台-公共类
  * Created by PhpStorm.
@@ -31,6 +29,14 @@ class Base extends Controller
 
         if($this->request->module() != 'login'){
             if(!Session::has('token')){
+                $this->redirect('/login');
+                exit;
+            }
+
+            $token = Session::get('token');
+            $serviceMember = new serviceMember;
+            $result = $serviceMember->checkToken($token);
+            if(!$result){
                 $this->redirect('/login');
                 exit;
             }

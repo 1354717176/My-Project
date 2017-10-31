@@ -2,23 +2,22 @@
 
 namespace app\console\verifica\controller;
 
-use app\api\common\logic\Base;
 use app\api\common\logic\Captcha AS logicCaptcha;
-use think\Request;
+use think\Controller;
 
 /**
  * 验证码类
  * Class Index
  * @package app\console\captcha\controller
  */
-class Captcha extends Base
+class Captcha extends Controller
 {
     protected $captcha;
 
-    public function __construct(Request $request = null)
+    public function __construct()
     {
         $this->captcha = new logicCaptcha();
-        parent::__construct($request);
+        parent::__construct();
     }
 
     /**
