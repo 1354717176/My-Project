@@ -4,7 +4,7 @@
             <div class="tab-content height-full" id="admui-navTabs">
                 <div class="tab-pane animation-fade height-full active" id="admui-navTabsItem-1" role="tabpanel">
                     <div>
-                        <ul class="site-menu">
+                        <!--<ul class="site-menu">
                             <li class="site-menu-category">文章菜单</li>
                             <li class="site-menu-item has-sub ">
                                 <a href="javascript:;">
@@ -30,6 +30,23 @@
                                     <li class="site-menu-item has-sub">
                                         <a data-pjax="" href="{:Url('/article/detail',[],false,false)}" target="_blank">
                                             <span class="site-menu-title">文章添加</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>-->
+                        <ul class="site-menu">
+                            <li class="site-menu-category">管理员菜单</li>
+                            <li class="site-menu-item has-sub ">
+                                <a href="javascript:;">
+                                    <i class="site-menu-icon fa-users" aria-hidden="true"></i>
+                                    <span class="site-menu-title">管理员管理</span>
+                                    <span class="site-menu-arrow"></span>
+                                </a>
+                                <ul class="site-menu-sub">
+                                    <li class="site-menu-item has-sub">
+                                        <a data-pjax="" href="{:Url('/member/lists',[],false,false)}" target="_blank" class="member-list">
+                                            <span class="site-menu-title">管理员列表</span>
                                         </a>
                                     </li>
                                 </ul>

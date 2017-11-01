@@ -21,6 +21,7 @@ class Index extends Base
     {
         //显示验证码
         $captcha = new logicCaptcha();
+        $captcha->id=1;
         $captchaSrc = $captcha->captcha();
         $this->assign('captcha', $captchaSrc);
 
