@@ -4,17 +4,20 @@ namespace app\api\console\member\logic;
 
 use app\api\console\member\model\Member as modelMember;
 use app\api\console\member\service\Member AS serviceMember;
+use app\api\console\log\logic\Log AS logicLog;
 use think\Exception;
 
 class Member
 {
     public $modelMember;
     public $serviceMember;
+    public $logicLog;
 
     public function __construct()
     {
         $this->modelMember = new modelMember;
         $this->serviceMember = new serviceMember;
+        $this->logicLog = new logicLog;
     }
 
     /**
@@ -33,27 +36,31 @@ class Member
         }
 
         $result = $this->serviceMember->find($data['id']);
-        if(!$result){
+        if (!$result) {
             throw new Exception('用户信息不存在');
         }
 
         //检查新的用户名是否存在
-        if($data['user_name'] != $result['user_name'] && isset($data['id']) && $data['id']){
-            $result = $this->serviceMember->checkUserName($data['user_name']);
-            if($result && $data['id'] != $result['id']){
+        if ($data['user_name'] != $result['user_name'] && isset($data['id']) && $data['id']) {
+            $check = $this->serviceMember->checkUserName($data['user_name']);
+            if ($check && $data['id'] != $check['id']) {
                 throw new Exception('用户名已存在');
             }
         }
 
-
-        if($data['pass_word']=='' && $data['confrim_pass_word'] == ''){
-            unset($data['pass_salt'],$data['pass_word']);
-        }else{
+        if ($data['pass_word'] == '' && $data['confrim_pass_word'] == '') {
+            unset($data['pass_salt'], $data['pass_word']);
+        } else {
             $data['pass_salt'] = serviceMember::passSalt();
             $data['pass_word'] = serviceMember::passWord($data['pass_word'], $data['pass_salt']);
             $data['token'] = serviceMember::token($data['user_name'] . $data['pass_word'], $data['pass_salt']);
         }
         $this->serviceMember->save($data);
+
+        //记录操作日志
+        $message=[4=>'编辑管理员信息',1=>'编辑置业顾问信息'];
+        $this->logicLog->save($message[$result['group_id']]);
+
         return true;
     }
 
@@ -92,7 +99,11 @@ class Member
             throw new Exception('网络错误，请重试');
         }
 
+        //记录登录日志
+        $this->logicLog->save('成功登录系统', $user['user_name'],$user['id']);
+
         session('token', $result);
+        session('user', ['user_name'=>$user['user_name'],'user_id'=>$user['id']]);
     }
 
     /**

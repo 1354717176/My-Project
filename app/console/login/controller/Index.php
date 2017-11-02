@@ -4,6 +4,7 @@ namespace app\console\login\controller;
 
 use app\api\common\logic\Base;
 use app\api\common\logic\Captcha AS logicCaptcha;
+use app\api\console\log\logic\Log AS logicLog;
 use app\api\console\member\logic\Member AS logicMember;
 use think\Exception;
 
@@ -58,6 +59,11 @@ class Index extends Base
     public function out()
     {
         session('token', null);
+
+        //记录操作日志
+        $logicLog = new logicLog;
+        $logicLog->save('退出系统');
+
         $this->redirect('/login');
         exit;
     }

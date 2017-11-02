@@ -116,6 +116,7 @@ class Bootstrap extends Paginator
                     $this->getNextButton()
                 );
             } else {
+                //<span style="position:relative;top:-10px;right:5px">当前'.$this->listRows.'条记录，总共'.$this->total.'条记录</span>
                 return sprintf(
                     '<ul class="pagination">%s %s %s</ul>',
                     $this->getPreviousButton(),
@@ -135,7 +136,7 @@ class Bootstrap extends Paginator
      */
     protected function getAvailablePageWrapper($url, $page)
     {
-        return '<li><a href="' . htmlentities($url) . '">' . $page . '</a></li>';
+        return '<li><a data-pjax="" href="' . htmlentities($url) . '">' . $page . '</a></li>';
     }
 
     /**
