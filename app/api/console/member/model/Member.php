@@ -24,4 +24,16 @@ class Member extends Model
     {
         return timetodate();
     }
+
+    public function getStatusTextAttr($value,$data)
+    {
+        $status = [1=>'启用',2=>'禁用'];
+        return $status[$data['status']];
+    }
+
+    public function getTeamTextAttr($value,$data)
+    {
+        $team = [1=>'华南城',2=>'中原',3=>'九鼎'];
+        return $team[$data['team']];
+    }
 }

@@ -86,9 +86,11 @@ class Member
      * @param $userName
      * @return array|false|\PDOStatement|string|\think\Model
      */
-    public function checkUserName($userName)
+    public function checkUserName($userName, $uid = 0)
     {
-        return modelMember::where('user_name', $userName)->field('id,pass_salt')->find();
+        $where = $uid ? ['id' => ['NEQ', $uid]] : '';
+        $where['user_name'] = $userName;
+        return modelMember::where($where)->field('id,status,pass_salt')->find();
     }
 
     /**
@@ -146,7 +148,7 @@ class Member
     {
         $data['id'] = $userId;
         $data['login_times'] = ['exp', 'login_times+1'];
-        $data['token'] = self::token($userName . $passWord,self::passSalt());
+        $data['token'] = self::token($userName . $passWord, self::passSalt());
 
         $modelMember = new modelMember;
         $result = $modelMember->allowField(true)->isUpdate(true)->save($data);
@@ -160,7 +162,8 @@ class Member
      * @param $id
      * @return static
      */
-    public function find($id){
+    public function find($id)
+    {
         return modelMember::get($id);
     }
 
@@ -175,5 +178,17 @@ class Member
         $isUpdate = isset($data['id']) && $data['id'] ? true : false;
         $modelMember = new modelMember;
         return $modelMember->allowField(true)->isUpdate($isUpdate)->save($data);
+    }
+
+    /**
+     * 更新会员的某一个字段的状态
+     * @author:yanghuna
+     * @datetime:2017/11/3 22:05
+     * @param $data
+     * @return $this
+     */
+    public function changeField($data)
+    {
+        return modelMember::update($data);
     }
 }

@@ -21,7 +21,7 @@ class Member
     }
 
     /**
-     * 编辑/保存会员信息
+     * 编辑/添加会员信息
      * @author:yanghuna
      * @datetime:2017/11/1 23:28
      * @param array $data
@@ -30,22 +30,26 @@ class Member
      */
     public function save($data = [])
     {
-        $result = $this->serviceMember->checkMemberBase($data, 'system_member');
+        $result = $this->serviceMember->checkMemberBase($data, ($data['group_id']==4 ? 'system_member' : 'member1'));
         if ($result) {
             throw new Exception($result);
         }
 
-        $result = $this->serviceMember->find($data['id']);
-        if (!$result) {
-            throw new Exception('用户信息不存在');
-        }
-
-        //检查新的用户名是否存在
-        if ($data['user_name'] != $result['user_name'] && isset($data['id']) && $data['id']) {
-            $check = $this->serviceMember->checkUserName($data['user_name']);
-            if ($check && $data['id'] != $check['id']) {
-                throw new Exception('用户名已存在');
+        if(isset($data['id']) && $data['id']){
+            $result = $this->serviceMember->find($data['id']);
+            if (!$result) {
+                throw new Exception('用户信息不存在');
             }
+            //检查新的用户名是否存在
+            $check = $this->serviceMember->checkUserName($data['user_name'],$data['id']);
+        }else{
+            if(!$data['pass_word']){
+                throw new Exception('密码不能为空');
+            }
+            $check = $this->serviceMember->checkUserName($data['user_name']);
+        }
+        if ($check) {
+            throw new Exception('用户名已存在');
         }
 
         if ($data['pass_word'] == '' && $data['confrim_pass_word'] == '') {
@@ -58,8 +62,8 @@ class Member
         $this->serviceMember->save($data);
 
         //记录操作日志
-        $message=[4=>'编辑管理员信息',1=>'编辑置业顾问信息'];
-        $this->logicLog->save($message[$result['group_id']]);
+        $message= isset($data['id']) && $data['id'] ? [4=>"编辑管理员信息:{$data['user_name']}的信息",1=>"编辑置业顾问:{$data['user_name']}的信息"] : [1=>"添加置业顾问:{$data['user_name']}"];
+        $this->logicLog->save($message[$data['group_id']]);
 
         return true;
     }
@@ -82,6 +86,11 @@ class Member
         $result = $this->serviceMember->checkUserName($data['user_name']);
         if (!$result) {
             throw new Exception('用户名不正确');
+        }else{
+            //禁用帐号不能登录
+            if($result['status'] == 2){
+                throw new Exception('该用户已被关闭');
+            }
         }
 
         $user = $this->serviceMember->checkPassWord($data['pass_word'], $result['pass_salt']);
@@ -134,5 +143,23 @@ class Member
             return $this->serviceMember->find($id);
         }
         return [];
+    }
+
+    /**
+     * 删除会员
+     * @author:yanghuna
+     * @datetime:2017/11/3 22:06
+     * @param $id
+     * @param $status
+     */
+    public function delete($id,$status){
+        $data['id'] = $id;
+        $data['status'] = $status;
+        $this->serviceMember->changeField($data);
+
+        $user = $this->serviceMember->find($id);
+
+        //记录登录日志
+        $this->logicLog->save("删除置业顾问:{$user['user_name']}");
     }
 }
