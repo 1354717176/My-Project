@@ -1,7 +1,10 @@
 <?php
+
 namespace app\desk\index\controller;
 
-use app\api\common\controller\Common;
+use think\Controller;
+use think\Config;
+use app\api\console\member\logic\Member AS logicMember;
 
 /**
  * 网站首页类
@@ -10,8 +13,17 @@ use app\api\common\controller\Common;
  * @datetime 2017/3/20 19:47
  * @package app\desk\sign\controller
  */
-class Index extends Common
+class Index extends Controller
 {
+
+    public function __construct()
+    {
+        parent::__construct();
+        $domain =  Config::get('domain');
+        //域名配置
+        $this->assign('domain', $domain);
+    }
+
     /**
      * 网站首页
      * @author:yanghuna
@@ -20,6 +32,18 @@ class Index extends Common
      */
     public function index()
     {
+        $user=[];
+        $logicMember =new logicMember;
+        $result = $logicMember->lists(['group_id'=>1,'status'=>1],1000);
+        if(!$result['lists']->isEmpty()){
+            foreach ($result['lists'] as $key=>$item){
+                $user[$key]['value']=$item['id'];
+                $user[$key]['title']=$item['user_name'];
+            }
+        }
+        $this->assign('user',json_encode($user));
+        $this->assign('random',random(8));
+
         return $this->fetch();
     }
 }

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{block name="title"}预约登记{/block}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+
+    <link rel="stylesheet" href="static/css/web-icons.css">
+    <link rel="stylesheet" href="static/css/font-awesome.css">
+    <link rel="stylesheet" href="static/css/animsition.css">
+    <link rel="stylesheet" href="static/css/toastr.css">
+    <link rel="stylesheet" href="static/css/demo.css">
+    <link rel="stylesheet" href="static/css/home.css">
+    <link rel="stylesheet" href="static/css/themify.css">
+
+    <link rel="stylesheet" href="static/css/weui.min.css">
+    <link rel="stylesheet" href="static/css/jquery-weui.css">
+    <link rel="stylesheet" href="static/css/demos.css">
+
+</head>
+
+<body ontouchstart>
+<div class="bd">
+    <div class="page__bd">
+        {block name="body"}{/block}
+    </div>
+</div>
+
+<script src="static/js/jquery-weui/jquery-2.1.4.js"></script>
+<script src="static/js/jquery-weui/fastclick.js"></script>
+<script>
+    $(function () {
+        FastClick.attach(document.body);
+    });
+</script>
+<script src="static/js/jquery-weui/jquery-weui.js"></script>
+{block name="js"}{/block}
+</body>
+</html>

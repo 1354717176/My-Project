@@ -1,0 +1,57 @@
+<title>客户列表</title>
+<div class="page animation-fade page-forms">
+    <div class="page-header">
+        <h1 class="page-title">客户列表</h1>
+        <ol class="breadcrumb">
+            <li>
+                <a>首页</a>
+            </li>
+            <li>
+                <a href="javascript:;">置业顾问</a>
+            </li>
+            <li class="active">客户列表</li>
+        </ol>
+    </div>
+    <div class="page-content">
+        <div class="panel">
+            <div class="panel-body container-fluid">
+                <div class="row row-lg">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="example table-responsive">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>编号</th>
+                                        <th>姓名</th>
+                                        <th>电话</th>
+                                        <th>登记时间</th>
+                                        <th class="text-nowrap">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {volist name="lists" id="v"}
+                                    <tr>
+                                        <td class="top7">{$v.id}</td>
+                                        <td class="top7">{$v.user_name}</td>
+                                        <td class="top7">{$v.mobile}</td>
+                                        <td class="top7">{$v.create_time}</td>
+                                        <td>
+                                            <a data-pjax="" role="button" href='{:Url("/member/detail",["id"=>$v["id"],"group_id"=>$v["group_id"]],false,false)}' class="btn btn-info" target="_blank"><i class="icon wb-pencil" aria-hidden="true"></i> 编辑</a>
+                                            <a data-pjax="" role="button" href='javascript:;' class="btn btn-danger delete" target="_blank" data-id="{$v['id']}"><i class="icon wb-close" aria-hidden="true"></i> 删除</a>
+                                        </td>
+                                    </tr>
+                                    {/volist}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="text-right">{$page}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{$domain.static}/js/login/formValidation.min.js" data-name="formValidation"></script>
+<script src="{$domain.static}/js/login/bootstrap.min.js" data-deps="formValidation"></script>
+<script src="{$domain.static}/js/jquery-form.js"></script>
+<script src="{$domain.static}/js/member/member1.js" charset="UTF-8"></script>

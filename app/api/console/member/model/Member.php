@@ -36,4 +36,9 @@ class Member extends Model
         $team = [1=>'华南城',2=>'中原',3=>'九鼎'];
         return $team[$data['team']];
     }
+
+    public function memberNote()
+    {
+        return $this->hasOne('MemberNote','member_id');
+    }
 }

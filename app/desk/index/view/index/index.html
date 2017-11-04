@@ -1,377 +1,374 @@
-{include file="../../common/view/header" /}
-
-<!--banner开始-->
-<section id="banner">
-    <!--<div class="container">-->
-    <!--<div class="row">-->
-    <!--<div class="col-lg-12">-->
-    <!--  <img src="/static/img/huaziedu/home.png" class="img-responsive">-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-
-
-    <div id="myCarousel" class="carousel slide" data-ride="carousel" >
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-        <!-- Carousel items -->
-        <div class="carousel-inner">
-            <div class="active item "><img src="/static/img/huaziedu/ad_3.jpg" alt="...">
-            </div>
-            <!--<div class="item">-->
-                <!--<img src="/static/img/huaziedu/ad_4.jpg" alt="" class="src"/>-->
-            <!--</div>-->
-            <!--<div class="item">
-                <img src="/static/img/huaziedu/home.png" alt="" class="src"/>
-            </div>-->
-            <div class="item">
-                <img src="/static/img/huaziedu/ad_2.png" alt="...">
-            </div>
-            <div class="item">
-                <img src="/static/img/huaziedu/ad_6.png" alt="...">
-            </div>
-            <!--<div class="item">
-                <img src="/static/img/huaziedu/ad_3.jpg" alt="...">
-            </div>-->
+{extend name="../../common/view/base" /}
+{block name="body"}
+<div class="form">
+<div class="weui-cells">
+    <a class="weui-cell weui-cell_access" href="javascript:;">
+        <div class="weui-cell__hd"><i class="icon fa-phone"></i></div>
+        <div class="weui-cell__bd" style="margin-left:10px">
+            <input class="weui-input" type="number" id="tel" placeholder="请输入电话号码(必填)">
         </div>
-        <!-- Carousel nav -->
-        <a class="left carousel-control" href="#myCarousel"
-           data-slide="prev"> <span class="icon-prev"></span> </a> <a
-            class="right carousel-control" href="#myCarousel" data-slide="next"> <span
-            class="icon-next"></span> </a></div>
+        <div class="weui-cell__ft"></div>
+    </a>
+    <a class="weui-cell weui-cell_access" href="javascript:;">
+        <div class="weui-cell__hd"><i class="icon wb-clipboard"></i></div>
+        <div class="weui-cell__bd" style="margin-left:10px">
+            <p>查看详情</p>
+        </div>
+        <div class="weui-cell__ft"></div>
+    </a>
+</div>
+<div class="weui-cells__title">请填写以下信息</div>
+<div class="weui-cell">
+    <div class="weui-cell__hd"><label class="weui-label">姓名</label></div>
+    <div class="weui-cell__bd">
+        <input class="weui-input" type="text" id="realname" placeholder="请输入姓名(必填)">
     </div>
-</section>
-<!--banner结束-->
-<!--course-->
-<section id="course">
-    <div class="container">
-        <div class="row wow fadeIn" data-wow-delay="0.6s">
-            <div class="col-md-12">
-                <h2>热门职业实战课程</h2>
-
-                <!--<h6>独创学习路线助你成就高薪梦想</h6>-->
-            </div>
-            <div class="col-md-3">
-                <div class="course">
-
-                    <a href="ui.html">
-                        <img src="/static/img/huaziedu/ui.png"   class="img-responsive" alt=""/>
-                        <h4>UI设计师</h4>
-                        <p>互联网行业视觉构筑者</p>
-                    </a>
-
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="course">
-                    <img src="/static/img/huaziedu/php.png"  class="img-responsive" alt=""/>
-                    <a href="#">
-                    	<h4>PHP Web开发工程师</h4>
-                    	<p>最易入门的千万级网站的web开发岗位</p>
-                    </a>
-                    
-
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="course">
-                    <img src="/static/img/huaziedu/java.png"  class="img-responsive" alt=""/>
-                    <a href="#">
-                    	<h4>JAVA软件工程师</h4>
-                    	<p>世界第一编程语言</p>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="course">
-                    <img src="/static/img/huaziedu/ios.png"  class="img-responsive" alt=""/>
-                    <a href="#">
-                    	<h4>IOS软件工程师</h4>
-                    	<p>最容易拿高薪的移动应用开发岗位</p>
-                    </a>
-                    
-
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="course">
-                    <img src="/static/img/huaziedu/h5.png"  class="img-responsive" alt=""/>
-                    <a href="#">
-                    	<h4>WEB前端开发工程师</h4>
-                    	<p>实现网站页面或客户端界面的专业人才</p>
-                    </a>
-                    
-
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="course">
-                    <img src="/static/img/huaziedu/android.png"  class="img-responsive" alt=""/>
-                    <a href="#">
-                    	<h4>Android 开发工程师</h4>
-                    	<p>市场缺口最大的移动应用开发岗位</p>
-                    </a>
-                    
-
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="course">
-                    <img src="/static/img/huaziedu/message.png"  class="img-responsive" alt=""/>
-                    <a href="#">
-                    	<h4>云计算之大数据</h4>
-                    	<p>混沌中寻找规律，数据里挖掘价值</p>
-                    </a>
-                    
-
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="course">
-                    <img src="/static/img/huaziedu/unity.png"  class="img-responsive" alt=""/>
-                    <a href="#">
-                    	<h4>Unity3D游戏开发班</h4>
-                    	<p>手游称霸世界</p>
-                    </a>
-                    
-
-                </div>
-            </div>
+</div>
+<div class="weui-cell">
+    <div class="weui-cell__hd"><label for="age" class="weui-label">年龄</label></div>
+    <div class="weui-cell__bd">
+        <input class="weui-input" id="age" type="text" value="" placeholder="请选择年龄(可不填)">
+    </div>
+</div>
+<div class="weui-cell">
+    <div class="weui-cell__hd">
+        <label class="weui-label"><label for="area" class="weui-label">居住区域</label></label>
+    </div>
+    <div class="weui-cell__bd">
+        <input class="weui-input" id="area" type="text" value="" placeholder="请选择居住区域(可不填)">
+    </div>
+</div>
+<div class="weui-cell">
+    <div class="weui-cell__hd">
+        <label class="weui-label"><label for="channels" class="weui-label">来访渠道</label></label>
+    </div>
+    <div class="weui-cell__bd">
+        <input class="weui-input" id="channels" type="text" value="" placeholder="请选择来访渠道(可不填)">
+    </div>
+</div>
+<div class="weui-cell">
+    <div class="weui-cell__hd"><label for="user" class="weui-label">置业顾问</label></div>
+    <div class="weui-cell__bd">
+        <input class="weui-input" id="user" type="text" value="" placeholder="请选择置业顾问(必填)">
+    </div>
+</div>
+<div class="weui-cell">
+    <div class="weui-cell__hd"><label for="room" class="weui-label">意向户型</label></div>
+    <div class="weui-cell__bd">
+        <input class="weui-input" id="room" type="text" value="" placeholder="请选择意向户型(必填)">
+    </div>
+</div>
+<div class="weui-cell" style="display:none">
+    <div class="weui-cell__hd"><label for="roomNum" class="weui-label"></label></div>
+    <div class="weui-cell__bd">
+        <input class="weui-input" id="roomNum" type="text" value="" placeholder="请选择几号楼(必填)">
+    </div>
+</div>
+<div class="weui-cell" style="display:none">
+    <div class="weui-cell__hd"><label for="house" class="weui-label"></label></div>
+    <div class="weui-cell__bd">
+        <input class="weui-input" id="house" type="text" value="" placeholder="请选择具体户型(必填)">
+    </div>
+</div>
+<div class="weui-cell">
+    <div class="weui-cell__hd"><label class="weui-label">备注</label></div>
+    <div class="weui-cell__bd">
+        <div class="weui-cell__bd">
+            <textarea class="weui-textarea" placeholder="请输入备注信息(可不填)" id="note" rows="3"></textarea>
         </div>
     </div>
-</section>
-<!--course-->
+</div>
+<div class="weui-cell">
+    <div class="weui-cell__bd">
+        <a href="javascript:;" class="weui-btn weui-btn_primary submit">提交信息</a>
+    </div>
+</div>
+</div>
 
-
-<!--course-->
-<section id="course">
-    <div class="container">
-        <div class="row wow fadeIn" data-wow-delay="0.6s">
-            <div class="col-md-12">
-                <h2>梦想，终于照进现实</h2>
-
-                <!--<h6>独创学习路线助你成就高薪梦想</h6>-->
-            </div>
-            <div class="col-md-3">
-                <div class="course">
-                    <img src="/static/img/huaziedu/zhongming.jpg"  style="height: 300px;width:280px;"  class="img-responsive" alt=""/>
-                    <a href="#">
-                        <h4>钟鸣 PHP软件开发工程师</h4>
-                        <p>入职薪水：5000元/月</p>
-                        <p>就职公司：重庆展览中心有限公司</p>
-                    </a>
-
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="course">
-                    <img src="/static/img/huaziedu/hujun.jpg"  style="height: 300px;width:280px;" class="img-responsive" alt=""/>
-                    <h4>胡俊 PHP软件开发工程师</h4>
-                    <p>入职薪水：4500元/月</p>
-                    <p>就职公司：成都人人优泊有限公司</p>
-
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="course">
-                    <img src="/static/img/huaziedu/lishuang.jpg" style="height: 300px;width:280px;"  class="img-responsive" alt=""/>
-                    <h4>李爽 UI设计师</h4>
-                    <p>薪水：5000左右(2000元/月+提成)</p>
-                    <p>就职公司：重庆启高科技有限公司</p>
-
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="course">
-                    <img src="/static/img/huaziedu/liuhaoyue.jpg" style="height: 300px;width:280px;"  class="img-responsive" alt=""/>
-                    <h4>刘皓月 PHP软件开发工程师</h4>
-                    <p>入职薪水：4500元/月</p>
-                    <p>就职公司：重庆友趣科技有限公司</p>
-
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="course">
-                    <img src="/static/img/huaziedu/jianglong.jpg" style="height: 300px;width:280px;" class="img-responsive" alt=""/>
-                    <h4>江龙 PHP软件开发工程师</h4>
-                    <p>入职薪水：6000元/月</p>
-                    <p>就职公司：四川迈科创智科技有限公司</p>
-
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="course">
-                    <img src="/static/img/huaziedu/chenjiaxin.jpg" style="height: 300px;width:280px;" class="img-responsive" alt=""/>
-                    <h4>陈佳欣 PHP软件开发工程师</h4>
-                    <p>入职薪水：4000元/月</p>
-                    <p>就职公司：香港新维网络有限公司</p>
-
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="course">
-                    <img src="/static/img/huaziedu/zhangni.jpg" style="height: 300px;width:280px;" class="img-responsive" alt=""/>
-                    <h4>张妮 PHP软件开发工程师</h4>
-                    <p>入职薪水：5000元/月</p>
-                    <p>就职公司：扬州灰点网络科技有限公司</p>
-
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="course">
-                    <img src="/static/img/huaziedu/wuxiaofan.jpg" style="height: 300px;width:280px;" class="img-responsive" alt=""/>
-                    <h4>吴小凡 Web前端开发工程师</h4>
-                    <p>入职薪水：5000元/月</p>
-                    <p>就职公司：成都路易师傅信息技术公司</p>
-
-                </div>
-            </div>
+<div class="success" style="display:none">
+    <div class="weui-msg">
+        <div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
+        <div class="weui-msg__text-area">
+            <h2 class="weui-msg__title">操作成功</h2>
+        </div>
+        <div class="weui-msg__opr-area">
+            <p class="weui-btn-area">
+                <a role="button" class="weui-btn weui-btn_primary cancle">返回预约登记</a>
+            </p>
         </div>
     </div>
-</section>
-<!--course-->
+</div>
+{/block}
+{block name="js"}
+<script>
+    var operate={
+        age:[{title:"20岁以下",value:1},{title:"20~30岁",value:2,},{title:"30~40岁",value:3,},{title:"40岁以上",value:3}],
+        room:[{title:"楼栋",value:1},{title:"户型",value:2}],
+        roomNum:[{title:"9号楼",value:1},{title:"10号楼",value:2},{title:"11号楼",value:3},{title:"14号楼",value:4},{title:"17号楼",value:5},{title:"19号楼",value:6},{title:"20号楼",value:7},],
+        house:[{title:"A1",value:1},{title:"A2",value:2},{title:"A3",value:3},{title:"A4",value:4},{title:"B1",value:5},{title:"B2",value:6},{title:"B3",value:7}],
+        area:[
+            {title:"巴南区",value:1},
+            {title:"渝中区",value:2},
+            {title:"大渡口区",value:3},
+            {title:"江北区",value:4},
+            {title:"沙坪坝区",value:5},
+            {title:"九龙坡区",value:6},
+            {title:"南岸区",value:7},
+            {title:"北碚区",value:8},
+            {title:"万盛区",value:9},
+            {title:"双桥区",value:10},
+            {title:"渝北区",value:11},
+            {title:"江津市",value:12},
+            {title:"合川市",value:13},
+            {title:"永川市",value:14},
+            {title:"长寿县",value:15},
+            {title:"綦江县",value:16},
+            {title:"潼南县",value:17},
+            {title:"铜梁县",value:18},
+            {title:"大足县",value:19},
+            {title:"荣昌县",value:20},
+            {title:"璧山县",value:21},
+            {title:"龙宝区",value:22},
+            {title:"天城区",value:23},
+            {title:"五桥区",value:24},
+            {title:"开县",value:25},
+            {title:"忠县",value:26},
+            {title:"梁平县",value:27},
+            {title:"云阳县",value:28},
+            {title:"奉节县",value:29},
+            {title:"巫山县",value:30},
+            {title:"巫溪县",value:31},
+            {title:"城口县",value:32},
+            {title:"涪陵区",value:33},
+            {title:"垫江县",value:34},
+            {title:"武隆县",value:35},
+            {title:"丰都县",value:36},
+            {title:"黔江县",value:37},
+            {title:"石柱县",value:38},
+            {title:"彭水县",value:39},
+            {title:"酉阳县",value:40},
+            {title:"秀山县",value:41},
+            {title:"市外",value:42},
+            {title:"界石",value:43},
+            {title:"南彭",value:44},
+            {title:"李家沱",value:45},
+            {title:"茶园",value:46},
+            {title:"龙洲湾",value:47},
+            {title:"公路物流基地",value:48},
+            {title:"周边乡镇",value:49},
+            {title:"其他",value:50},
+        ],
+        channels:[
+            {title:"来访",value:1},
+            {title:"来电",value:2},
+            {title:"中诚泽家",value:3},
+            {title:"房优圈",value:4},
+            {title:"聚意",value:5},
+            {title:"聚泛",value:6},
+            {title:"房多多",value:7},
+            {title:"自有渠道",value:8},
+            {title:"九鼎渠道",value:9},
+            {title:"中原渠道",value:10},
+            {title:"老带新",value:11},
+            {title:"分销带访",value:12},
+            {title:"员工推荐",value:13},
+            {title:"线上预约",value:14},
+        ],
+        user:{$user},
+        check: function () {
+            var tel = $('#tel').val();
+            if (!tel || !/1[3|4|5|7|8]\d{9}/.test(tel)) {
+                $.toast("请输入正确的手机号", "forbidden");
+                return false;
+            }
 
+            var realname = $('#realname').val();
+            if (!realname) {
+                $.toast("姓名必填", "forbidden");
+                return false;
+            }
 
-<!--home-->
-<!--<section id="home">
-    <div class="lvjing">
-        <div class="container">
-            <div class="row wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s">
-                <div class="col-md-1"></div>
-                <div class="col-md-10">
-                    <h1>bootstrap实战课程等你来战！</h1>
-                    <p>
-                        本套课程适用于：1.WEB开发人员；2.网站维护人员、管理人员<br/>
-                        培训技能的目标：使用bootstrap框架快速构建响应式网页，颠覆传统WEB前端！
-                    </p>
-                    <img src="/static/img/huaziedu/php.jpg" class="img-responsive" alt="php"/>
-                </div>
-                <div class="col-md-1"></div>
-            </div>
-        </div>
-    </div>
-</section>-->
-<!--home-->
+            var user = $('#user').val();
+            if (!user) {
+                $.toast("置业顾问必填", "forbidden");
+                return false;
+            }
 
-<!--bbs-->
-<section id="bbs">
-    <div class="container">
-        <div class="row wow fadeInUp" data-wow-duration="0.5s">
-            <div class="col-md-12">
-                <h2>开班典礼盛况</h2>
+            var room = $('#room').val();
+            if (!room) {
+                $.toast("意向户型必填", "forbidden");
+                return false;
+            }
 
-                <!--<h6>独创学习路线助你成就高薪梦想</h6>-->
-            </div>
-            <div class="col-md-4">
-            	<div class="box">
-            		<a href="http://www.maiziedu.com" target="_blank">
-                    <img src="/static/img/huaziedu/kbsk-1.png" height="300px"  class="img-responsive" alt=""/>
-                    <div id="title">
-                    	<h4>PHP高薪就业班开班典礼</h4>
-                    	<p>重庆文理学院-重庆必新PHP高薪就业班开班典礼</p>
-                    </div>
-                    
-                </a>
-            	</div>
-                
-            </div>
-            <div class="col-md-4 ">
-            	<div class="box">
-            		<a href="javascript:;" target="_blank">
-                    <img src="/static/img/huaziedu/kbsk-2.png"  class="img-responsive" alt=""/>
-                    <div id="title">
-                    	<h4>PHP高薪就业班开班典礼</h4>
-                    	<p>重庆文理学院-重庆必新PHP高薪就业班开班典礼</p>
-                    </div>
-                    
-                </a>
-            	</div>
-                
-            </div>
-            <div class="col-md-4">
-            	<div class="box">
-            		<a href="http://www.maiziedu.com" target="_blank">
-                    <img src="/static/img/huaziedu/kbsk-3.png" class="img-responsive" alt=""/>
-                    <div id="title">
-                    	<h4>PHP高薪就业班开班典礼</h4>
-                    	<p>重庆文理学院-重庆必新PHP高薪就业班开班典礼</p>
-                    </div>
-                    
-                </a>
-            	</div>
-                
-            </div>
-        </div>
-    </div>
-</section>
-<!--bbs-->
+            var v = $('#room').data('values');
+            if(v == 1){
+                var roomNum = $("#roomNum").val();
+                if(!roomNum){
+                    $.toast("楼栋必填", "forbidden");
+                }
+            }else if(v == 2){
+                var house = $("#house").val();
+                if(!house){
+                    $.toast("户型必填", "forbidden");
+                }
+            }
+            return true;
+        },
+        submit:function () {
+            var data = {
+                mobile:$("#tel").val(),
+                true_name:$("#realname").val(),
+                age:$("#age").data('values'),
+                areaid:$("#area").data('values'),
+                channels:$("#channels").data('values'),
+                adviser_id:$("#user").data('values'),
+                room:$("#room").data('values'),
+                roomNum:$("#roomNum").data('values'),
+                house:$("#house").data('values'),
+                note:$("#note").val(),
+            };
+            $.ajax({
+                type:'post',
+                url:'/member/detail',
+                data:data,
+                beforeSend:function () {
+                    $(".submit").addClass('weui-btn_loading weui-btn_disabled').text('正在提交...');
+                    $.showLoading();
+                },
+                success:function (data) {
+                    $.hideLoading();
+                    if(data.code==1){
+                        $.toast(data.msg, "forbidden");
+                        return false;
+                    }
+                    $(".form").hide('normal',function () {
+                        $(this).remove();
+                        $(".success").show('normal');
+                    })
+                },
+                complete:function () {
+                    $(".submit").removeClass('weui-btn_loading weui-btn_disabled').text('正在提交');
+                }
+            })
+        },
+        cancle:function () {
+            window.location.href=window.location.href+'&random={$random}'
+        }
+    }
+    $("#age").select({
+        title: "选择年龄",
+        items: operate.age,
+        onChange: function(d) {
+            console.log(this, d);
+        },
+        onClose: function() {
+            console.log("close");
+        },
+        onOpen: function() {
+            console.log("open");
+        },
+    });
 
+    $("#user").select({
+        title: "选择置业顾问",
+        items: operate.user,
+        onChange: function(d) {
+            console.log(this, d);
+        },
+        onClose: function() {
+            console.log("close");
+        },
+        onOpen: function() {
+            console.log("open");
+        },
+    });
 
+    $("#room").select({
+        title: "选择意向户型",
+        items: operate.room,
+        onChange: function(d) {
+            if(d.values=='1'){
+                $("#roomNum").parents('.weui-cell').show();
+                $("#house").parents('.weui-cell').hide();
+            }else{
+                $("#roomNum").parents('.weui-cell').hide();
+                $("#house").parents('.weui-cell').show();
+            }
+        },
+        onClose: function() {
+            console.log("close");
+        },
+        onOpen: function() {
+            console.log("open");
+        },
+    });
 
-<!--contact-->
-<section id="contact">
-    <div class="lvjing">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6  wow fadeInLeft">
-                    <h2>
-                        <span class="glyphicon glyphicon-send"></span>
-                        &nbsp;
-                        报名联系华资
-                    </h2>
-                    <p>
-                        华资科技旗下华资学院是西南规模最大的软件外包服务基地和高级软件人才培养基地，致力于为
-                        软件研发、数字艺术设计、全球电子商务等高端行业提供软件外包服务。在人才孵化方面，公司与IBM、
-                        北京新精英等企业合作引入最新的体验式人才培新模式，从挖掘个人潜力出发，通过企业订单式培养，
-                        按照企业的实用需求，为企业提供全方面的技能型人才，同时注重培养目标、执行、协作、人际交流、
-                        职场礼仪等综合素养。必新还为每一位学员提供终身制的就业推荐、认证培训、人才外派、
-                        进修猎头等综合就业服务。打造服务外包、人才孵化、人才服务的IT生态圈。是IBM、惠普（中国）、
-                        中国航信、联想集团、NTTdata、华为等世界500强企业的员工培养基地。多年来通过步入创新产业的
-                        学员已达数百万人，遍布于微软、惠普、IBM、联想、华为、百度、阿里巴巴、腾讯、京东、小米
-                        科技等众多国内外知名企业，并获得行业的高度认可。
-                    </p>
-                    <address>
-                        <p>
-                            <span class="glyphicon glyphicon-home"></span>
-                            &nbsp;
-                            地址:四川省巴中市兴文经济开发区科技园置信城(巴中新型产业园)
-                        </p>
-                        <p>
-                            <span class="glyphicon glyphicon-phone-alt"></span>
-                            &nbsp;
-                            联系电话：023-81365303   18523645838
-                        </p>
-                        <p>
-                            <span class="glyphicon glyphicon-envelope"></span>
-                            &nbsp;
-                            邮箱:service@huaziedu.com
-                        </p>
-                    </address>
-                </div>
-                <div class="col-md-6  wow fadeInRight">
-                    <form action="#" method="post">
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="您的姓名"/>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="email" class="form-control" placeholder="您的邮箱"/>
-                        </div>
-                        <div class="col-md-12">
-                            <input type="text" class="form-control" placeholder="标题"/>
-                        </div>
-                        <div class="col-md-12">
-                            <textarea class="form-control" placeholder="留言内容" rows="4"></textarea>
-                        </div>
-                        <div class="col-md-8">
-                            <input type="submit" class="form-control" value="提交"/>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-{include file="../../common/view/footer" /}
+    $("#roomNum").select({
+        title: "选择意向户型",
+        items: operate.roomNum,
+        onChange: function(d) {
+
+        },
+        onClose: function() {
+            console.log("close");
+        },
+        onOpen: function() {
+            console.log("open");
+        },
+    });
+
+    $("#house").select({
+        title: "选择意向户型",
+        items: operate.house,
+        onChange: function(d) {
+            console.log(this, d);
+        },
+        onClose: function() {
+            console.log("close");
+        },
+        onOpen: function() {
+            console.log("open");
+        },
+    });
+
+    $("#area").select({
+        title: "选择居住区域",
+        items: operate.area,
+        onChange: function(d) {
+            console.log(this, d);
+        },
+        onClose: function() {
+            console.log("close");
+        },
+        onOpen: function() {
+            console.log("open");
+        },
+    });
+
+    $("#channels").select({
+        title: "选择来访渠道",
+        items: operate.channels,
+        onChange: function(d) {
+            console.log(this, d);
+        },
+        onClose: function() {
+            console.log("close");
+        },
+        onOpen: function() {
+            console.log("open");
+        },
+    });
+
+    $(".submit").on('click',function () {
+        var result = operate.check();
+        if(result){
+            operate.submit();
+        }
+    })
+
+    $(".cancle").on('click',function () {
+        operate.cancle();
+    })
+</script>
+{/block}
+

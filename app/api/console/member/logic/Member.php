@@ -4,7 +4,9 @@ namespace app\api\console\member\logic;
 
 use app\api\console\member\model\Member as modelMember;
 use app\api\console\member\service\Member AS serviceMember;
+use app\api\console\note\logic\MemberNote AS logicMemberNote;
 use app\api\console\log\logic\Log AS logicLog;
+use think\Db;
 use think\Exception;
 
 class Member
@@ -30,40 +32,68 @@ class Member
      */
     public function save($data = [])
     {
-        $result = $this->serviceMember->checkMemberBase($data, ($data['group_id']==4 ? 'system_member' : 'member1'));
+        $scene = '';
+        if ($data['group_id'] == 4) {
+            $scene = 'system_member';
+        } else if ($data['group_id'] == 1) {
+            $scene = 'member1';
+        } else if ($data['group_id'] == 5) {
+            $scene = 'member5_room' . $data['room'];
+        }
+
+        $result = $this->serviceMember->checkMemberBase($data, $scene);
         if ($result) {
             throw new Exception($result);
         }
 
-        if(isset($data['id']) && $data['id']){
-            $result = $this->serviceMember->find($data['id']);
-            if (!$result) {
-                throw new Exception('用户信息不存在');
+        if ($data['group_id'] != 5) {
+            if (isset($data['id']) && $data['id']) {
+                $result = $this->serviceMember->find($data['id']);
+                if (!$result) {
+                    throw new Exception('用户信息不存在');
+                }
+                //检查新的用户名是否存在
+                $check = $this->serviceMember->checkUserName($data['user_name'], $data['id'],$data['groupd_id']);
+            } else {
+                if (!$data['pass_word']) {
+                    throw new Exception('密码不能为空');
+                }
+                $check = $this->serviceMember->checkUserName($data['user_name'],0,$data['groupd_id']);
             }
-            //检查新的用户名是否存在
-            $check = $this->serviceMember->checkUserName($data['user_name'],$data['id']);
+            if ($check) {
+                throw new Exception('用户名已存在');
+            }
+
+            if ($data['pass_word'] == '' && $data['confrim_pass_word'] == '') {
+                unset($data['pass_salt'], $data['pass_word']);
+            } else {
+                $data['pass_salt'] = serviceMember::passSalt();
+                $data['pass_word'] = serviceMember::passWord($data['pass_word'], $data['pass_salt']);
+                $data['token'] = serviceMember::token($data['user_name'] . $data['pass_word'], $data['pass_salt']);
+            }
         }else{
-            if(!$data['pass_word']){
-                throw new Exception('密码不能为空');
-            }
-            $check = $this->serviceMember->checkUserName($data['user_name']);
-        }
-        if ($check) {
-            throw new Exception('用户名已存在');
+            //如果客户意向户型选的楼栋，那么house的值为rooNum
+            $data['house'] = $data['room'] == 1 ? $data['roomNum'] : $data['house'];
+
+            $note = $data['note'];
+            unset($data['note']);
         }
 
-        if ($data['pass_word'] == '' && $data['confrim_pass_word'] == '') {
-            unset($data['pass_salt'], $data['pass_word']);
-        } else {
-            $data['pass_salt'] = serviceMember::passSalt();
-            $data['pass_word'] = serviceMember::passWord($data['pass_word'], $data['pass_salt']);
-            $data['token'] = serviceMember::token($data['user_name'] . $data['pass_word'], $data['pass_salt']);
-        }
-        $this->serviceMember->save($data);
+        Db::startTrans();
+        $id = $this->serviceMember->save($data);
 
-        //记录操作日志
-        $message= isset($data['id']) && $data['id'] ? [4=>"编辑管理员信息:{$data['user_name']}的信息",1=>"编辑置业顾问:{$data['user_name']}的信息"] : [1=>"添加置业顾问:{$data['user_name']}"];
-        $this->logicLog->save($message[$data['group_id']]);
+        if($note){
+            $data['id']=$id;
+            $data['note']=$note;
+            $logicMemberNote = new logicMemberNote;
+            $logicMemberNote->save($data);
+        }
+
+        if ($data['group_id'] != 5) {
+            //记录操作日志
+            $message = isset($data['id']) && $data['id'] ? [4 => "编辑管理员信息:{$data['user_name']}的信息", 1 => "编辑置业顾问:{$data['user_name']}的信息"] : [1 => "添加置业顾问:{$data['user_name']}"];
+            $this->logicLog->save($message[$data['group_id']]);
+        }
 
         return true;
     }
@@ -86,9 +116,9 @@ class Member
         $result = $this->serviceMember->checkUserName($data['user_name']);
         if (!$result) {
             throw new Exception('用户名不正确');
-        }else{
+        } else {
             //禁用帐号不能登录
-            if($result['status'] == 2){
+            if ($result['status'] == 2) {
                 throw new Exception('该用户已被关闭');
             }
         }
@@ -109,10 +139,10 @@ class Member
         }
 
         //记录登录日志
-        $this->logicLog->save('成功登录系统', $user['user_name'],$user['id']);
+        $this->logicLog->save('成功登录系统', $user['user_name'], $user['id']);
 
         session('token', $result);
-        session('user', ['user_name'=>$user['user_name'],'user_id'=>$user['id']]);
+        session('user', ['user_name' => $user['user_name'], 'user_id' => $user['id']]);
     }
 
     /**
@@ -125,7 +155,7 @@ class Member
      */
     public function lists($where = [], $pageSize = 20)
     {
-        $lists = modelMember::where($where)->paginate($pageSize);
+        $lists = modelMember::where($where)->order('id DESC')->paginate($pageSize);
         $page = $lists->render();
         return ['lists' => $lists, 'page' => $page];
     }
@@ -152,7 +182,8 @@ class Member
      * @param $id
      * @param $status
      */
-    public function delete($id,$status){
+    public function delete($id, $status)
+    {
         $data['id'] = $id;
         $data['status'] = $status;
         $this->serviceMember->changeField($data);

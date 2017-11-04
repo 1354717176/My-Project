@@ -86,9 +86,12 @@ class Member
      * @param $userName
      * @return array|false|\PDOStatement|string|\think\Model
      */
-    public function checkUserName($userName, $uid = 0)
+    public function checkUserName($userName, $uid = 0,$groupdId=0)
     {
         $where = $uid ? ['id' => ['NEQ', $uid]] : '';
+        if($groupdId){
+            $where['group_id'] = $groupdId;
+        }
         $where['user_name'] = $userName;
         return modelMember::where($where)->field('id,status,pass_salt')->find();
     }
@@ -177,7 +180,8 @@ class Member
     {
         $isUpdate = isset($data['id']) && $data['id'] ? true : false;
         $modelMember = new modelMember;
-        return $modelMember->allowField(true)->isUpdate($isUpdate)->save($data);
+        $modelMember->allowField(true)->isUpdate($isUpdate)->save($data);
+        return $modelMember->id;
     }
 
     /**
