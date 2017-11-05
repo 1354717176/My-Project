@@ -5,6 +5,7 @@ namespace app\desk\index\controller;
 use think\Controller;
 use think\Config;
 use app\api\console\member\logic\Member AS logicMember;
+use app\api\common\logic\Deskbase;
 
 /**
  * 网站首页类
@@ -13,16 +14,8 @@ use app\api\console\member\logic\Member AS logicMember;
  * @datetime 2017/3/20 19:47
  * @package app\desk\sign\controller
  */
-class Index extends Controller
+class Index extends Deskbase
 {
-
-    public function __construct()
-    {
-        parent::__construct();
-        $domain =  Config::get('domain');
-        //域名配置
-        $this->assign('domain', $domain);
-    }
 
     /**
      * 网站首页

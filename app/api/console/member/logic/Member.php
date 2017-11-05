@@ -38,7 +38,7 @@ class Member
         } else if ($data['group_id'] == 1) {
             $scene = 'member1';
         } else if ($data['group_id'] == 5) {
-            $scene = 'member5_room' . $data['room'];
+            $scene = 'member5_room';
         }
 
         $result = $this->serviceMember->checkMemberBase($data, $scene);
@@ -72,9 +72,6 @@ class Member
                 $data['token'] = serviceMember::token($data['user_name'] . $data['pass_word'], $data['pass_salt']);
             }
         }else{
-            //如果客户意向户型选的楼栋，那么house的值为rooNum
-            $data['house'] = $data['room'] == 1 ? $data['roomNum'] : $data['house'];
-
             $note = $data['note'];
             unset($data['note']);
         }

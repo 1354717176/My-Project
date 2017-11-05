@@ -5,7 +5,7 @@
     <a class="weui-cell weui-cell_access" href="javascript:;">
         <div class="weui-cell__hd"><i class="icon fa-phone"></i></div>
         <div class="weui-cell__bd" style="margin-left:10px">
-            <input class="weui-input" type="number" id="tel" placeholder="请输入电话号码(必填)">
+            <input class="weui-input" type="text" value="" readonly placeholder='{notempty name="config.tel"}{$config.tel}{/notempty}'>
         </div>
         <div class="weui-cell__ft"></div>
     </a>
@@ -19,15 +19,39 @@
 </div>
 <div class="weui-cells__title">请填写以下信息</div>
 <div class="weui-cell">
-    <div class="weui-cell__hd"><label class="weui-label">姓名</label></div>
+    <div class="weui-cell__hd"><label class="weui-label"><span class="require-tips">*</span> 姓名</label></div>
     <div class="weui-cell__bd">
-        <input class="weui-input" type="text" id="realname" placeholder="请输入姓名(必填)">
+        <input class="weui-input" type="text" id="realname" placeholder="请输入姓名">
+    </div>
+</div>
+<div class="weui-cell">
+    <div class="weui-cell__hd"><label for="tel" class="weui-label"><span class="require-tips">*</span> 电话</label></div>
+    <div class="weui-cell__bd">
+        <input class="weui-input" type="number" id="tel" placeholder="请输入电话号码">
+    </div>
+</div>
+<div class="weui-cell">
+    <div class="weui-cell__hd"><label for="user" class="weui-label"><span class="require-tips">*</span> 置业顾问</label></div>
+    <div class="weui-cell__bd">
+        <input class="weui-input" id="user" type="text" value="" placeholder="请选择置业顾问(必填)">
+    </div>
+</div>
+<div class="weui-cell">
+    <div class="weui-cell__hd"><label for="roomNum" class="weui-label"><span class="require-tips">*</span> 意向户型</label></div>
+    <div class="weui-cell__bd">
+        <input class="weui-input" id="roomNum" type="text" value="" placeholder="请选择楼栋">
+    </div>
+</div>
+<div class="weui-cell">
+    <div class="weui-cell__hd"><label for="house" class="weui-label"></label></div>
+    <div class="weui-cell__bd">
+        <input class="weui-input" id="house" type="text" value="" placeholder="请选择具体户型">
     </div>
 </div>
 <div class="weui-cell">
     <div class="weui-cell__hd"><label for="age" class="weui-label">年龄</label></div>
     <div class="weui-cell__bd">
-        <input class="weui-input" id="age" type="text" value="" placeholder="请选择年龄(可不填)">
+        <input class="weui-input" id="age" type="text" value="" placeholder="请选择年龄">
     </div>
 </div>
 <div class="weui-cell">
@@ -35,7 +59,7 @@
         <label class="weui-label"><label for="area" class="weui-label">居住区域</label></label>
     </div>
     <div class="weui-cell__bd">
-        <input class="weui-input" id="area" type="text" value="" placeholder="请选择居住区域(可不填)">
+        <input class="weui-input" id="area" type="text" value="" placeholder="请选择居住区域">
     </div>
 </div>
 <div class="weui-cell">
@@ -43,38 +67,14 @@
         <label class="weui-label"><label for="channels" class="weui-label">来访渠道</label></label>
     </div>
     <div class="weui-cell__bd">
-        <input class="weui-input" id="channels" type="text" value="" placeholder="请选择来访渠道(可不填)">
-    </div>
-</div>
-<div class="weui-cell">
-    <div class="weui-cell__hd"><label for="user" class="weui-label">置业顾问</label></div>
-    <div class="weui-cell__bd">
-        <input class="weui-input" id="user" type="text" value="" placeholder="请选择置业顾问(必填)">
-    </div>
-</div>
-<div class="weui-cell">
-    <div class="weui-cell__hd"><label for="room" class="weui-label">意向户型</label></div>
-    <div class="weui-cell__bd">
-        <input class="weui-input" id="room" type="text" value="" placeholder="请选择意向户型(必填)">
-    </div>
-</div>
-<div class="weui-cell" style="display:none">
-    <div class="weui-cell__hd"><label for="roomNum" class="weui-label"></label></div>
-    <div class="weui-cell__bd">
-        <input class="weui-input" id="roomNum" type="text" value="" placeholder="请选择几号楼(必填)">
-    </div>
-</div>
-<div class="weui-cell" style="display:none">
-    <div class="weui-cell__hd"><label for="house" class="weui-label"></label></div>
-    <div class="weui-cell__bd">
-        <input class="weui-input" id="house" type="text" value="" placeholder="请选择具体户型(必填)">
+        <input class="weui-input" id="channels" type="text" value="" placeholder="请选择来访渠道">
     </div>
 </div>
 <div class="weui-cell">
     <div class="weui-cell__hd"><label class="weui-label">备注</label></div>
     <div class="weui-cell__bd">
         <div class="weui-cell__bd">
-            <textarea class="weui-textarea" placeholder="请输入备注信息(可不填)" id="note" rows="3"></textarea>
+            <textarea class="weui-textarea" placeholder="请输入备注信息" id="note" rows="3"></textarea>
         </div>
     </div>
 </div>
@@ -176,15 +176,16 @@
         ],
         user:{$user},
         check: function () {
-            var tel = $('#tel').val();
-            if (!tel || !/1[3|4|5|7|8]\d{9}/.test(tel)) {
-                $.toast("请输入正确的手机号", "forbidden");
-                return false;
-            }
 
             var realname = $('#realname').val();
             if (!realname) {
                 $.toast("姓名必填", "forbidden");
+                return false;
+            }
+
+            var tel = $('#tel').val();
+            if (!tel || !/1[3|4|5|7|8]\d{9}/.test(tel)) {
+                $.toast("请输入正确的手机号", "forbidden");
                 return false;
             }
 
@@ -194,24 +195,18 @@
                 return false;
             }
 
-            var room = $('#room').val();
-            if (!room) {
-                $.toast("意向户型必填", "forbidden");
+            var roomNum = $("#roomNum").val();
+            if(!roomNum){
+                $.toast("楼栋必填", "forbidden");
                 return false;
             }
 
-            var v = $('#room').data('values');
-            if(v == 1){
-                var roomNum = $("#roomNum").val();
-                if(!roomNum){
-                    $.toast("楼栋必填", "forbidden");
-                }
-            }else if(v == 2){
-                var house = $("#house").val();
-                if(!house){
-                    $.toast("户型必填", "forbidden");
-                }
+            var house = $("#house").val();
+            if(!house){
+                $.toast("户型必填", "forbidden");
+                return false;
             }
+
             return true;
         },
         submit:function () {
@@ -222,7 +217,6 @@
                 areaid:$("#area").data('values'),
                 channels:$("#channels").data('values'),
                 adviser_id:$("#user").data('values'),
-                room:$("#room").data('values'),
                 roomNum:$("#roomNum").data('values'),
                 house:$("#house").data('values'),
                 note:$("#note").val(),

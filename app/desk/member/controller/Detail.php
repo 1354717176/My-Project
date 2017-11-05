@@ -13,14 +13,13 @@ class Detail extends Controller
     {
         if ($this->request->isPost()) {
             $data['group_id']=5;
-            $data['mobile'] = $this->request->post('mobile','');
             $data['true_name'] = $data['user_name'] = $this->request->post('true_name','');
+            $data['mobile'] = $this->request->post('mobile','');
             $data['age'] = $this->request->post('age/d',0);
             $data['areaid'] = $this->request->post('areaid/d',0);
             $data['channels'] = $this->request->post('channels/d',0);
             $data['adviser_id'] = $this->request->post('adviser_id/d',0);
-            $data['room'] = $this->request->post('room/d',0);
-            $data['roomNum'] = $this->request->post('roomNum/d',0);
+            $data['room_num'] = $this->request->post('roomNum/d',0);
             $data['house'] = $this->request->post('house/d',0);
             $data['note'] = $this->request->post('note','');
 
