@@ -23,13 +23,13 @@ class Set
         $this->modelSet->allowField(true)->where('key', 'IN', $key)->delete();
     }
 
-    public function lists(){
-        return $this->modelSet->field('key,value')->select()->toArray();
+    public function lists($type){
+        return $this->modelSet->field('key,value')->where('type','IN',$type)->select()->toArray();
     }
 
-    public function checkSetBase($data){
+    public function checkSetBase($data,$scene){
         $validate = new validateSet();
-        if (!$validate->scene('set')->check($data)) {
+        if (!$validate->scene($scene)->check($data)) {
             return $validate->getError();
         }
         return [];

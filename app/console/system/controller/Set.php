@@ -18,7 +18,8 @@ class Set extends Base
          parent::_initialize();
          $this->logicSet = new logicSet;
 
-         $config = $this->logicSet->lists();
+         $type = $this->request->get('type', 1);
+         $config = $this->logicSet->lists($type);
          if($config){
              Config::set($config);
          }
@@ -28,6 +29,7 @@ class Set extends Base
     public function index()
     {
         $type = $this->request->get('type', 1);
+        $this->assign('type',$type);
         return $this->fetch('index' . $type);
     }
 

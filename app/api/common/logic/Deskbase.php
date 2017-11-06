@@ -13,7 +13,7 @@ class Deskbase extends Controller
 
         $this->logicSet = new logicSet;
 
-        $config = $this->logicSet->lists();
+        $config = $this->logicSet->lists([1,2]);
         if ($config) {
             Config::set($config);
         }

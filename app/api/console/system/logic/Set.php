@@ -18,8 +18,8 @@ class Set
 
     public function save($param)
     {
-
-        $result = $this->serviceSet->checkSetBase($param);
+        $scene=[1=>'set',2=>'detail'];
+        $result = $this->serviceSet->checkSetBase($param,$scene[$param['type']]);
         if($result){
             throw new Exception($result);
         }
@@ -27,8 +27,12 @@ class Set
         $data = [];
         $paramKeys = array_keys($param);
         foreach ($paramKeys as $key => $value) {
+            if($key == 'type'){
+                continue;
+            }
             $data[$key]['key'] = $value;
             $data[$key]['value'] = $param[$value];
+            $data[$key]['type'] = $param['type'];
         }
 
         Db::startTrans();
@@ -39,9 +43,9 @@ class Set
         $this->serviceSet->save($data);
     }
 
-    public function lists(){
+    public function lists($type){
         $data=[];
-        $result = $this->serviceSet->lists();
+        $result = $this->serviceSet->lists($type);
         if($result){
             foreach ($result as $item){
                 $data[$item['key']] = $item['value'];
