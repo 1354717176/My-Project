@@ -41,4 +41,8 @@ class Index extends Base
     {
         return $this->fetch();
     }
+
+    public function ie(){
+        return $this->fetch();
+    }
 }

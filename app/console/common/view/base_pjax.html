@@ -93,7 +93,11 @@
 <script src="{$domain.static}/js/jquery.slimscroll.min.js"></script>
 <script src="{$domain.static}/js/screenfull.min.js"></script>
 <script src="{$domain.static}/js/jquery.matchHeight.min.js"></script>
-
+<script>
+    $(function(){
+        $(window).on('beforeunload',function(){return;});
+    })
+</script>
 {block name="js"}{/block}
 </body>
 </html>

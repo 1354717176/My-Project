@@ -67,7 +67,7 @@ class Base extends Controller
      */
     protected function setPjax(){
         $this->view->config('tpl_cache', false);
-        $layout = $this->request->isPjax() ? false : '../../common/view/layout';
+        $layout = ($this->request->isPjax() || in_array($this->request->action(),['ie'])) ? false : '../../common/view/layout';
         $this->view->engine->layout($layout);
     }
 }
