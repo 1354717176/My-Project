@@ -67,4 +67,5 @@ class Index extends Base
         $this->redirect('/login');
         exit;
     }
+
 }
