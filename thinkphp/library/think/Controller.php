@@ -209,4 +209,13 @@ class Controller
             return true;
         }
     }
+
+    protected function setPjax($isPjax, $currentModule, $action, $notPjaxModule = [])
+    {
+        if (!in_array($currentModule, $notPjaxModule)) {
+            $this->view->config('tpl_cache', false);
+            $layout = ($isPjax || in_array($action, ['ie'])) ? false : '../../common/view/layout';
+            $this->view->engine->layout($layout);
+        }
+    }
 }

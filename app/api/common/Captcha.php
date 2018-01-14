@@ -1,10 +1,8 @@
 <?php
 
-namespace app\api\common\logic;
+namespace api\common;
 
-use think\Controller;
-
-class Captcha extends Controller
+class Captcha
 {
 
     public $id;

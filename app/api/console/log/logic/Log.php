@@ -2,7 +2,7 @@
 
 namespace app\api\console\Log\logic;
 
-use app\api\console\Log\service\Log AS serviceLog;
+use app\api\console\log\service\Log AS serviceLog;
 use think\Exception;
 use think\Request;
 

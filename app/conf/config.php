@@ -242,4 +242,9 @@ return [
     'domain'=>[
         'static'=>'http://static.yanghuan.com'
     ],
+
+    //不需要进行pjax加载的模块
+    'not_pjax_module'=>[
+        'login',
+    ]
 ];

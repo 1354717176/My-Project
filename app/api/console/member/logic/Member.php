@@ -109,7 +109,6 @@ class Member
         if ($result) {
             throw new Exception($result);
         }
-
         $result = $this->serviceMember->checkUserName($data['user_name']);
         if (!$result) {
             throw new Exception('用户名不正确');

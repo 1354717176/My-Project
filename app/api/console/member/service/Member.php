@@ -88,7 +88,7 @@ class Member
      */
     public function checkUserName($userName, $uid = 0,$groupdId=0)
     {
-        $where = $uid ? ['id' => ['NEQ', $uid]] : '';
+        $where = $uid ? ['id' => ['NEQ', $uid]] : [];
         if($groupdId){
             $where['group_id'] = $groupdId;
         }
