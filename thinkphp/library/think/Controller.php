@@ -52,6 +52,12 @@ class Controller
         $this->view    = View::instance(Config::get('template'), Config::get('view_replace_str'));
         $this->request = $request;
 
+        //读取配置文件里面不需要进行pjax加载的页面
+        $isPjax = $this->request->isPjax();
+        $currentModel = $this->request->module();
+        $currentAction = $this->request->action();
+        $this->setPjax($isPjax, $currentModel, $currentAction, Config::get('not_pjax_module'));
+
         // 控制器初始化
         $this->_initialize();
 
@@ -210,11 +216,11 @@ class Controller
         }
     }
 
-    protected function setPjax($isPjax, $currentModule, $action, $notPjaxModule = [])
+    private function setPjax($isPjax, $currentModule, $action, $notPjaxModule = [])
     {
         if (!in_array($currentModule, $notPjaxModule)) {
             $this->view->config('tpl_cache', false);
-            $layout = ($isPjax || in_array($action, ['ie'])) ? false : '../../common/view/layout';
+            $layout = $isPjax ? false : '../../common/view/layout';
             $this->view->engine->layout($layout);
         }
     }

@@ -136,3 +136,8 @@ function getConfig($value = '')
     }
     return $config;
 }
+
+function djson($code, $msg, $data = [], $ext = [])
+{
+    return json(array_merge(['code' => $code, 'msg' => $msg, 'data' => $data], $ext));
+}

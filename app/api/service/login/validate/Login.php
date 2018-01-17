@@ -1,5 +1,5 @@
 <?php
-namespace app\api\console\login\validate;
+namespace app\api\service\login\validate;
 
 use think\Validate;
 
@@ -16,8 +16,8 @@ class Login extends Validate
     ];
 
     protected $message = [
-        'user_name.require' => '请输入用户名',
-        'pass_word.require' => '请输入密码',
+        'user_name.require' => '{%PLEASE_ENTER_USERNAME}',
+        'pass_word.require' => '{%PLEASE_ENTER_PASSWORD}',
     ];
 
     protected $scene = [

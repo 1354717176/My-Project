@@ -1,13 +1,11 @@
 <?php
 
-namespace app\api\console\member\service;
+namespace app\api\service\member\service;
 
-use app\api\common\logic\Captcha AS logicCaptcha;
-use app\api\console\login\validate\Login AS validateLogin;
-use app\api\console\member\validate\Member AS validateMember;
-use app\api\console\member\model\Member AS modelMember;
+use app\api\service\member\model\Member AS modelMember;
+use app\api\nozzle\Member AS interfaceMember;
 
-class Member
+class Member implements interfaceMember
 {
 
     /**
@@ -18,7 +16,7 @@ class Member
      */
     public static function passSalt()
     {
-        return random(8);
+//        return random(8);
     }
 
     /**
@@ -31,7 +29,7 @@ class Member
      */
     public static function passWord($passWord = '', $passSalt = '')
     {
-        return md5($passWord . ($passSalt ? $passSalt : self::passSalt()));
+//        return md5($passWord . ($passSalt ? $passSalt : self::passSalt()));
     }
 
     /**
@@ -44,7 +42,7 @@ class Member
      */
     public static function token($str = '', $passSalt = '')
     {
-        return sha1($str . $passSalt);
+//        return sha1($str . $passSalt);
     }
 
     /**
@@ -56,11 +54,11 @@ class Member
      */
     public function checkBase($data)
     {
-        $validate = new validateLogin();
-        if (!$validate->scene('login')->check($data)) {
-            return $validate->getError();
-        }
-        return [];
+//        $validate = new validateLogin();
+//        if (!$validate->scene('login')->check($data)) {
+//            return $validate->getError();
+//        }
+//        return [];
     }
 
     /**
@@ -72,11 +70,11 @@ class Member
      * @return array
      */
     public function checkMemberBase($data, $scene){
-        $validate = new validateMember();
-        if (!$validate->scene($scene)->check($data)) {
-            return $validate->getError();
-        }
-        return [];
+//        $validate = new validateMember();
+//        if (!$validate->scene($scene)->check($data)) {
+//            return $validate->getError();
+//        }
+//        return [];
     }
 
     /**
@@ -86,14 +84,14 @@ class Member
      * @param $userName
      * @return array|false|\PDOStatement|string|\think\Model
      */
-    public function checkUserName($userName, $uid = 0,$groupdId=0)
+    public function checkUserName($userName)
     {
-        $where = $uid ? ['id' => ['NEQ', $uid]] : [];
-        if($groupdId){
-            $where['group_id'] = $groupdId;
-        }
-        $where['user_name'] = $userName;
-        return modelMember::where($where)->field('id,status,pass_salt')->find();
+//        $where = $uid ? ['id' => ['NEQ', $uid]] : [];
+//        if($groupdId){
+//            $where['group_id'] = $groupdId;
+//        }
+//        $where['user_name'] = $userName;
+//        return modelMember::where($where)->field('id,status,pass_salt')->find();
     }
 
     /**
@@ -106,8 +104,8 @@ class Member
      */
     public function checkPassWord($passWord, $passSalt)
     {
-        $passWord = self::passWord($passWord, $passSalt);
-        return modelMember::where('pass_word', $passWord)->field('id,user_name,pass_word')->find();
+//        $passWord = self::passWord($passWord, $passSalt);
+//        return modelMember::where('pass_word', $passWord)->field('id,user_name,pass_word')->find();
     }
 
     /**
@@ -120,10 +118,10 @@ class Member
      */
     public function checkCaptcha($code = '', $id = 0)
     {
-        $captcha = new logicCaptcha;
-        $captcha->id = $id;
-        $captcha->code = $code;
-        return $captcha->check();
+//        $captcha = new logicCaptcha;
+//        $captcha->id = $id;
+//        $captcha->code = $code;
+//        return $captcha->check();
     }
 
     /**
@@ -135,7 +133,7 @@ class Member
      */
     public function checkToken($token)
     {
-        return modelMember::where('token', $token)->count();
+//        return modelMember::where('token', $token)->count();
     }
 
     /**
@@ -149,13 +147,13 @@ class Member
      */
     public function saveLoginInfo($userId, $userName, $passWord)
     {
-        $data['id'] = $userId;
-        $data['login_times'] = ['exp', 'login_times+1'];
-        $data['token'] = self::token($userName . $passWord, self::passSalt());
-
-        $modelMember = new modelMember;
-        $result = $modelMember->allowField(true)->isUpdate(true)->save($data);
-        return $result ? $data['token'] : [];
+//        $data['id'] = $userId;
+//        $data['login_times'] = ['exp', 'login_times+1'];
+//        $data['token'] = self::token($userName . $passWord, self::passSalt());
+//
+//        $modelMember = new modelMember;
+//        $result = $modelMember->allowField(true)->isUpdate(true)->save($data);
+//        return $result ? $data['token'] : [];
     }
 
     /**
@@ -167,7 +165,7 @@ class Member
      */
     public function find($id)
     {
-        return modelMember::get($id);
+//        return modelMember::get($id);
     }
 
     /**
@@ -178,10 +176,10 @@ class Member
      */
     public function save($data)
     {
-        $isUpdate = isset($data['id']) && $data['id'] ? true : false;
-        $modelMember = new modelMember;
-        $modelMember->allowField(true)->isUpdate($isUpdate)->save($data);
-        return $modelMember->id;
+//        $isUpdate = isset($data['id']) && $data['id'] ? true : false;
+//        $modelMember = new modelMember;
+//        $modelMember->allowField(true)->isUpdate($isUpdate)->save($data);
+//        return $modelMember->id;
     }
 
     /**
@@ -193,6 +191,6 @@ class Member
      */
     public function changeField($data)
     {
-        return modelMember::update($data);
+//        return modelMember::update($data);
     }
 }

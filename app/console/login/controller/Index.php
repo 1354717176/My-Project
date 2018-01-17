@@ -2,7 +2,9 @@
 
 namespace app\console\login\controller;
 
-use app\api\common\logic\Base;
+use app\api\common\Base;
+use app\api\service\login\logic\Login AS logicLogin;
+use think\Exception;
 
 /**
  * 后台-登录类
@@ -28,6 +30,16 @@ class Index extends Base
      */
     public function login()
     {
+        $loginName = $this->request->post('loginName', '');
+        $password = $this->request->post('password', '');
+        $validCode = $this->request->post('validCode', '');
+        try {
+            $login = new logicLogin($loginName, $password, $validCode);
+            $login->validate();
+            return djson(0, '操作成功');
+        } catch (Exception $e) {
+            return djson($e->getCode(), $e->getMessage());
+        }
     }
 
     /**

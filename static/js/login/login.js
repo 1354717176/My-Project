@@ -19,7 +19,7 @@ $(function () {
         check: function () {
             //表单验证
             $('#loginForm').formValidation({
-                framework: 'bootstrap',
+                /*framework: 'bootstrap',
                 icon: {
                     valid: 'icon wb-check',
                     invalid: 'icon wb-close',
@@ -49,7 +49,7 @@ $(function () {
                             },
                         }
                     }
-                }
+                }*/
             }).on('success.form.fv', function(e) {
                 var $form = $(e.target);
                 $form.ajaxSubmit({
@@ -79,25 +79,4 @@ $(function () {
     $(".captcha").on('click', function () {
         operate.captcha(this, $(this).data('id'), $(this).data('url'))
     })
-
-    /*//表单提交时验证
-    $(".submit").on('click', function () {
-
-        //获得表单验证对象
-        var formValidate = $("#loginForm").data('formValidation');
-
-        //表单开始验证
-        formValidate.validate();
-
-        //表单验证状态
-        var status = formValidate.isValid();
-
-        //表单验证是否通过
-        if (status != false) {
-            window.location.href='/';
-        } else {
-            return false;
-        }
-    })*/
-
 })

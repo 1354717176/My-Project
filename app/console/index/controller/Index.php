@@ -1,6 +1,6 @@
 <?php
 namespace app\console\index\controller;
-use app\api\common\logic\Base;
+use app\api\common\Base;
 /**
  * 后台首页类
  * Class Index
