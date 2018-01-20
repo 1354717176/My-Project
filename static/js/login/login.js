@@ -19,7 +19,7 @@ $(function () {
         check: function () {
             //表单验证
             $('#loginForm').formValidation({
-                /*framework: 'bootstrap',
+                framework: 'bootstrap',
                 icon: {
                     valid: 'icon wb-check',
                     invalid: 'icon wb-close',
@@ -49,7 +49,7 @@ $(function () {
                             },
                         }
                     }
-                }*/
+                }
             }).on('success.form.fv', function(e) {
                 var $form = $(e.target);
                 $form.ajaxSubmit({

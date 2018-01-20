@@ -2,7 +2,6 @@
 
 namespace app\console\verifica\controller;
 
-use app\api\common\logic\Captcha AS logicCaptcha;
 use think\Controller;
 
 /**
@@ -12,14 +11,6 @@ use think\Controller;
  */
 class Captcha extends Controller
 {
-    protected $captcha;
-
-    public function __construct()
-    {
-        $this->captcha = new logicCaptcha();
-        parent::__construct();
-    }
-
     /**
      * 获取验证码
      * author:yanghuan
@@ -28,9 +19,9 @@ class Captcha extends Controller
     public function index()
     {
         if ($this->request->isPost()) {
-            $id = $this->request->post('id');
-            $this->captcha->id = ++$id;
-            return json(['code' => 0, 'data' => ['url' => $this->captcha->captcha(), 'id' => $this->captcha->id], 'msg' => '请求成功']);
+            $id = $this->request->post('id/d');
+            $id++;
+            return json(['code' => 0, 'data' => ['url' => captcha_src($id), 'id' => $id], 'msg' => '请求成功']);
         }
         return json(['code' => 10000, 'data' => [], 'msg' => '请求错误']);
     }

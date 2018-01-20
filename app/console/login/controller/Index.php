@@ -19,12 +19,12 @@ class Index extends Base
     public function index()
     {
         //显示验证码
-        $this->assign('captcha', captcha_src());
+        $this->assign('captcha', captcha_src(1));
         return $this->fetch();
     }
 
     /**
-     * 登录验证
+     * 登录操作
      * @author yanghuan
      * @datetime 2017/3/17 21:06
      */
@@ -33,8 +33,9 @@ class Index extends Base
         $loginName = $this->request->post('loginName', '');
         $password = $this->request->post('password', '');
         $validCode = $this->request->post('validCode', '');
+        $validCodeId = $this->request->post('id/d', 0);
         try {
-            $login = new logicLogin($loginName, $password, $validCode);
+            $login = new logicLogin($loginName, $password, $validCode, $validCodeId);
             $login->validate();
             return djson(0, '操作成功');
         } catch (Exception $e) {
@@ -44,7 +45,7 @@ class Index extends Base
 
     /**
      * 退出
-     * author: yanghua
+     * author: yanghuan
      * date:2017/3/22 20:09
      */
     public function out()
