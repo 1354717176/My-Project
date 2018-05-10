@@ -2,49 +2,49 @@
 
 namespace app\api\service\login\service;
 
-use app\api\nozzle\Member AS interfaceMember;
-use app\api\service\member\model\Member AS modelMember;
-
-class Login implements interfaceMember
+class Login
 {
     /**
      * 验证会员名是否存在
+     * @version:
      * @author:yanghuan
-     * @datetime:2018/1/20 20:49
-     * @param string $userName 会员名
-     * @return int|string
+     * @datetime:2018/5/10 0010 16:57
+     * @param $member 会员对象
+     * @return mixed
      */
-    public static function checkUserName($userName = '')
+    public static function checkUserName($member)
     {
-        $where['user_name'] = $userName;
-        return modelMember::where($where)->count();
+        $where['user_name'] = $member->getLoginName();
+        return $member::where($where)->count();
     }
 
     /**
      * 验证密码是否正确
+     * @version:
      * @author:yanghuan
-     * @datetime:2018/1/20 21:25
-     * @param $password 密码
-     * @param $passSalt 密码字符串
-     * @return int|string
+     * @datetime:2018/5/10 0010 16:57
+     * @param $member 会员对象
+     * @param $passSalt 会员密码加密的字符串
+     * @return mixed
      */
-    public static function checkUserPassword($password, $passSalt)
+    public static function checkUserPassword($member, $passSalt)
     {
-        $where['pass_word'] = md5($password . $passSalt);
-        return modelMember::where($where)->count();
+        $where['pass_word'] = md5($member->getPassWord() . $passSalt);
+        return $member::where($where)->count();
     }
 
     /**
      * 单一用户信息
-     * @author:yanghuna
-     * @datetime:2018/1/20 21:29
-     * @param string $userName 会员名
-     * @param string $field 要返回的字段
-     * @return array|false|\PDOStatement|string|\think\Model
+     * @version:
+     * @author:yanghuan
+     * @datetime:2018/5/10 0010 16:57
+     * @param $member 会员对象
+     * @param string $field 返回的字段
+     * @return mixed
      */
-    public static function userInfo($userName = '', $field = '*')
+    public static function userInfo($member, $field = '*')
     {
-        $where['user_name'] = $userName;
-        return modelMember::where($where)->field($field)->find();
+        $where['user_name'] = $member->getLoginName();
+        return $member::where($where)->field($field)->find();
     }
 }

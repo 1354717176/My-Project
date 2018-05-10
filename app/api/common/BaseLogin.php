@@ -5,13 +5,13 @@ namespace app\api\common;
 use think\Controller;
 
 /**
- * 后台-公共类
+ * 后台-公共登录类
  * Created by PhpStorm.
  * User: Administrator
  * Date: 2017/3/8
  * Time: 11:29
  */
-class Base extends Controller
+class BaseLogin extends Controller
 {
 
     protected function _initialize()
@@ -29,6 +29,7 @@ class Base extends Controller
             $this->redirect('/login');
             exit;
         }
+
 
     }
 }

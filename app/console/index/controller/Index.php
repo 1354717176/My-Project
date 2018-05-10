@@ -1,12 +1,15 @@
 <?php
+
 namespace app\console\index\controller;
-use app\api\common\Base;
+
+use app\api\common\BaseLogin;
+
 /**
  * 后台首页类
  * Class Index
  * @package app\console\index\controller
  */
-class Index extends Base
+class Index extends BaseLogin
 {
 
     /**
@@ -42,7 +45,8 @@ class Index extends Base
         return $this->fetch();
     }
 
-    public function ie(){
+    public function ie()
+    {
         return $this->fetch();
     }
 }
