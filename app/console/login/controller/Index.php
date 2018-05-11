@@ -3,9 +3,9 @@
 namespace app\console\login\controller;
 
 use app\api\common\BaseLogin;
-use app\api\service\login\logic\Login AS logicLogin;
 use think\Exception;
 use app\api\factory\FMember;
+use app\api\factory\FLogin;
 
 /**
  * 后台-登录类
@@ -16,13 +16,6 @@ use app\api\factory\FMember;
  */
 class Index extends BaseLogin
 {
-    public $login;
-
-    public function _initialize()
-    {
-        parent::_initialize();
-        $this->login = new logicLogin();
-    }
 
     public function index()
     {
@@ -46,23 +39,10 @@ class Index extends BaseLogin
             //实例化对象并设置属性
             $member = FMember::createMember();
             $member->setProperty($loginName, $passWord);
-
-            $this->login->validate($member, $validCode, $validCodeId);
+            FLogin::createLogicLogin()->validate($member, FLogin::createServiceLogin(), FLogin::createValidateLogin(), $validCode, $validCodeId);
             return djson(0, '操作成功');
         } catch (Exception $e) {
             return djson($e->getCode(), $e->getMessage());
         }
     }
-
-    /**
-     * 退出
-     * author: yanghuan
-     * date:2017/3/22 20:09
-     */
-    public function out()
-    {
-        $this->login->outLogin();
-        $this->redirect('/login');
-    }
-
 }

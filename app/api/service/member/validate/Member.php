@@ -1,6 +1,6 @@
 <?php
 
-namespace app\api\console\member\validate;
+namespace app\api\service\member\validate;
 
 use think\Validate;
 

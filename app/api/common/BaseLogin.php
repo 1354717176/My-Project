@@ -24,12 +24,18 @@ class BaseLogin extends Controller
 
         //不需要进行登录验证的模块数组
         $notValidLoginModule = ['login'];
+
         //验证是否登录，没有在此数组里面的模块需要验证
-        if (empty(\think\Session::has('user_id')) && !in_array($this->request->module(), $notValidLoginModule)) {
-            $this->redirect('/login');
-            exit;
+        if (!in_array($this->request->module(), $notValidLoginModule)) {
+            if (empty(\think\Session::has('user_id'))) {
+                $this->redirect('/login');
+                exit;
+            }
+        }else{
+            if (!empty(\think\Session::has('user_id'))) {
+                $this->redirect('/');
+                exit;
+            }
         }
-
-
     }
 }
