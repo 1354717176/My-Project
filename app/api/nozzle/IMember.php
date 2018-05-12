@@ -1,6 +1,6 @@
 <?php
 
-namespace app\api\nozzle;
+namespace api\nozzle;
 
 interface IMember
 {

@@ -2,7 +2,7 @@
 
 namespace app\console\index\controller;
 
-use app\api\common\BaseLogin;
+use api\common\BaseLogin;
 
 /**
  * 后台首页类

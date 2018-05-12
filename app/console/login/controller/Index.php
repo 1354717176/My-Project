@@ -2,10 +2,10 @@
 
 namespace app\console\login\controller;
 
-use app\api\common\BaseLogin;
 use think\Exception;
-use app\api\factory\FMember;
-use app\api\factory\FLogin;
+use api\common\BaseLogin;
+use api\factory\FMember;
+use api\factory\FLogin;
 
 /**
  * 后台-登录类

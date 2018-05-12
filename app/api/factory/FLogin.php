@@ -1,10 +1,10 @@
 <?php
 
-namespace app\api\factory;
+namespace api\factory;
 
-use app\api\service\login\validate\Login AS validateLogin;
-use app\api\service\login\logic\Login AS logicLogin;
-use app\api\service\login\service\Login AS serviceLogin;
+use api\service\login\validate\Login AS validateLogin;
+use api\service\login\logic\Login AS logicLogin;
+use api\service\login\service\Login AS serviceLogin;
 
 class FLogin
 {

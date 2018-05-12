@@ -1,11 +1,11 @@
 <?php
 
-namespace app\api\factory;
+namespace api\factory;
 
-use app\api\service\member\model\Member AS modelMember;
-use app\api\service\member\validate\Member AS validateMember;
-use app\api\service\member\logic\Member AS logicMember;
-use app\api\service\member\service\Member AS serviceMember;
+use api\service\member\model\Member AS modelMember;
+use api\service\member\validate\Member AS validateMember;
+use api\service\member\logic\Member AS logicMember;
+use api\service\member\service\Member AS serviceMember;
 
 class FMember
 {

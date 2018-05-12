@@ -1,6 +1,6 @@
 <?php
 
-namespace app\api\service\login\logic;
+namespace api\service\login\logic;
 
 use think\Exception;
 use think\Lang;

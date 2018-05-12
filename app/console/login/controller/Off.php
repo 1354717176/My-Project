@@ -3,7 +3,7 @@
 namespace app\console\login\controller;
 
 use think\Controller;
-use app\api\factory\FLogin;
+use api\factory\FLogin;
 
 /**
  * 退出登录

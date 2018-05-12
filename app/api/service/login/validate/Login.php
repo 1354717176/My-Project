@@ -1,5 +1,5 @@
 <?php
-namespace app\api\service\login\validate;
+namespace api\service\login\validate;
 
 use think\Validate;
 

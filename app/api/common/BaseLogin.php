@@ -1,6 +1,6 @@
 <?php
 
-namespace app\api\common;
+namespace api\common;
 
 use think\Controller;
 
@@ -31,7 +31,7 @@ class BaseLogin extends Controller
                 $this->redirect('/login');
                 exit;
             }
-        }else{
+        } else {
             if (!empty(\think\Session::has('user_id'))) {
                 $this->redirect('/');
                 exit;

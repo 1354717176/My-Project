@@ -1,6 +1,6 @@
 <?php
 
-namespace app\api\service\member\service;
+namespace api\service\member\service;
 
 use app\api\service\member\model\Member AS modelMember;
 use app\api\nozzle\Member AS interfaceMember;

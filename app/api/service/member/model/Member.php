@@ -1,9 +1,9 @@
 <?php
 
-namespace app\api\service\member\model;
+namespace api\service\member\model;
 
 use think\Model;
-use app\api\nozzle\IMember;
+use api\nozzle\IMember;
 
 class Member extends Model implements IMember
 {
