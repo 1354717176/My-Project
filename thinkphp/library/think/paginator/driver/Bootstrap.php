@@ -116,9 +116,8 @@ class Bootstrap extends Paginator
                     $this->getNextButton()
                 );
             } else {
-                //<span style="position:relative;top:-10px;right:5px">当前'.$this->listRows.'条记录，总共'.$this->total.'条记录</span>
                 return sprintf(
-                    '<ul class="pagination">%s %s %s</ul>',
+                    '<span style="position:relative;top:-10px;right:5px">当前'.$this->listRows.'条记录，总共'.$this->total.'条记录</span><ul class="pagination">%s %s %s</ul>',
                     $this->getPreviousButton(),
                     $this->getLinks(),
                     $this->getNextButton()

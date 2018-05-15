@@ -1,5 +1,5 @@
 <?php
-namespace app\api\console\cate\validate;
+namespace api\service\cate\validate;
 
 use think\Validate;
 

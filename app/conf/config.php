@@ -249,4 +249,9 @@ return [
     'not_pjax_module' => [
         'login',
     ],
+
+    //顶部菜单显示数量
+    'top_menu' => [
+        'number' => 5,
+    ]
 ];

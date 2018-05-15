@@ -30,7 +30,15 @@
                 <li class="navbar-menu nav-tabs-horizontal nav-tabs-animate is-load" id="admui-navMenu">
                     <ul class="nav navbar-toolbar nav-tabs" role="tablist">
                         <!-- 顶部菜单 -->
+                        {volist name="topMenu['menu_show']" id="v"}
                         <li role="presentation">
+                            <a data-toggle="tab" href="#admui-navTabsItem-{$v.id}" aria-controls="admui-navTabsItem-{$v.id}"
+                               role="tab" aria-expanded="false">
+                                <i class="{$v.icon}"></i> <span>{$v.name}</span>
+                            </a>
+                        </li>
+                        {/volist}
+                        <!--<li role="presentation">
                             <a data-toggle="tab" href="#admui-navTabsItem-1" aria-controls="admui-navTabsItem-1"
                                role="tab" aria-expanded="false">
                                 <i class="icon wb-user"></i> <span>管理员</span>
@@ -48,7 +56,7 @@
                                 <i class="icon fa-cogs"></i> <span>系统管理</span>
                             </a>
                         </li>
-                        <!--<li role="presentation">
+                        <li role="presentation">
                             <a data-toggle="tab" href="#admui-navTabsItem-1" aria-controls="admui-navTabsItem-1"
                                role="tab" aria-expanded="false">
                                 <i class="icon wb-library"></i> <span>文章</span>
@@ -100,15 +108,23 @@
                                role="tab" aria-expanded="false">
                                 <i class="icon wb-settings"></i> <span>系统管理</span>
                             </a>
-                        </li>
+                        </li>-->
 
+                        {notempty name="topMenu['menu_hide']"}
                         <li class="dropdown" id="admui-navbarSubMenu">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#" data-animation="slide-bottom"
                                aria-expanded="true" role="button">
                                 <i class="icon wb-more-vertical"></i>
                             </a>
                             <ul class="dropdown-menu" role="menu">
-                                <li class="no-menu" role="presentation">
+                                {volist name="topMenu['menu_hide']" id="v"}
+                                    <li class="no-menu" role="presentation">
+                                        <a href="/sitemap" target="_blank" role="menuitem" data-pjax>
+                                            <i class="{$v.icon}"></i><span>{$v.name}</span>
+                                        </a>
+                                    </li>
+                                {/volist}
+                                <!--<li class="no-menu" role="presentation">
                                     <a href="/sitemap" target="_blank" role="menuitem" data-pjax>
                                         <i class="icon wb-list-numbered"></i><span>网站地图</span>
                                     </a>
@@ -117,9 +133,10 @@
                                     <a href="/system/menu" target="_blank" role="menuitem" data-pjax>
                                         <i class="icon wb-wrench"></i><span>菜单管理</span>
                                     </a>
-                                </li>
+                                </li>-->
                             </ul>
-                        </li>-->
+                        </li>
+                        {/notempty}
                     </ul>
                 </li>
             </ul>

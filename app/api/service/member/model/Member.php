@@ -30,7 +30,7 @@ class Member extends Model implements IMember
 
     public function __call($method, $args)
     {
-        $argsNum = func_num_args();
+        $argsNum = count($args);
         switch ($argsNum) {
             case 1:
                 $this->setLoginName($args[0]);

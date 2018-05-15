@@ -3,6 +3,7 @@
 namespace api\common;
 
 use think\Controller;
+use api\factory\FCate;
 
 /**
  * 后台-公共登录类
@@ -13,6 +14,10 @@ use think\Controller;
  */
 class BaseLogin extends Controller
 {
+
+    protected $modelCate;
+    protected $serviceCate;
+    protected $logicCate;
 
     protected function _initialize()
     {
@@ -31,6 +36,14 @@ class BaseLogin extends Controller
                 $this->redirect('/login');
                 exit;
             }
+
+            //显示系统顶部菜单
+            $this->modelCate = FCate::createCate();
+            $this->serviceCate = FCate::createServiceCate();
+            $this->logicCate = FCate::createLogicCate();
+            $this->modelCate->setProperty(0, 0);
+            $topMenu = $this->logicCate->lists($this->modelCate, $this->serviceCate, getConfig('top_menu.number'));
+            $this->assign('topMenu', $topMenu);
         } else {
             if (!empty(\think\Session::has('user_id'))) {
                 $this->redirect('/');
