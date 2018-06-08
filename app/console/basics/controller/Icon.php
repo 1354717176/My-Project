@@ -9,9 +9,9 @@
 
 namespace app\console\basics\controller;
 
-use app\api\common\Base;
+use api\common\BaseLogin;
 
-class Icon extends Base
+class Icon extends BaseLogin
 {
     public function webicon()
     {
