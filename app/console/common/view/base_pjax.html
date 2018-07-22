@@ -7,7 +7,8 @@
     <meta name="description" content="Admui在线演示系统，Admui是一个基于最新Web技术的企业级通用管理系统快速开发框架，可以帮助企业极大的提高工作效率，节省开发成本，提升品牌形象。"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- 移动设备 viewport -->
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
     <meta name="author" content="admui.com">
     <!-- 360浏览器默认使用Webkit内核 -->
     <meta name="renderer" content="webkit">
@@ -57,12 +58,11 @@
 
     <!-- 核心  -->
     <script src="{$domain.static}/js/core.js"></script>
-    <script src="{$domain.static}/js/site.js"></script>
     <script src="{$domain.static}/js/site-configs.js"></script>
+    <script src="{$domain.static}/js/components.js"></script>
     <script src="{$domain.static}/plugin/layui/layui.js"></script>
 
     <script>Breakpoints();</script>
-
     {block name="style"}{/block}
 </head>
 <body class="site-contabs-open">
@@ -71,21 +71,14 @@
 {include file="../../common/view/navigation" /}
 
 <main class="site-page">
-<div class="page-container" id="admui-pageContent">
-{block name="body"}{/block}
-</div>
-<div class="page-loading vertical-align text-center">
-    <div class="page-loader loader-default loader vertical-align-middle" data-type="default"></div>
-</div>
+    <div class="page-container" id="admui-pageContent">
+        {block name="body"}{/block}
+    </div>
+    <div class="page-loading vertical-align text-center">
+        <div class="page-loader loader-default loader vertical-align-middle" data-type="default"></div>
+    </div>
 </main>
 {include file="../../common/view/footer" /}
-
-
-
-<!-- 布局 -->
-<script src="{$domain.static}/js/menu.js"></script>
-<script src="{$domain.static}/js/media-menu.js"></script>
-<script src="{$domain.static}/js/content-tabs.js"></script>
 
 <!-- 插件 -->
 <script src="{$domain.static}/js/jquery.pjax.min.js"></script>
@@ -93,7 +86,18 @@
 <script src="{$domain.static}/js/jquery-asHoverScroll.min.js"></script>
 <script src="{$domain.static}/js/jquery.slimscroll.min.js"></script>
 <script src="{$domain.static}/js/screenfull.min.js"></script>
-<script src="{$domain.static}/js/jquery.matchHeight.min.js"></script>
+
+<!-- 布局 -->
+<script src="{$domain.static}/js/menu.js"></script>
+<script src="{$domain.static}/js/media-menu.js"></script>
+<script src="{$domain.static}/js/content-tabs.js"></script>
+<script src="{$domain.static}/js/site.js"></script>
+
+<script>
+    /*console.log($.site);
+    console.log(1111);
+    $.site.contentTabs.buildTab({name:11,url:'baidu.com'});*/
+</script>
 {block name="js"}{/block}
 </body>
 </html>
